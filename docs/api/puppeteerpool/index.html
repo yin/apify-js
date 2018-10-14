@@ -1,0 +1,149 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>PuppeteerPool · Apify SDK</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;a name=&quot;PuppeteerPool&quot;&gt;&lt;/a&gt;"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="PuppeteerPool · Apify SDK"/><meta property="og:type" content="website"/><meta property="og:url" content="https://sdk.apify.com/index.html"/><meta property="og:description" content="&lt;a name=&quot;PuppeteerPool&quot;&gt;&lt;/a&gt;"/><meta property="og:image" content="https://sdk.apify.com/img/apify_logo.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://sdk.apify.com/img/apify_logo.png"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/apify_logo.svg" alt="Apify SDK"/><h2 class="headerTitleWithLogo">Apify SDK</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/examples/helloworld" target="_self">Docs</a></li><li class=""><a href="/docs/examples/basiccrawler" target="_self">Examples</a></li><li class="siteNavGroupActive"><a href="/docs/api/apify" target="_self">API</a></li><li class=""><a href="https://github.com/apifytech/apify-js" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>API Reference</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Introduction</h3><ul><li class="navListItem"><a class="navItem" href="/docs/examples/helloworld">Hello World</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API Reference</h3><ul><li class="navListItem"><a class="navItem" href="/docs/api/apify">Apify</a></li><li class="navListItem"><a class="navItem" href="/docs/api/autoscaledpool">AutoscaledPool</a></li><li class="navListItem"><a class="navItem" href="/docs/api/basiccrawler">BasicCrawler</a></li><li class="navListItem"><a class="navItem" href="/docs/api/cheeriocrawler">CheerioCrawler</a></li><li class="navListItem"><a class="navItem" href="/docs/api/dataset">Dataset</a></li><li class="navListItem"><a class="navItem" href="/docs/api/keyvaluestore">KeyValueStore</a></li><li class="navListItem"><a class="navItem" href="/docs/api/pseudourl">PseudoUrl</a></li><li class="navListItem"><a class="navItem" href="/docs/api/puppeteercrawler">PuppeteerCrawler</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/api/puppeteerpool">PuppeteerPool</a></li><li class="navListItem"><a class="navItem" href="/docs/api/request">Request</a></li><li class="navListItem"><a class="navItem" href="/docs/api/requestlist">RequestList</a></li><li class="navListItem"><a class="navItem" href="/docs/api/requestqueue">RequestQueue</a></li><li class="navListItem"><a class="navItem" href="/docs/api/utils">utils</a></li><li class="navListItem"><a class="navItem" href="/docs/api/puppeteer">utils.puppeteer</a></li></ul></div></div></section></div><script>
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docMainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">PuppeteerPool</h1></header><article><div><span><p><a name="PuppeteerPool"></a></p>
+<p>Manages a pool of Chrome browser instances controlled using <a href="https://github.com/GoogleChrome/puppeteer">Puppeteer</a>.
+<code>PuppeteerPool</code> reuses Chrome instances and tabs using specific
+browser rotation and retirement policies.
+This is useful in order to facilitate rotation of proxies, cookies
+or other settings in order to prevent detection of your web scraping bot,
+access web pages from various countries etc.
+Additionally, the reuse of browser instances instances speeds up crawling,
+and the retirement of instances helps mitigate effects of memory leaks in Chrome.</p>
+<p><code>PuppeteerPool</code> is internally used by the <a href="puppeteercrawler"><code>PuppeteerCrawler</code></a> class.</p>
+<p><strong>Example usage:</strong></p>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">const</span> puppeteerPool = <span class="hljs-keyword">new</span> PuppeteerPool({
+  <span class="hljs-attr">launchPuppeteerFunction</span>: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    <span class="hljs-comment">// Use a new proxy with a new IP address for each new Chrome instance</span>
+    <span class="hljs-keyword">return</span> Apify.launchPuppeteer({
+       <span class="hljs-attr">apifyProxySession</span>: <span class="hljs-built_in">Math</span>.random(),
+    });
+  },
+});
+
+<span class="hljs-keyword">const</span> page1 = <span class="hljs-keyword">await</span> puppeteerPool.newPage();
+<span class="hljs-keyword">const</span> page2 = <span class="hljs-keyword">await</span> puppeteerPool.newPage();
+<span class="hljs-keyword">const</span> page3 = <span class="hljs-keyword">await</span> puppeteerPool.newPage();
+
+<span class="hljs-comment">// ... do something with the pages ...</span>
+
+<span class="hljs-comment">// Close all browsers.</span>
+<span class="hljs-keyword">await</span> puppeteerPool.destroy();
+</code></pre>
+<ul>
+<li><a href="puppeteerpool">PuppeteerPool</a>
+<ul>
+<li><a href="#new_PuppeteerPool_new"><code>new PuppeteerPool()</code></a></li>
+<li><a href="#PuppeteerPool+newPage"><code>.newPage()</code></a> ⇒ <code>Promise&lt;Puppeteer.Page&gt;</code></li>
+<li><a href="#PuppeteerPool+destroy"><code>.destroy()</code></a> ⇒ <code>Promise</code></li>
+<li><a href="#PuppeteerPool+retire"><code>.retire(browser)</code></a> ⇒ <code>Promise</code></li>
+</ul></li>
+</ul>
+<p><a name="new_PuppeteerPool_new"></a></p>
+<h2><a class="anchor" aria-hidden="true" id="new-puppeteerpool"></a><a href="#new-puppeteerpool" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>new PuppeteerPool()</code></h2>
+<table>
+<thead>
+<tr>
+<th>Param</th><th>Type</th><th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[options.maxOpenPagesPerInstance]</code></td><td><code>Number</code></td><td><code>50</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>Maximum number of open pages (i.e. tabs) per browser. When this limit is reached, new pages are loaded in a new browser instance.</p>
+</td></tr><tr>
+<td><code>[options.retireInstanceAfterRequestCount]</code></td><td><code>Number</code></td><td><code>100</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>Maximum number of requests that can be processed by a single browser instance.
+  After the limit is reached, the browser is retired and new requests are
+  be handled by a new browser instance.</p>
+</td></tr><tr>
+<td><code>[options.instanceKillerIntervalMillis]</code></td><td><code>Number</code></td><td><code>60000</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>Indicates how often opened Puppeteer instances are checked whether they can be closed.</p>
+</td></tr><tr>
+<td><code>[options.killInstanceAfterMillis]</code></td><td><code>Number</code></td><td><code>300000</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>When Puppeteer instance reaches the <code>options.retireInstanceAfterRequestCount</code> limit then
+  it is considered retired and no more tabs will be opened. After the last tab is closed the
+  whole browser is closed too. This parameter defines a time limit between the last tab was opened and
+  before the browser is closed even if there are pending open tabs.</p>
+</td></tr><tr>
+<td><code>[options.launchPuppeteerFunction]</code></td><td><code>function</code></td><td><code>launchPuppeteerOptions&amp;nbsp;&#x3D;&gt;&amp;nbsp;Apify.launchPuppeteer(launchPuppeteerOptions)</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>Overrides the default function to launch a new <code>Puppeteer</code> instance.</p>
+</td></tr><tr>
+<td><code>[options.launchPuppeteerOptions]</code></td><td><code><a href="#LaunchPuppeteerOptions">LaunchPuppeteerOptions</a></code></td><td></td>
+</tr>
+<tr>
+<td colspan="3"><p>Options used by <code>Apify.launchPuppeteer()</code> to start new Puppeteer instances.</p>
+</td></tr><tr>
+<td><code>[options.recycleDiskCache]</code></td><td><code>Boolean</code></td><td></td>
+</tr>
+<tr>
+<td colspan="3"><p>Enables recycling of disk cache directories by Chrome instances.
+  When a browser instance is closed, its disk cache directory is not deleted but it&#39;s used by a newly opened browser instance.
+  This is useful to reduce amount of data that needs to be downloaded to speed up crawling and reduce proxy usage.
+  Note that the new browser starts with empty cookies, local storage etc. so this setting doesn&#39;t affect anonymity of your crawler.</p>
+<p>  Beware that the disk cache directories can consume a lot of disk space.
+  To limit the space consumed, you can pass the <code>--disk-cache-size=X</code> argument to <code>options.launchPuppeteerOptions.args</code>,
+  where <code>X</code> is the approximate maximum number of bytes for disk cache.</p>
+<p>  <em>IMPORTANT:</em> Currently this feature only works in headful mode, because of a bug in Chromium.</p>
+<p>  The <code>options.recycleDiskCache</code> setting should not be used together with <code>--disk-cache-dir</code> argument in <code>options.launchPuppeteerOptions.args</code>.</p>
+</td></tr></tbody>
+</table>
+<a name="PuppeteerPool+newPage"></a>
+<h2><a class="anchor" aria-hidden="true" id="puppeteerpoolnewpage-code-promise-lt-puppeteerpage-gt-code"></a><a href="#puppeteerpoolnewpage-code-promise-lt-puppeteerpage-gt-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>puppeteerPool.newPage()</code> ⇒ <code>Promise&lt;Puppeteer.Page&gt;</code></h2>
+<p>Opens new tab in one of the browsers and returns promise that resolves to its Puppeteer.Page.</p>
+<p><a name="PuppeteerPool+destroy"></a></p>
+<h2><a class="anchor" aria-hidden="true" id="puppeteerpooldestroy-code-promise-code"></a><a href="#puppeteerpooldestroy-code-promise-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>puppeteerPool.destroy()</code> ⇒ <code>Promise</code></h2>
+<p>Closes all the browsers.</p>
+<p><a name="PuppeteerPool+retire"></a></p>
+<h2><a class="anchor" aria-hidden="true" id="puppeteerpoolretirebrowser-code-promise-code"></a><a href="#puppeteerpoolretirebrowser-code-promise-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>puppeteerPool.retire(browser)</code> ⇒ <code>Promise</code></h2>
+<p>Manually retires a Puppeteer Browser instance from the pool. The browser will continue
+to process open pages so that they may gracefully finish. This is unlike browser.close()
+which will forcibly terminate the browser and all open pages will be closed.</p>
+<table>
+<thead>
+<tr>
+<th>Param</th><th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>browser</code></td><td><code>Puppeteer.Browser</code></td>
+</tr>
+<tr>
+</tr></tbody>
+</table>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/api/puppeteercrawler"><span class="arrow-prev">← </span><span>Previous</span></a><a class="docs-next button" href="/docs/api/request"><span>Next</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav docOnPageNav"><ul class="toc-headings"><li><a href="#new-puppeteerpool"><code>new PuppeteerPool()</code></a></li><li><a href="#puppeteerpoolnewpage-code-promise-lt-puppeteerpage-gt-code"><code>puppeteerPool.newPage()</code> ⇒ Promise&lt;Puppeteer.Page&gt;</a></li><li><a href="#puppeteerpooldestroy-code-promise-code"><code>puppeteerPool.destroy()</code> ⇒ Promise</a></li><li><a href="#puppeteerpoolretirebrowser-code-promise-code"><code>puppeteerPool.retire(browser)</code> ⇒ Promise</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/apify_logo.svg" alt="Apify SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/docs/en/doc2.html">Guides (or other categories)</a><a href="/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://code.facebook.com/projects/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2018 Apify Technologies s.r.o.</section></footer></div></body></html>

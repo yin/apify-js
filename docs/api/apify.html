@@ -1,0 +1,661 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Apify · Apify SDK</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;a name=&quot;module_Apify&quot;&gt;&lt;/a&gt;"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Apify · Apify SDK"/><meta property="og:type" content="website"/><meta property="og:url" content="https://sdk.apify.com/index.html"/><meta property="og:description" content="&lt;a name=&quot;module_Apify&quot;&gt;&lt;/a&gt;"/><meta property="og:image" content="https://sdk.apify.com/img/apify_logo.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://sdk.apify.com/img/apify_logo.png"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/apify_logo.svg" alt="Apify SDK"/><h2 class="headerTitleWithLogo">Apify SDK</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/examples/helloworld" target="_self">Docs</a></li><li class=""><a href="/docs/examples/basiccrawler" target="_self">Examples</a></li><li class="siteNavGroupActive siteNavItemActive"><a href="/docs/api/apify" target="_self">API</a></li><li class=""><a href="https://github.com/apifytech/apify-js" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>API Reference</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Introduction</h3><ul><li class="navListItem"><a class="navItem" href="/docs/examples/helloworld">Hello World</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API Reference</h3><ul><li class="navListItem navListItemActive"><a class="navItem" href="/docs/api/apify">Apify</a></li><li class="navListItem"><a class="navItem" href="/docs/api/autoscaledpool">AutoscaledPool</a></li><li class="navListItem"><a class="navItem" href="/docs/api/basiccrawler">BasicCrawler</a></li><li class="navListItem"><a class="navItem" href="/docs/api/cheeriocrawler">CheerioCrawler</a></li><li class="navListItem"><a class="navItem" href="/docs/api/dataset">Dataset</a></li><li class="navListItem"><a class="navItem" href="/docs/api/keyvaluestore">KeyValueStore</a></li><li class="navListItem"><a class="navItem" href="/docs/api/pseudourl">PseudoUrl</a></li><li class="navListItem"><a class="navItem" href="/docs/api/puppeteercrawler">PuppeteerCrawler</a></li><li class="navListItem"><a class="navItem" href="/docs/api/puppeteerpool">PuppeteerPool</a></li><li class="navListItem"><a class="navItem" href="/docs/api/request">Request</a></li><li class="navListItem"><a class="navItem" href="/docs/api/requestlist">RequestList</a></li><li class="navListItem"><a class="navItem" href="/docs/api/requestqueue">RequestQueue</a></li><li class="navListItem"><a class="navItem" href="/docs/api/utils">utils</a></li><li class="navListItem"><a class="navItem" href="/docs/api/puppeteer">utils.puppeteer</a></li></ul></div></div></section></div><script>
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docMainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Apify</h1></header><article><div><span><p><a name="module_Apify"></a></p>
+<p>The following section describes all functions and properties provided by the <code>apify</code> package,
+except individual classes and namespaces that have their separate, detailed, documentation pages
+accessible from the left sidebar.</p>
+<ul>
+<li><a href="#module_Apify">Apify</a>
+<ul>
+<li><a href="#module_Apify.call"><code>.call(actId, [input], [options])</code></a> ⇒ <a href="#ActorRun"><code>Promise&lt;ActorRun&gt;</code></a></li>
+<li><a href="#module_Apify.client"><code>.client</code></a></li>
+<li><a href="#module_Apify.events"><code>.events</code></a></li>
+<li><a href="#module_Apify.getApifyProxyUrl"><code>.getApifyProxyUrl(options)</code></a> ⇒ <code>String</code></li>
+<li><a href="#module_Apify.getEnv"><code>.getEnv()</code></a> ⇒ <code>Object</code></li>
+<li><a href="#module_Apify.getMemoryInfo"><code>.getMemoryInfo()</code></a> ⇒ <code>Promise&lt;Object&gt;</code></li>
+<li><a href="#module_Apify.getValue"><code>.getValue(key)</code></a> ⇒ <code>Promise&lt;Object&gt;</code></li>
+<li><a href="#module_Apify.isAtHome"><code>.isAtHome()</code></a> ⇒ <code>Boolean</code></li>
+<li><a href="#module_Apify.isDocker"><code>.isDocker()</code></a> ⇒ <code>Promise</code></li>
+<li><a href="#module_Apify.launchPuppeteer"><code>.launchPuppeteer([opts])</code></a> ⇒ <code>Promise</code></li>
+<li><a href="#module_Apify.launchWebDriver"><code>.launchWebDriver([opts])</code></a> ⇒ <code>Promise</code></li>
+<li><a href="#module_Apify.main"><code>.main(userFunc)</code></a></li>
+<li><a href="#module_Apify.openDataset"><code>.openDataset([datasetIdOrName])</code></a> ⇒ <a href="dataset"><code>Promise&lt;Dataset&gt;</code></a></li>
+<li><a href="#module_Apify.openKeyValueStore"><code>.openKeyValueStore([storeIdOrName])</code></a> ⇒ <a href="keyvaluestore"><code>Promise&lt;KeyValueStore&gt;</code></a></li>
+<li><a href="#module_Apify.openRequestQueue"><code>.openRequestQueue</code></a> ⇒ <a href="requestqueue"><code>Promise&lt;RequestQueue&gt;</code></a></li>
+<li><a href="#module_Apify.pushData"><code>.pushData(data)</code></a> ⇒ <code>Promise</code></li>
+<li><a href="#module_Apify.setValue"><code>.setValue(key, value, [options])</code></a> ⇒ <code>Promise</code></li>
+</ul></li>
+</ul>
+<p><a name="module_Apify.call"></a></p>
+<h2><a class="anchor" aria-hidden="true" id="apifycallactid-input-options-code-promise-lt-actorrun-gt-code-actorrun"></a><a href="#apifycallactid-input-options-code-promise-lt-actorrun-gt-code-actorrun" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>Apify.call(actId, [input], [options])</code> ⇒ <a href="#ActorRun"><code>Promise&lt;ActorRun&gt;</code></a></h2>
+<p>Runs an actor on the Apify platform using the current user account (determined by the <code>APIFY_TOKEN</code> environment variable),
+waits for the actor to finish and fetches its output.</p>
+<p>By passing the <code>waitSecs</code> option you can reduce the maximum amount of time to wait for the run to finish.
+If the value is less than or equal to zero, the function returns immediately after the run is started.</p>
+<p>The result of the function is an <a href="#actorrun"><code>ActorRun</code></a> object
+that contains details about the actor run and its output (if any).
+If the actor run failed, the function fails with <a href="#apifycallerror"><code>ApifyCallError</code></a> exception.</p>
+<p><strong>Example usage:</strong></p>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">const</span> run = <span class="hljs-keyword">await</span> Apify.call(<span class="hljs-string">'apify/hello-world'</span>, { <span class="hljs-attr">myInput</span>: <span class="hljs-number">123</span> });
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Received message: <span class="hljs-subst">${run.output.body.message}</span>`</span>);
+</code></pre>
+<p>Internally, the <code>call()</code> function calls the
+<a href="https://www.apify.com/docs/api/v2#/reference/actors/run-collection/run-actor" target="_blank">Run actor</a>
+Apify API endpoint and few others to obtain the output.</p>
+<p><strong>Throws</strong>:</p>
+<ul>
+<li><a href="#ApifyCallError"><code>ApifyCallError</code></a> If the run did not succeed, e.g. if it failed or timed out.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Param</th><th>Type</th><th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>actId</code></td><td><code>String</code></td><td></td>
+</tr>
+<tr>
+<td colspan="3"><p>Either <code>username/actor-name</code> or actor ID.</p>
+</td></tr><tr>
+<td><code>[input]</code></td><td><code>Object</code> | <code>String</code> | <code>Buffer</code></td><td></td>
+</tr>
+<tr>
+<td colspan="3"><p>Input for the actor. If it is an object, it will be stringified to
+ JSON and its content type set to <code>application/json; charset=utf-8</code>.
+ Otherwise the <code>options.contentType</code> parameter must be provided.</p>
+</td></tr><tr>
+<td><code>[options]</code></td><td><code>Object</code></td><td></td>
+</tr>
+<tr>
+<td colspan="3"><p>Object with the settings below:</p>
+</td></tr><tr>
+<td><code>[options.contentType]</code></td><td><code>String</code></td><td></td>
+</tr>
+<tr>
+<td colspan="3"><p>Content type for the <code>input</code>. If not specified,
+ <code>input</code> is expected to be an object that will be stringified to JSON and content type set to
+ <code>application/json; charset=utf-8</code>. If <code>options.contentType</code> is specified, then <code>input</code> must be a
+ <code>String</code> or <code>Buffer</code>.</p>
+</td></tr><tr>
+<td><code>[options.token]</code></td><td><code>String</code></td><td></td>
+</tr>
+<tr>
+<td colspan="3"><p>User API token that is used to run the actor. By default, it is taken from the <code>APIFY_TOKEN</code> environment variable.</p>
+</td></tr><tr>
+<td><code>[options.memory]</code></td><td><code>Number</code></td><td></td>
+</tr>
+<tr>
+<td colspan="3"><p>Memory in megabytes which will be allocated for the new actor run.
+ If not provided, the run uses memory of the default actor run configuration.</p>
+</td></tr><tr>
+<td><code>[options.build]</code></td><td><code>String</code></td><td></td>
+</tr>
+<tr>
+<td colspan="3"><p>Tag or number of the actor build to run (e.g. <code>beta</code> or <code>1.2.345</code>).
+ If not provided, the run uses build tag or number from the default actor run configuration (typically <code>latest</code>).</p>
+</td></tr><tr>
+<td><code>[options.waitSecs]</code></td><td><code>String</code></td><td></td>
+</tr>
+<tr>
+<td colspan="3"><p>Maximum time to wait for the actor run to finish, in seconds.
+ If the limit is reached, the returned promise is resolved to a run object that will have
+ status <code>READY</code> or <code>RUNNING</code> and it will not contain the actor run output.
+ If <code>waitSecs</code> is null or undefined, the function waits for the actor to finish (default behavior).</p>
+</td></tr><tr>
+<td><code>[options.fetchOutput]</code></td><td><code>Boolean</code></td><td><code>true</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>If <code>false</code> then the function does not fetch output of the actor.</p>
+</td></tr><tr>
+<td><code>[options.disableBodyParser]</code></td><td><code>Boolean</code></td><td><code>false</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>If <code>true</code> then the function will not attempt to parse the
+ actor&#39;s output and will return it in a raw <code>Buffer</code>.</p>
+</td></tr></tbody>
+</table>
+<a name="module_Apify.client"></a>
+<h2><a class="anchor" aria-hidden="true" id="apifyclient"></a><a href="#apifyclient" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>Apify.client</code></h2>
+<p>Gets the default instance of the <code>ApifyClient</code> class provided
+<a href="https://www.apify.com/docs/sdk/apify-client-js/latest"
+target="_blank">apify-client</a> by the NPM package.
+The instance is created automatically by the Apify SDK and it is configured using the
+<code>APIFY_API_BASE_URL</code>, <code>APIFY_USER_ID</code> and <code>APIFY_TOKEN</code> environment variables.</p>
+<p>The instance is used for all underlying calls to the Apify API in functions such as
+<a href="#module_Apify.getValue"><code>Apify.getValue()</code></a> or <a href="#module_Apify.call"><code>Apify.call()</code></a>.
+The settings of the client can be globally altered by calling the
+<a href="https://www.apify.com/docs/sdk/apify-client-js/latest#ApifyClient-setOptions"
+target="_blank"><code>Apify.client.setOptions()</code></a> function.
+Beware that altering these settings might have unintended effects on the entire Apify SDK package.</p>
+<p><a name="module_Apify.events"></a></p>
+<h2><a class="anchor" aria-hidden="true" id="apifyevents"></a><a href="#apifyevents" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>Apify.events</code></h2>
+<p>Gets an instance of a Node.js'
+<a href="https://nodejs.org/api/events.html#events_class_eventemitter" target="_blank">EventEmitter</a>
+class that emits various events from the SDK or the Apify platform.
+The event emitter is initialized by calling the <a href="#module_Apify.main"><code>Apify.main()</code></a> function.</p>
+<p><strong>Example usage:</strong></p>
+<pre><code class="hljs css language-javascript">Apify.events.on(<span class="hljs-string">'cpuInfo'</span>, (data) =&gt; {
+  <span class="hljs-keyword">if</span> (data.isCpuOverloaded) <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Oh no, the CPU is overloaded!'</span>);
+});
+</code></pre>
+<p>The following table shows all currently emitted events:</p>
+<table>
+    <thead>
+        <tr>
+            <th>Event name</th>
+            <th>Data</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>cpuInfo</code></td>
+            <td><code>{ "isCpuOverloaded": Boolean }</code></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                The event is emitted approximately every second
+                and it indicates whether the actor is using the maximum of available CPU resources.
+                If that's the case, the actor should not add more workload.
+                For example, this event is used by the [`AutoscaledPool`](autoscaledpool) class.
+            </td>
+        </tr>
+        <tr>
+            <td><code>migrating</code></td>
+            <td>None</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                Emitted when the actor running on the Apify platform is going to be migrated to another worker server soon.
+                You can use it to persist the state of the actor and abort the run, to speed up migration.
+                For example, this is used by the [`RequestList`](requestlist) class.
+            </td>
+        </tr>
+        <tr>
+            <td><code>persistState</code></td>
+            <td><code>{ "isMigrating": Boolean }</code></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                Emitted in regular intervals to notify all components of Apify SDK that it is time to persist
+                their state, in order to avoid repeating all work when the actor restarts.
+                This event is automatically emitted together with the <code>migrating</code> event,
+                in which case the <code>isMigrating</code> flag is set to <code>true</code>. Otherwise the flag is <code>false</code>.
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><a name="module_Apify.getApifyProxyUrl"></a></p>
+<h2><a class="anchor" aria-hidden="true" id="apifygetapifyproxyurloptions-code-string-code"></a><a href="#apifygetapifyproxyurloptions-code-string-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>Apify.getApifyProxyUrl(options)</code> ⇒ <code>String</code></h2>
+<p>Constructs an Apify Proxy URL using the specified settings.
+The proxy URL can be used from Apify actors, web browsers or any other HTTP
+proxy-enabled applications.</p>
+<p>For more information, see
+the <a href="https://my.apify.com/proxy" target="_blank">Apify Proxy</a> page in the app
+or the <a href="https://www.apify.com/docs/proxy" target="_blank">documentation</a>.</p>
+<p><strong>Returns</strong>: <code>String</code> - Returns the proxy URL, e.g. <code>http://auto:my_password@proxy.apify.com:8000</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Param</th><th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>options</code></td><td><code>Object</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>Object with the settings below:</p>
+</td></tr><tr>
+<td><code>[options.password]</code></td><td><code>String</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>User&#39;s password for the proxy.
+  By default, it is taken from the <code>APIFY_PROXY_PASSWORD</code> environment variable,
+  which is automatically set by the system when running the actors on the Apify cloud,
+  or when using the <a href="https://github.com/apifytech/apify-cli" target="_blank">Apify CLI</a>
+  package and the user previously logged in (called <code>apify login</code>).</p>
+</td></tr><tr>
+<td><code>[options.groups]</code></td><td><code>Array&lt;String&gt;</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>Array of Apify Proxy groups to be used.
+  If not provided, the proxy will select the groups automatically.</p>
+</td></tr><tr>
+<td><code>[options.session]</code></td><td><code>String</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>Apify Proxy session identifier to be used by the Chrome browser.
+  All HTTP requests going through the proxy with the same session identifier
+  will use the same target proxy server (i.e. the same IP address), unless using Residential proxies.
+  The identifier can only contain the following characters: <code>0-9</code>, <code>a-z</code>, <code>A-Z</code>, <code>&quot;.&quot;</code>, <code>&quot;_&quot;</code> and <code>&quot;~&quot;</code>.</p>
+</td></tr></tbody>
+</table>
+<a name="module_Apify.getEnv"></a>
+<h2><a class="anchor" aria-hidden="true" id="apifygetenv-code-object-code"></a><a href="#apifygetenv-code-object-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>Apify.getEnv()</code> ⇒ <code>Object</code></h2>
+<p>Returns a new object which contains information parsed from the <code>APIFY_XXX</code> environment variables.
+It has the following properties:</p>
+<pre><code class="hljs css language-javascript">{
+    <span class="hljs-comment">// ID of the actor (APIFY_ACT_ID)</span>
+    actId: <span class="hljs-built_in">String</span>,
+    <span class="hljs-comment">// ID of the actor run (APIFY_ACT_RUN_ID)</span>
+    actRunId: <span class="hljs-built_in">String</span>,
+    <span class="hljs-comment">// ID of the user who started the actor - note that it might be</span>
+    <span class="hljs-comment">// different than the owner of the actor (APIFY_USER_ID)</span>
+    userId: <span class="hljs-built_in">String</span>,
+    <span class="hljs-comment">// Authentication token representing privileges given to the actor run,</span>
+    <span class="hljs-comment">// it can be passed to various Apify APIs (APIFY_TOKEN).</span>
+    token: <span class="hljs-built_in">String</span>,
+    <span class="hljs-comment">// Date when the actor was started (APIFY_STARTED_AT)</span>
+    startedAt: <span class="hljs-built_in">Date</span>,
+    <span class="hljs-comment">// Date when the actor will time out (APIFY_TIMEOUT_AT)</span>
+    timeoutAt: <span class="hljs-built_in">Date</span>,
+    <span class="hljs-comment">// ID of the key-value store where input and output data of this</span>
+    <span class="hljs-comment">// actor is stored (APIFY_DEFAULT_KEY_VALUE_STORE_ID)</span>
+    defaultKeyValueStoreId: <span class="hljs-built_in">String</span>,
+    <span class="hljs-comment">// ID of the dataset where input and output data of this</span>
+    <span class="hljs-comment">// actor is stored (APIFY_DEFAULT_DATASET_ID)</span>
+    defaultDatasetId: <span class="hljs-built_in">String</span>,
+    <span class="hljs-comment">// Amount of memory allocated for the actor,</span>
+    <span class="hljs-comment">// in megabytes (APIFY_MEMORY_MBYTES)</span>
+    memoryMbytes: <span class="hljs-built_in">Number</span>,
+}
+</code></pre>
+<p>For the list of the <code>APIFY_XXX</code> environment variables, see
+<a href="https://www.apify.com/docs/actor#run-env-vars" target="_blank">Actor documentation</a>.
+If some of the variables are not defined or are invalid, the corresponding value in the resulting object will be null.</p>
+<p><a name="module_Apify.getMemoryInfo"></a></p>
+<h2><a class="anchor" aria-hidden="true" id="apifygetmemoryinfo-code-promise-lt-object-gt-code"></a><a href="#apifygetmemoryinfo-code-promise-lt-object-gt-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>Apify.getMemoryInfo()</code> ⇒ <code>Promise&lt;Object&gt;</code></h2>
+<p>Returns memory statistics of the process and the system, which is an object with the following properties:</p>
+<pre><code class="hljs css language-javascript">{
+  <span class="hljs-comment">// Total memory available in the system or container</span>
+  totalBytes: <span class="hljs-built_in">Number</span>,
+  <span class="hljs-comment">// Amount of free memory in the system or container</span>
+  freeBytes: <span class="hljs-built_in">Number</span>,
+  <span class="hljs-comment">// Amount of memory used (= totalBytes - freeBytes)</span>
+  usedBytes: <span class="hljs-built_in">Number</span>,
+  <span class="hljs-comment">// Amount of memory used the current Node.js process</span>
+  mainProcessBytes: <span class="hljs-built_in">Number</span>,
+  <span class="hljs-comment">// Amount of memory used by child processes of the current Node.js process</span>
+  childProcessesBytes: <span class="hljs-built_in">Number</span>,
+}
+</code></pre>
+<p>If the process runs inside of Docker, the <code>getMemoryInfo</code> gets container memory limits,
+otherwise it gets system memory limits.</p>
+<p>Beware that the function is quite inefficient because it spawns a new process.
+Therefore you shouldn't call it too often, like more than once per second.</p>
+<p><a name="module_Apify.getValue"></a></p>
+<h2><a class="anchor" aria-hidden="true" id="apifygetvaluekey-code-promise-lt-object-gt-code"></a><a href="#apifygetvaluekey-code-promise-lt-object-gt-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>Apify.getValue(key)</code> ⇒ <code>Promise&lt;Object&gt;</code></h2>
+<p>Gets a value from the default <a href="keyvaluestore"><code>KeyValueStore</code></a> associated with the current actor run.</p>
+<p>This is just a convenient shortcut for <a href="keyvaluestore#KeyValueStore+getValue"><code>keyValueStore.getValue()</code></a>.
+For example, calling the following code:</p>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">const</span> input = <span class="hljs-keyword">await</span> Apify.getValue(<span class="hljs-string">'INPUT'</span>);
+</code></pre>
+<p>is equivalent to:</p>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">const</span> store = <span class="hljs-keyword">await</span> Apify.openKeyValueStore();
+<span class="hljs-keyword">await</span> store.getValue(<span class="hljs-string">'INPUT'</span>);
+</code></pre>
+<p>To store the value to the default-key value store, you can use the <a href="apify#setvalue"><code>Apify.setValue()</code></a> function.</p>
+<p>For more information, see <a href="apify.openkeyvaluestore"><code>Apify.openKeyValueStore()</code></a>
+and <a href="#KeyValueStore+getValue"><code>KeyValueStore.getValue()</code></a>.</p>
+<p><strong>Returns</strong>: <code>Promise&lt;Object&gt;</code> - Returns a promise that resolves once the record is stored.<br>
+<strong>See</strong>: <a href="keyvaluestore"><code>KeyValueStore</code></a></p>
+<table>
+<thead>
+<tr>
+<th>Param</th><th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>key</code></td><td><code>String</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>Unique record key.</p>
+</td></tr></tbody>
+</table>
+<a name="module_Apify.isAtHome"></a>
+<h2><a class="anchor" aria-hidden="true" id="apifyisathome-code-boolean-code"></a><a href="#apifyisathome-code-boolean-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>Apify.isAtHome()</code> ⇒ <code>Boolean</code></h2>
+<p>Returns <code>true</code> when code is running on Apify platform and <code>false</code> otherwise (for example locally).</p>
+<p><a name="module_Apify.isDocker"></a></p>
+<h2><a class="anchor" aria-hidden="true" id="apifyisdocker-code-promise-code"></a><a href="#apifyisdocker-code-promise-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>Apify.isDocker()</code> ⇒ <code>Promise</code></h2>
+<p>Returns promise that resolves to true if the code is running in a Docker container.</p>
+<p><a name="module_Apify.launchPuppeteer"></a></p>
+<h2><a class="anchor" aria-hidden="true" id="apifylaunchpuppeteer-opts-code-promise-code"></a><a href="#apifylaunchpuppeteer-opts-code-promise-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>Apify.launchPuppeteer([opts])</code> ⇒ <code>Promise</code></h2>
+<p>Launches headless Chrome using Puppeteer pre-configured to work within the Apify platform.
+The function has the same argument and the return value as <code>puppeteer.launch()</code>.
+See <a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#puppeteerlaunchoptions" target="_blank">
+Puppeteer documentation</a> for more details.</p>
+<p>The <code>launchPuppeteer()</code> function alters the following Puppeteer options:</p>
+<ul>
+   <li>
+       Passes the setting from the `APIFY_HEADLESS` environment variable to the `headless` option,
+       unless it was already defined by the caller or `APIFY_XVFB` environment variable is set to `1`.
+       Note that Apify Actor cloud platform automatically sets `APIFY_HEADLESS=1` to all running actors.
+   </li>
+   <li>
+       Takes the `proxyUrl` option, checks it and adds it to `args` as `--proxy-server=XXX`.
+       If the proxy uses authentication, the function sets up an anonymous proxy HTTP
+       to make the proxy work with headless Chrome. For more information, read the
+       <a href="https://blog.apify.com/how-to-make-headless-chrome-and-puppeteer-use-a-proxy-server-with-authentication-249a21a79212"
+       target="_blank">blog post about proxy-chain library</a>.
+   </li>
+   <li>
+       If `opts.useApifyProxy` is `true` then the function generates a URL of
+       <a href="https://www.apify.com/docs/proxy" target="_blank">Apify Proxy</a>
+       based on `opts.apifyProxyGroups` and `opts.apifyProxySession` and passes it as `opts.proxyUrl`.
+   </li>
+   <li>
+       The function adds `--no-sandbox` to `args` to enable running headless Chrome in a Docker container on the Apify platform.
+   </li>
+</ul>
+<p>To use this function, you need to have the <a href="https://www.npmjs.com/package/puppeteer" target="_blank">puppeteer</a>
+NPM package installed in your project.
+When running on the Apify cloud platform, you can achieve that simply
+by using the <code>apify/actor-node-chrome</code> base Docker image for your actor - see
+<a href="https://www.apify.com/docs/actor#base-images" target="_blank">Apify Actor documentation</a>
+for details.</p>
+<p>For an example of usage, see the <a href="https://www.apify.com/apify/example-puppeteer">apify/example-puppeteer</a> actor.</p>
+<p><strong>Returns</strong>: <code>Promise</code> - Promise object that resolves to Puppeteer's <code>Browser</code> instance.</p>
+<table>
+<thead>
+<tr>
+<th>Param</th><th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[opts]</code></td><td><code><a href="#LaunchPuppeteerOptions">LaunchPuppeteerOptions</a></code></td>
+</tr>
+<tr>
+<td colspan="3"><p>Optional settings passed to <code>puppeteer.launch()</code>. Additionally the object can
+  contain the following fields:</p>
+</td></tr></tbody>
+</table>
+<a name="module_Apify.launchWebDriver"></a>
+<h2><a class="anchor" aria-hidden="true" id="apifylaunchwebdriver-opts-code-promise-code"></a><a href="#apifylaunchwebdriver-opts-code-promise-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>Apify.launchWebDriver([opts])</code> ⇒ <code>Promise</code></h2>
+<p>Opens a new instance of Chrome web browser
+controlled by <a href="http://www.seleniumhq.org/projects/webdriver/" target="_blank">Selenium WebDriver</a>.
+The result of the function is the new instance of the
+<a href="http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/index_exports_WebDriver.html" target="_blank">
+WebDriver</a>
+class.</p>
+<p>To use this function, you need to have Google Chrome and
+<a href="https://sites.google.com/a/chromium.org/chromedriver/" target="_blank">ChromeDriver</a> installed in your environment.
+For example, you can use the <code>apify/actor-node-chrome</code> base Docker image for your actor - see
+<a href="https://www.apify.com/docs/actor#base-images" target="_blank">documentation</a>
+for more details.</p>
+<p>For an example of usage, see the <a href="https://www.apify.com/apify/example-selenium">apify/example-selenium</a> actor.</p>
+<table>
+<thead>
+<tr>
+<th>Param</th><th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[opts]</code></td><td><code>Object</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>Optional settings passed to <code>puppeteer.launch()</code>. Additionally the object can contain the following fields:</p>
+</td></tr><tr>
+<td><code>[opts.proxyUrl]</code></td><td><code>String</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>URL to a proxy server. Currently only <code>http://</code> scheme is supported.
+Port number must be specified. For example, <code>http://example.com:1234</code>.</p>
+</td></tr><tr>
+<td><code>[opts.headless]</code></td><td><code>String</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>Indicates that the browser will be started in headless mode.
+If the option is not defined, and the <code>APIFY_HEADLESS</code> environment variable has value <code>1</code>
+and <code>APIFY_XVFB</code> is NOT <code>1</code>, the value defaults to <code>true</code>, otherwise it will be <code>false</code>.</p>
+</td></tr><tr>
+<td><code>[opts.userAgent]</code></td><td><code>String</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>User-Agent for the browser.
+If not provided, the function sets it to a reasonable default.</p>
+</td></tr></tbody>
+</table>
+<a name="module_Apify.main"></a>
+<h2><a class="anchor" aria-hidden="true" id="apifymainuserfunc"></a><a href="#apifymainuserfunc" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>Apify.main(userFunc)</code></h2>
+<p>Runs the main user function that performs the job of the actor.</p>
+<p><code>Apify.main()</code> is especially useful when you're running your code in an actor on the Apify platform.
+Note that its use is optional - the function is provided merely for your convenience.</p>
+<p>The function performs the following actions:</p>
+<ol>
+  <li>When running on the Apify platform (i.e. <code>APIFY_IS_AT_HOME</code> environment variable is set),
+  it sets up a connection to listen for platform events.
+  For example, to get a notification about an imminent migration to another server.
+  See <a href="apify#apifyevents"><code>Apify.events</code></a> for details.
+  </li>
+  <li>It checks that either <code>APIFY_TOKEN</code> or <code>APIFY_LOCAL_STORAGE_DIR</code> environment variable
+  is defined. If not, the functions sets <code>APIFY_LOCAL_STORAGE_DIR</code> to <code>./apify_storage</code>
+  inside the current working directory. This is to simplify running code examples.
+  </li>
+  <li>It invokes the user function passed as the `userFunc` parameter.</li>
+  <li>If the user function returned a promise, waits for it to resolve.</li>
+  <li>If the user function throws an exception or some other error is encountered,
+      prints error details to console so that they are stored to the log.</li>
+  <li>Exits the Node.js process, with zero exit code on success and non-zero on errors.</li>
+</ol>
+<p>The user function can be synchronous:</p>
+<pre><code class="hljs css language-javascript">Apify.main(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+  <span class="hljs-comment">// My synchronous function that returns immediately</span>
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Hello world from actor!'</span>);
+});
+</code></pre>
+<p>If the user function returns a promise, it is considered asynchronous:</p>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">const</span> request = <span class="hljs-built_in">require</span>(<span class="hljs-string">'request-promise'</span>);
+
+Apify.main(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+  <span class="hljs-comment">// My asynchronous function that returns a promise</span>
+  <span class="hljs-keyword">return</span> request(<span class="hljs-string">'http://www.example.com'</span>).then(<span class="hljs-function">(<span class="hljs-params">html</span>) =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(html);
+  });
+});
+</code></pre>
+<p>To simplify your code, you can take advantage of the <code>async</code>/<code>await</code> keywords:</p>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">const</span> request = <span class="hljs-built_in">require</span>(<span class="hljs-string">'request-promise'</span>);
+
+Apify.main(<span class="hljs-keyword">async</span> () =&gt; {
+  <span class="hljs-comment">// My asynchronous function</span>
+  <span class="hljs-keyword">const</span> html = <span class="hljs-keyword">await</span> request(<span class="hljs-string">'http://www.example.com'</span>);
+  <span class="hljs-built_in">console</span>.log(html);
+});
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Param</th><th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>userFunc</code></td><td><code>function</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>User function to be executed. If it returns a promise,
+the promise will be awaited. The user function is called with no arguments.</p>
+</td></tr></tbody>
+</table>
+<a name="module_Apify.openDataset"></a>
+<h2><a class="anchor" aria-hidden="true" id="apifyopendataset-datasetidorname-code-promise-lt-dataset-gt-code-dataset"></a><a href="#apifyopendataset-datasetidorname-code-promise-lt-dataset-gt-code-dataset" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>Apify.openDataset([datasetIdOrName])</code> ⇒ <a href="dataset"><code>Promise&lt;Dataset&gt;</code></a></h2>
+<p>Opens a dataset and returns a promise resolving to an instance of the {@linkcode Dataset} class.</p>
+<p>Datasets are used to store structured data where each object stored has the same attributes,
+such as online store products or real estate offers.
+The actual data is stored either on the local filesystem or in the cloud.</p>
+<p>For more details and code examples, see the {@linkcode Dataset} class.</p>
+<p><strong>Returns</strong>: <a href="dataset"><code>Promise&lt;Dataset&gt;</code></a> - Returns a promise that resolves to an instance of the <code>Dataset</code> class.</p>
+<table>
+<thead>
+<tr>
+<th>Param</th><th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[datasetIdOrName]</code></td><td><code>string</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>ID or name of the dataset to be opened. If <code>null</code> or <code>undefined</code>,
+  the function returns the default dataset associated with the actor run.</p>
+</td></tr></tbody>
+</table>
+<a name="module_Apify.openKeyValueStore"></a>
+<h2><a class="anchor" aria-hidden="true" id="apifyopenkeyvaluestore-storeidorname-code-promise-lt-keyvaluestore-gt-code-keyvaluestore"></a><a href="#apifyopenkeyvaluestore-storeidorname-code-promise-lt-keyvaluestore-gt-code-keyvaluestore" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>Apify.openKeyValueStore([storeIdOrName])</code> ⇒ <a href="keyvaluestore"><code>Promise&lt;KeyValueStore&gt;</code></a></h2>
+<p>Opens a key-value store and returns a promise resolving to an instance of the {@linkcode KeyValueStore} class.</p>
+<p>Key-value stores are used to store records or files, along with their MIME content type.
+The records are stored and retrieved using a unique key.
+The actual data is stored either on a local filesystem or in the Apify cloud.</p>
+<p>For more details and code examples, see the {@linkcode KeyValueStore} class.</p>
+<p><strong>Returns</strong>: <a href="keyvaluestore"><code>Promise&lt;KeyValueStore&gt;</code></a> - Returns a promise that resolves to an instance of the <code>KeyValueStore</code> class.</p>
+<table>
+<thead>
+<tr>
+<th>Param</th><th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[storeIdOrName]</code></td><td><code>string</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>ID or name of the key-value store to be opened. If <code>null</code> or <code>undefined</code>,
+  the function returns the default key-value store associated with the actor run.</p>
+</td></tr></tbody>
+</table>
+<a name="module_Apify.openRequestQueue"></a>
+<h2><a class="anchor" aria-hidden="true" id="apifyopenrequestqueue-code-promise-lt-requestqueue-gt-code-requestqueue"></a><a href="#apifyopenrequestqueue-code-promise-lt-requestqueue-gt-code-requestqueue" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>Apify.openRequestQueue</code> ⇒ <a href="requestqueue"><code>Promise&lt;RequestQueue&gt;</code></a></h2>
+<p>Opens a request queue and returns a promise resolving to an instance
+of the <a href="requestqueue"><code>RequestQueue</code></a> class.</p>
+<p><a href="requestqueue"><code>RequestQueue</code></a> represents a queue of URLs to crawl, which is stored either on local filesystem or in the cloud.
+The queue is used for deep crawling of websites, where you start with several URLs and then
+recursively follow links to other pages. The data structure supports both breadth-first
+and depth-first crawling orders.</p>
+<p>For more details and code examples, see the <a href="requestqueue"><code>RequestQueue</code></a> class.</p>
+<table>
+<thead>
+<tr>
+<th>Param</th><th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[queueIdOrName]</code></td><td><code>string</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>ID or name of the request queue to be opened. If <code>null</code> or <code>undefined</code>,
+  the function returns the default request queue associated with the actor run.</p>
+</td></tr></tbody>
+</table>
+<a name="module_Apify.pushData"></a>
+<h2><a class="anchor" aria-hidden="true" id="apifypushdatadata-code-promise-code"></a><a href="#apifypushdatadata-code-promise-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>Apify.pushData(data)</code> ⇒ <code>Promise</code></h2>
+<p>Stores an object or an array of objects to the default {@linkcode Dataset} of the current actor run.</p>
+<p>This is just a convenient shortcut for <a href="#Dataset+pushData"><code>Dataset.pushData()</code></a>.
+For example, calling the following code:</p>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">await</span> Apify.pushData({ <span class="hljs-attr">myValue</span>: <span class="hljs-number">123</span> });
+</code></pre>
+<p>is equivalent to:</p>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">const</span> dataset = <span class="hljs-keyword">await</span> Apify.openDataset();
+<span class="hljs-keyword">await</span> dataset.pushData({ <span class="hljs-attr">myValue</span>: <span class="hljs-number">123</span> });
+</code></pre>
+<p>For more information, see <a href="apify.opendataset"><code>Apify.openDataset()</code></a> and <a href="#Dataset+pushData"><code>Dataset.pushData()</code></a></p>
+<p><strong>IMPORTANT</strong>: Make sure to use the <code>await</code> keyword when calling <code>pushData()</code>,
+otherwise the actor process might finish before the data is stored!</p>
+<p><strong>Returns</strong>: <code>Promise</code> - Returns a promise that resolves once the data is saved.<br>
+<strong>See</strong>: <a href="dataset"><code>Dataset</code></a></p>
+<table>
+<thead>
+<tr>
+<th>Param</th><th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td><td><code>Object</code> | <code>Array</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>Object or array of objects containing data to be stored in the default dataset.
+The objects must be serializable to JSON and the JSON representation of each object must be smaller than 9MB.</p>
+</td></tr></tbody>
+</table>
+<a name="module_Apify.setValue"></a>
+<h2><a class="anchor" aria-hidden="true" id="apifysetvaluekey-value-options-code-promise-code"></a><a href="#apifysetvaluekey-value-options-code-promise-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>Apify.setValue(key, value, [options])</code> ⇒ <code>Promise</code></h2>
+<p>Stores or deletes a value in the default {@linkcode KeyValueStore} associated with the current actor run.</p>
+<p>This is just a convenient shortcut for <a href="#KeyValueStore+setValue"><code>KeyValueStore.setValue()</code></a>.
+For example, calling the following code:</p>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">await</span> Apify.setValue(<span class="hljs-string">'OUTPUT'</span>, { <span class="hljs-attr">foo</span>: <span class="hljs-string">"bar"</span> });
+</code></pre>
+<p>is equivalent to:</p>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">const</span> store = <span class="hljs-keyword">await</span> Apify.openKeyValueStore();
+<span class="hljs-keyword">await</span> store.setValue(<span class="hljs-string">'OUTPUT'</span>, { <span class="hljs-attr">foo</span>: <span class="hljs-string">"bar"</span> });
+</code></pre>
+<p>To get a value from the default-key value store, you can use the <a href="apify#getvalue"><code>Apify.getValue()</code></a> function.</p>
+<p>For more information, see <a href="apify.openkeyvaluestore"><code>Apify.openKeyValueStore()</code></a>
+and <a href="#KeyValueStore+setValue"><code>KeyValueStore.setValue()</code></a>.</p>
+<p><strong>Returns</strong>: <code>Promise</code> - Returns a promise that resolves once the value is stored or deleted.<br>
+<strong>See</strong>: <a href="keyvaluestore"><code>KeyValueStore</code></a></p>
+<table>
+<thead>
+<tr>
+<th>Param</th><th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>key</code></td><td><code>String</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>Unique record key.</p>
+</td></tr><tr>
+<td><code>value</code></td><td><code>Object</code> | <code>String</code> | <code>Buffer</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>Record data, which can be one of the following values:
+  <ul>
+    <li>If <code>null</code>, the record in the key-value store is deleted.</li>
+    <li>If no <code>options.contentType</code> is specified, <code>value</code> can be any JavaScript object and it will be stringified to JSON.</li>
+    <li>If <code>options.contentType</code> is specified, <code>value</code> is considered raw data and it must be a <code>String</code>
+    or <a href="https://nodejs.org/api/buffer.html"><code>Buffer</code></a>.</li>
+  </ul>
+  For any other value an error will be thrown.</p>
+</td></tr><tr>
+<td><code>[options]</code></td><td><code>Object</code></td>
+</tr>
+<tr>
+<td colspan="3"></td></tr><tr>
+<td><code>[options.contentType]</code></td><td><code>String</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>Specifies a custom MIME content type of the record.</p>
+</td></tr></tbody>
+</table>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/examples/helloworld"><span class="arrow-prev">← </span><span>Previous</span></a><a class="docs-next button" href="/docs/api/autoscaledpool"><span>Next</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav docOnPageNav"><ul class="toc-headings"><li><a href="#apifycallactid-input-options-code-promise-lt-actorrun-gt-code-actorrun"><code>Apify.call(actId, [input], [options])</code> ⇒ <a href="#ActorRun">Promise&lt;ActorRun&gt;</a></a></li><li><a href="#apifyclient"><code>Apify.client</code></a></li><li><a href="#apifyevents"><code>Apify.events</code></a></li><li><a href="#apifygetapifyproxyurloptions-code-string-code"><code>Apify.getApifyProxyUrl(options)</code> ⇒ String</a></li><li><a href="#apifygetenv-code-object-code"><code>Apify.getEnv()</code> ⇒ Object</a></li><li><a href="#apifygetmemoryinfo-code-promise-lt-object-gt-code"><code>Apify.getMemoryInfo()</code> ⇒ Promise&lt;Object&gt;</a></li><li><a href="#apifygetvaluekey-code-promise-lt-object-gt-code"><code>Apify.getValue(key)</code> ⇒ Promise&lt;Object&gt;</a></li><li><a href="#apifyisathome-code-boolean-code"><code>Apify.isAtHome()</code> ⇒ Boolean</a></li><li><a href="#apifyisdocker-code-promise-code"><code>Apify.isDocker()</code> ⇒ Promise</a></li><li><a href="#apifylaunchpuppeteer-opts-code-promise-code"><code>Apify.launchPuppeteer([opts])</code> ⇒ Promise</a></li><li><a href="#apifylaunchwebdriver-opts-code-promise-code"><code>Apify.launchWebDriver([opts])</code> ⇒ Promise</a></li><li><a href="#apifymainuserfunc"><code>Apify.main(userFunc)</code></a></li><li><a href="#apifyopendataset-datasetidorname-code-promise-lt-dataset-gt-code-dataset"><code>Apify.openDataset([datasetIdOrName])</code> ⇒ <a href="dataset">Promise&lt;Dataset&gt;</a></a></li><li><a href="#apifyopenkeyvaluestore-storeidorname-code-promise-lt-keyvaluestore-gt-code-keyvaluestore"><code>Apify.openKeyValueStore([storeIdOrName])</code> ⇒ <a href="keyvaluestore">Promise&lt;KeyValueStore&gt;</a></a></li><li><a href="#apifyopenrequestqueue-code-promise-lt-requestqueue-gt-code-requestqueue"><code>Apify.openRequestQueue</code> ⇒ <a href="requestqueue">Promise&lt;RequestQueue&gt;</a></a></li><li><a href="#apifypushdatadata-code-promise-code"><code>Apify.pushData(data)</code> ⇒ Promise</a></li><li><a href="#apifysetvaluekey-value-options-code-promise-code"><code>Apify.setValue(key, value, [options])</code> ⇒ Promise</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/apify_logo.svg" alt="Apify SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/docs/en/doc2.html">Guides (or other categories)</a><a href="/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://code.facebook.com/projects/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2018 Apify Technologies s.r.o.</section></footer></div></body></html>

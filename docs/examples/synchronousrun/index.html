@@ -1,0 +1,67 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Synchronous Run · Apify SDK</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="This example shows a quick actor that has a run time of just a few seconds."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Synchronous Run · Apify SDK"/><meta property="og:type" content="website"/><meta property="og:url" content="https://sdk.apify.com/index.html"/><meta property="og:description" content="This example shows a quick actor that has a run time of just a few seconds."/><meta property="og:image" content="https://sdk.apify.com/img/apify_logo.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://sdk.apify.com/img/apify_logo.png"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/apify_logo.svg" alt="Apify SDK"/><h2 class="headerTitleWithLogo">Apify SDK</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/examples/helloworld" target="_self">Docs</a></li><li class="siteNavGroupActive"><a href="/docs/examples/basiccrawler" target="_self">Examples</a></li><li class=""><a href="/docs/api/apify" target="_self">API</a></li><li class=""><a href="https://github.com/apifytech/apify-js" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Examples</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Examples</h3><ul><li class="navListItem"><a class="navItem" href="/docs/examples/basiccrawler">Basic Crawler</a></li><li class="navListItem"><a class="navItem" href="/docs/examples/cheeriocrawler">Cheerio Crawler</a></li><li class="navListItem"><a class="navItem" href="/docs/examples/puppeteercrawler">Puppeteer Crawler</a></li><li class="navListItem"><a class="navItem" href="/docs/examples/puppeteerproxy">Puppeteer Proxy</a></li><li class="navListItem"><a class="navItem" href="/docs/examples/puppeteersitemap">Puppeteer Sitemap</a></li><li class="navListItem"><a class="navItem" href="/docs/examples/screenshots">Screenshots</a></li><li class="navListItem"><a class="navItem" href="/docs/examples/callactor">Call Actor</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/examples/synchronousrun">Synchronous Run</a></li></ul></div></div></section></div><script>
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docMainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Synchronous Run</h1></header><article><div><span><p>This example shows a quick actor that has a run time of just a few seconds.
+It opens a <a href="http://goldengatebridge75.org/news/webcam.html">web page</a> that contains a webcam stream from the Golden Gate
+Bridge, takes a screenshot of the page and saves it as output.</p>
+<p>This actor
+can be invoked synchronously using a single HTTP request to directly obtain its output as a reponse,
+using the <a href="https://www.apify.com/docs/api/v2#/reference/actors/run-actor-synchronously/without-input">Run actor synchronously</a>
+Apify API endpoint.
+The example is also shared as the <a href="https://www.apify.com/apify/example-golden-gate-webcam">apify/example-golden-gate-webcam</a>
+actor in the Apify library, so you can test it directly there simply by sending a POST request to
+<a href="https://api.apify.com/v2/acts/apify~example-golden-gate-webcam/run-sync?token=[YOUR_API_TOKEN]">https://api.apify.com/v2/acts/apify~example-golden-gate-webcam/run-sync?token=[YOUR_API_TOKEN]</a></p>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">const</span> Apify = <span class="hljs-built_in">require</span>(<span class="hljs-string">'apify'</span>);
+
+Apify.main(<span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-comment">// Launch web browser.</span>
+    <span class="hljs-keyword">const</span> browser = <span class="hljs-keyword">await</span> Apify.launchPuppeteer();
+
+    <span class="hljs-comment">// Load http://goldengatebridge75.org/news/webcam.html and get an IFRAME with the webcam stream</span>
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Opening web page...'</span>);
+    <span class="hljs-keyword">const</span> page = <span class="hljs-keyword">await</span> browser.newPage();
+    <span class="hljs-keyword">await</span> page.goto(<span class="hljs-string">'http://goldengatebridge75.org/news/webcam.html'</span>);
+    <span class="hljs-keyword">const</span> iframe = (<span class="hljs-keyword">await</span> page.frames()).pop();
+
+    <span class="hljs-comment">// Get webcam image element handle.</span>
+    <span class="hljs-keyword">const</span> imageElementHandle = <span class="hljs-keyword">await</span> iframe.$(<span class="hljs-string">'.VideoColm img'</span>);
+
+    <span class="hljs-comment">// Give the webcam image some time to load.</span>
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Waiting for page to load...'</span>);
+    <span class="hljs-keyword">await</span> Apify.utils.sleep(<span class="hljs-number">3000</span>);
+
+    <span class="hljs-comment">// Get a screenshot of that image.</span>
+    <span class="hljs-keyword">const</span> imageBuffer = <span class="hljs-keyword">await</span> imageElementHandle.screenshot();
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Screenshot captured.'</span>);
+
+    <span class="hljs-comment">// Save the screenshot as the actor's output. By convention, similarly to "INPUT",</span>
+    <span class="hljs-comment">// the actor's output is stored in the default key-value store under the "OUTPUT" key.</span>
+    <span class="hljs-keyword">await</span> Apify.setValue(<span class="hljs-string">'OUTPUT'</span>, imageBuffer, { <span class="hljs-attr">contentType</span>: <span class="hljs-string">'image/jpeg'</span> });
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Actor finished.'</span>);
+});
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/examples/callactor"><span class="arrow-prev">← </span><span>Previous</span></a></div></div></div><nav class="onPageNav docOnPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/apify_logo.svg" alt="Apify SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/docs/en/doc2.html">Guides (or other categories)</a><a href="/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://code.facebook.com/projects/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2018 Apify Technologies s.r.o.</section></footer></div></body></html>

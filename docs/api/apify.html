@@ -41,7 +41,7 @@ accessible from the left sidebar.</p>
 <li><a href="#module_Apify.getValue"><code>.getValue(key)</code></a> ⇒ <code>Promise&lt;Object&gt;</code></li>
 <li><a href="#module_Apify.isAtHome"><code>.isAtHome()</code></a> ⇒ <code>Boolean</code></li>
 <li><a href="#module_Apify.isDocker"><code>.isDocker()</code></a> ⇒ <code>Promise</code></li>
-<li><a href="#module_Apify.launchPuppeteer"><code>.launchPuppeteer([opts])</code></a> ⇒ <code>Promise</code></li>
+<li><a href="#module_Apify.launchPuppeteer"><code>.launchPuppeteer([options])</code></a> ⇒ <code>Promise&lt;Browser&gt;</code></li>
 <li><a href="#module_Apify.launchWebDriver"><code>.launchWebDriver([opts])</code></a> ⇒ <code>Promise</code></li>
 <li><a href="#module_Apify.main"><code>.main(userFunc)</code></a></li>
 <li><a href="#module_Apify.openDataset"><code>.openDataset([datasetIdOrName])</code></a> ⇒ <a href="dataset"><code>Promise&lt;Dataset&gt;</code></a></li>
@@ -320,11 +320,10 @@ For example, calling the following code:</p>
 <pre><code class="hljs css language-javascript"><span class="hljs-keyword">const</span> store = <span class="hljs-keyword">await</span> Apify.openKeyValueStore();
 <span class="hljs-keyword">await</span> store.getValue(<span class="hljs-string">'INPUT'</span>);
 </code></pre>
-<p>To store the value to the default-key value store, you can use the <a href="apify#setvalue"><code>Apify.setValue()</code></a> function.</p>
-<p>For more information, see <a href="apify.openkeyvaluestore"><code>Apify.openKeyValueStore()</code></a>
-and <a href="#KeyValueStore+getValue"><code>KeyValueStore.getValue()</code></a>.</p>
-<p><strong>Returns</strong>: <code>Promise&lt;Object&gt;</code> - Returns a promise that resolves once the record is stored.<br>
-<strong>See</strong>: <a href="keyvaluestore"><code>KeyValueStore</code></a></p>
+<p>To store the value to the default-key value store, you can use the <a href="#module_Apify.setValue"><code>Apify.setValue()</code></a> function.</p>
+<p>For more information, see <a href="#module_Apify.openKeyValueStore"><code>Apify.openKeyValueStore()</code></a>
+and <a href="keyvaluestore#KeyValueStore+getValue"><code>keyValueStore.getValue()</code></a>.</p>
+<p><strong>Returns</strong>: <code>Promise&lt;Object&gt;</code> - Returns a promise that resolves once the record is stored.</p>
 <table>
 <thead>
 <tr>
@@ -344,9 +343,9 @@ and <a href="#KeyValueStore+getValue"><code>KeyValueStore.getValue()</code></a>.
 <p>Returns <code>true</code> when code is running on Apify platform and <code>false</code> otherwise (for example locally).</p>
 <p><a name="module_Apify.isDocker"></a></p>
 <h2><a class="anchor" aria-hidden="true" id="apifyisdocker-code-promise-code"></a><a href="#apifyisdocker-code-promise-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>Apify.isDocker()</code> ⇒ <code>Promise</code></h2>
-<p>Returns promise that resolves to true if the code is running in a Docker container.</p>
+<p>Returns a <code>Promise</code> that resolves to true if the code is running in a Docker container.</p>
 <p><a name="module_Apify.launchPuppeteer"></a></p>
-<h2><a class="anchor" aria-hidden="true" id="apifylaunchpuppeteer-opts-code-promise-code"></a><a href="#apifylaunchpuppeteer-opts-code-promise-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>Apify.launchPuppeteer([opts])</code> ⇒ <code>Promise</code></h2>
+<h2><a class="anchor" aria-hidden="true" id="apifylaunchpuppeteer-options-code-promise-lt-browser-gt-code"></a><a href="#apifylaunchpuppeteer-options-code-promise-lt-browser-gt-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>Apify.launchPuppeteer([options])</code> ⇒ <code>Promise&lt;Browser&gt;</code></h2>
 <p>Launches headless Chrome using Puppeteer pre-configured to work within the Apify platform.
 The function has the same argument and the return value as <code>puppeteer.launch()</code>.
 See <a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#puppeteerlaunchoptions" target="_blank">
@@ -354,24 +353,25 @@ Puppeteer documentation</a> for more details.</p>
 <p>The <code>launchPuppeteer()</code> function alters the following Puppeteer options:</p>
 <ul>
    <li>
-       Passes the setting from the `APIFY_HEADLESS` environment variable to the `headless` option,
-       unless it was already defined by the caller or `APIFY_XVFB` environment variable is set to `1`.
-       Note that Apify Actor cloud platform automatically sets `APIFY_HEADLESS=1` to all running actors.
+       Passes the setting from the <code>APIFY_HEADLESS</code> environment variable to the <code>headless</code> option,
+       unless it was already defined by the caller or <code>APIFY_XVFB</code> environment variable is set to <code>1</code>.
+       Note that Apify Actor cloud platform automatically sets <code>APIFY_HEADLESS=1</code> to all running actors.
    </li>
    <li>
-       Takes the `proxyUrl` option, checks it and adds it to `args` as `--proxy-server=XXX`.
+       Takes the <code>proxyUrl</code> option, checks it and adds it to <code>args</code> as <code>--proxy-server=XXX</code>.
        If the proxy uses authentication, the function sets up an anonymous proxy HTTP
        to make the proxy work with headless Chrome. For more information, read the
        <a href="https://blog.apify.com/how-to-make-headless-chrome-and-puppeteer-use-a-proxy-server-with-authentication-249a21a79212"
        target="_blank">blog post about proxy-chain library</a>.
    </li>
    <li>
-       If `opts.useApifyProxy` is `true` then the function generates a URL of
+       If <code>options.useApifyProxy</code> is <code>true</code> then the function generates a URL of
        <a href="https://www.apify.com/docs/proxy" target="_blank">Apify Proxy</a>
-       based on `opts.apifyProxyGroups` and `opts.apifyProxySession` and passes it as `opts.proxyUrl`.
+       based on <code>options.apifyProxyGroups</code> and <code>options.apifyProxySession</code> and passes it as <code>options.proxyUrl</code>.
    </li>
    <li>
-       The function adds `--no-sandbox` to `args` to enable running headless Chrome in a Docker container on the Apify platform.
+       The function adds <code>--no-sandbox</code> to <code>args</code> to enable running
+       headless Chrome in a Docker container on the Apify platform.
    </li>
 </ul>
 <p>To use this function, you need to have the <a href="https://www.npmjs.com/package/puppeteer" target="_blank">puppeteer</a>
@@ -380,8 +380,8 @@ When running on the Apify cloud platform, you can achieve that simply
 by using the <code>apify/actor-node-chrome</code> base Docker image for your actor - see
 <a href="https://www.apify.com/docs/actor#base-images" target="_blank">Apify Actor documentation</a>
 for details.</p>
-<p>For an example of usage, see the <a href="https://www.apify.com/apify/example-puppeteer">apify/example-puppeteer</a> actor.</p>
-<p><strong>Returns</strong>: <code>Promise</code> - Promise object that resolves to Puppeteer's <code>Browser</code> instance.</p>
+<p>For an example of usage, see the <a href="../examples/synchronousrun">Synchronous run Example</a> or the <a href="../examples/puppeteerproxy">Puppeteer proxy Example</a></p>
+<p><strong>Returns</strong>: <code>Promise&lt;Browser&gt;</code> - Promise that resolves to Puppeteer's <code>Browser</code> instance.</p>
 <table>
 <thead>
 <tr>
@@ -390,7 +390,7 @@ for details.</p>
 </thead>
 <tbody>
 <tr>
-<td><code>[opts]</code></td><td><code><a href="#LaunchPuppeteerOptions">LaunchPuppeteerOptions</a></code></td>
+<td><code>[options]</code></td><td><code><a href="#LaunchPuppeteerOptions">LaunchPuppeteerOptions</a></code></td>
 </tr>
 <tr>
 <td colspan="3"><p>Optional settings passed to <code>puppeteer.launch()</code>. Additionally the object can
@@ -658,4 +658,4 @@ and <a href="#KeyValueStore+setValue"><code>KeyValueStore.setValue()</code></a>.
 <td colspan="3"><p>Specifies a custom MIME content type of the record.</p>
 </td></tr></tbody>
 </table>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/examples/helloworld"><span class="arrow-prev">← </span><span>Previous</span></a><a class="docs-next button" href="/docs/api/autoscaledpool"><span>Next</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav docOnPageNav"><ul class="toc-headings"><li><a href="#apifycallactid-input-options-code-promise-lt-actorrun-gt-code-actorrun"><code>Apify.call(actId, [input], [options])</code> ⇒ <a href="#ActorRun">Promise&lt;ActorRun&gt;</a></a></li><li><a href="#apifyclient"><code>Apify.client</code></a></li><li><a href="#apifyevents"><code>Apify.events</code></a></li><li><a href="#apifygetapifyproxyurloptions-code-string-code"><code>Apify.getApifyProxyUrl(options)</code> ⇒ String</a></li><li><a href="#apifygetenv-code-object-code"><code>Apify.getEnv()</code> ⇒ Object</a></li><li><a href="#apifygetmemoryinfo-code-promise-lt-object-gt-code"><code>Apify.getMemoryInfo()</code> ⇒ Promise&lt;Object&gt;</a></li><li><a href="#apifygetvaluekey-code-promise-lt-object-gt-code"><code>Apify.getValue(key)</code> ⇒ Promise&lt;Object&gt;</a></li><li><a href="#apifyisathome-code-boolean-code"><code>Apify.isAtHome()</code> ⇒ Boolean</a></li><li><a href="#apifyisdocker-code-promise-code"><code>Apify.isDocker()</code> ⇒ Promise</a></li><li><a href="#apifylaunchpuppeteer-opts-code-promise-code"><code>Apify.launchPuppeteer([opts])</code> ⇒ Promise</a></li><li><a href="#apifylaunchwebdriver-opts-code-promise-code"><code>Apify.launchWebDriver([opts])</code> ⇒ Promise</a></li><li><a href="#apifymainuserfunc"><code>Apify.main(userFunc)</code></a></li><li><a href="#apifyopendataset-datasetidorname-code-promise-lt-dataset-gt-code-dataset"><code>Apify.openDataset([datasetIdOrName])</code> ⇒ <a href="dataset">Promise&lt;Dataset&gt;</a></a></li><li><a href="#apifyopenkeyvaluestore-storeidorname-code-promise-lt-keyvaluestore-gt-code-keyvaluestore"><code>Apify.openKeyValueStore([storeIdOrName])</code> ⇒ <a href="keyvaluestore">Promise&lt;KeyValueStore&gt;</a></a></li><li><a href="#apifyopenrequestqueue-code-promise-lt-requestqueue-gt-code-requestqueue"><code>Apify.openRequestQueue</code> ⇒ <a href="requestqueue">Promise&lt;RequestQueue&gt;</a></a></li><li><a href="#apifypushdatadata-code-promise-code"><code>Apify.pushData(data)</code> ⇒ Promise</a></li><li><a href="#apifysetvaluekey-value-options-code-promise-code"><code>Apify.setValue(key, value, [options])</code> ⇒ Promise</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/apify_logo.svg" alt="Apify SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/docs/en/doc2.html">Guides (or other categories)</a><a href="/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://code.facebook.com/projects/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2018 Apify Technologies s.r.o.</section></footer></div></body></html>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/examples/helloworld"><span class="arrow-prev">← </span><span>Previous</span></a><a class="docs-next button" href="/docs/api/autoscaledpool"><span>Next</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav docOnPageNav"><ul class="toc-headings"><li><a href="#apifycallactid-input-options-code-promise-lt-actorrun-gt-code-actorrun"><code>Apify.call(actId, [input], [options])</code> ⇒ <a href="#ActorRun">Promise&lt;ActorRun&gt;</a></a></li><li><a href="#apifyclient"><code>Apify.client</code></a></li><li><a href="#apifyevents"><code>Apify.events</code></a></li><li><a href="#apifygetapifyproxyurloptions-code-string-code"><code>Apify.getApifyProxyUrl(options)</code> ⇒ String</a></li><li><a href="#apifygetenv-code-object-code"><code>Apify.getEnv()</code> ⇒ Object</a></li><li><a href="#apifygetmemoryinfo-code-promise-lt-object-gt-code"><code>Apify.getMemoryInfo()</code> ⇒ Promise&lt;Object&gt;</a></li><li><a href="#apifygetvaluekey-code-promise-lt-object-gt-code"><code>Apify.getValue(key)</code> ⇒ Promise&lt;Object&gt;</a></li><li><a href="#apifyisathome-code-boolean-code"><code>Apify.isAtHome()</code> ⇒ Boolean</a></li><li><a href="#apifyisdocker-code-promise-code"><code>Apify.isDocker()</code> ⇒ Promise</a></li><li><a href="#apifylaunchpuppeteer-options-code-promise-lt-browser-gt-code"><code>Apify.launchPuppeteer([options])</code> ⇒ Promise&lt;Browser&gt;</a></li><li><a href="#apifylaunchwebdriver-opts-code-promise-code"><code>Apify.launchWebDriver([opts])</code> ⇒ Promise</a></li><li><a href="#apifymainuserfunc"><code>Apify.main(userFunc)</code></a></li><li><a href="#apifyopendataset-datasetidorname-code-promise-lt-dataset-gt-code-dataset"><code>Apify.openDataset([datasetIdOrName])</code> ⇒ <a href="dataset">Promise&lt;Dataset&gt;</a></a></li><li><a href="#apifyopenkeyvaluestore-storeidorname-code-promise-lt-keyvaluestore-gt-code-keyvaluestore"><code>Apify.openKeyValueStore([storeIdOrName])</code> ⇒ <a href="keyvaluestore">Promise&lt;KeyValueStore&gt;</a></a></li><li><a href="#apifyopenrequestqueue-code-promise-lt-requestqueue-gt-code-requestqueue"><code>Apify.openRequestQueue</code> ⇒ <a href="requestqueue">Promise&lt;RequestQueue&gt;</a></a></li><li><a href="#apifypushdatadata-code-promise-code"><code>Apify.pushData(data)</code> ⇒ Promise</a></li><li><a href="#apifysetvaluekey-value-options-code-promise-code"><code>Apify.setValue(key, value, [options])</code> ⇒ Promise</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/apify_logo.svg" alt="Apify SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/docs/en/doc2.html">Guides (or other categories)</a><a href="/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://code.facebook.com/projects/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2018 Apify Technologies s.r.o.</section></footer></div></body></html>

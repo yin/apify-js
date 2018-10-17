@@ -1,25 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>KeyValueStore · Apify SDK</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;a name=&quot;KeyValueStore&quot;&gt;&lt;/a&gt;"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="KeyValueStore · Apify SDK"/><meta property="og:type" content="website"/><meta property="og:url" content="https://sdk.apify.com/index.html"/><meta property="og:description" content="&lt;a name=&quot;KeyValueStore&quot;&gt;&lt;/a&gt;"/><meta property="og:image" content="https://sdk.apify.com/img/apify_logo.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://sdk.apify.com/img/apify_logo.png"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="/* eslint-disable */
-window.addEventListener(&#x27;load&#x27;, function () {
-    window.cookieconsent.initialise({
-        palette: {
-            popup: {
-                background: &#x27;#13a7cd&#x27;,
-            },
-            button: {
-                background: &#x27;#00225a&#x27;,
-            },
-        },
-        position: &#x27;bottom-left&#x27;,
-        content: {
-            message: &#x27;By using this website you agree to our&#x27;,
-            link: &#x27;cookie policy&#x27;,
-            href: &#x27;https://www.apify.com/privacy-policy#cookies&#x27;,
-        },
-        onPopupOpen: function () { $(&#x27;html&#x27;).addClass(&#x27;cookie-consent&#x27;); },
-        onPopupClose: function () { $(&#x27;html&#x27;).removeClass(&#x27;cookie-consent&#x27;); },
-    });
-});
-"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/apify_logo.svg" alt="Apify SDK"/><h2 class="headerTitleWithLogo">Apify SDK</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/examples/helloworld" target="_self">Docs</a></li><li class=""><a href="/docs/examples/basiccrawler" target="_self">Examples</a></li><li class="siteNavGroupActive"><a href="/docs/api/apify" target="_self">API</a></li><li class=""><a href="https://github.com/apifytech/apify-js" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>API Reference</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Introduction</h3><ul><li class="navListItem"><a class="navItem" href="/docs/examples/helloworld">Hello World</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API Reference</h3><ul><li class="navListItem"><a class="navItem" href="/docs/api/apify">Apify</a></li><li class="navListItem"><a class="navItem" href="/docs/api/autoscaledpool">AutoscaledPool</a></li><li class="navListItem"><a class="navItem" href="/docs/api/basiccrawler">BasicCrawler</a></li><li class="navListItem"><a class="navItem" href="/docs/api/cheeriocrawler">CheerioCrawler</a></li><li class="navListItem"><a class="navItem" href="/docs/api/dataset">Dataset</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/api/keyvaluestore">KeyValueStore</a></li><li class="navListItem"><a class="navItem" href="/docs/api/pseudourl">PseudoUrl</a></li><li class="navListItem"><a class="navItem" href="/docs/api/puppeteercrawler">PuppeteerCrawler</a></li><li class="navListItem"><a class="navItem" href="/docs/api/puppeteerpool">PuppeteerPool</a></li><li class="navListItem"><a class="navItem" href="/docs/api/request">Request</a></li><li class="navListItem"><a class="navItem" href="/docs/api/requestlist">RequestList</a></li><li class="navListItem"><a class="navItem" href="/docs/api/requestqueue">RequestQueue</a></li><li class="navListItem"><a class="navItem" href="/docs/api/utils">utils</a></li><li class="navListItem"><a class="navItem" href="/docs/api/puppeteer">utils.puppeteer</a></li></ul></div></div></section></div><script>
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>KeyValueStore · Apify SDK</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;a name=&quot;KeyValueStore&quot;&gt;&lt;/a&gt;"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="KeyValueStore · Apify SDK"/><meta property="og:type" content="website"/><meta property="og:url" content="https://sdk.apify.com/index.html"/><meta property="og:description" content="&lt;a name=&quot;KeyValueStore&quot;&gt;&lt;/a&gt;"/><meta property="og:image" content="https://sdk.apify.com/img/apify_logo.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://sdk.apify.com/img/apify_logo.png"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/apify_logo.svg" alt="Apify SDK"/><h2 class="headerTitleWithLogo">Apify SDK</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/examples/helloworld" target="_self">Docs</a></li><li class=""><a href="/docs/examples/basiccrawler" target="_self">Examples</a></li><li class="siteNavGroupActive"><a href="/docs/api/apify" target="_self">API</a></li><li class=""><a href="https://github.com/apifytech/apify-js" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>API Reference</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Introduction</h3><ul><li class="navListItem"><a class="navItem" href="/docs/examples/helloworld">Hello World</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API Reference</h3><ul><li class="navListItem"><a class="navItem" href="/docs/api/apify">Apify</a></li><li class="navListItem"><a class="navItem" href="/docs/api/autoscaledpool">AutoscaledPool</a></li><li class="navListItem"><a class="navItem" href="/docs/api/basiccrawler">BasicCrawler</a></li><li class="navListItem"><a class="navItem" href="/docs/api/cheeriocrawler">CheerioCrawler</a></li><li class="navListItem"><a class="navItem" href="/docs/api/dataset">Dataset</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/api/keyvaluestore">KeyValueStore</a></li><li class="navListItem"><a class="navItem" href="/docs/api/pseudourl">PseudoUrl</a></li><li class="navListItem"><a class="navItem" href="/docs/api/puppeteercrawler">PuppeteerCrawler</a></li><li class="navListItem"><a class="navItem" href="/docs/api/puppeteerpool">PuppeteerPool</a></li><li class="navListItem"><a class="navItem" href="/docs/api/request">Request</a></li><li class="navListItem"><a class="navItem" href="/docs/api/requestlist">RequestList</a></li><li class="navListItem"><a class="navItem" href="/docs/api/requestqueue">RequestQueue</a></li><li class="navListItem"><a class="navItem" href="/docs/api/utils">utils</a></li><li class="navListItem"><a class="navItem" href="/docs/api/puppeteer">utils.puppeteer</a></li></ul></div></div></section></div><script>
             document.addEventListener('DOMContentLoaded', function() {
               createToggler('#navToggler', '#docsNav', 'docsSliderActive');
               createToggler('#tocToggler', 'body', 'tocActive');
@@ -52,25 +31,26 @@ for saving and reading data records or files. Each data record is
 represented by a unique key and associated with a MIME content type. Key-value stores are ideal
 for saving screenshots, actor inputs and outputs, web pages, PDFs or to persist the state of crawlers.</p>
 <p>Do not instantiate this class directly, use the
-<a href="apify#openkeyvaluestore"><code>Apify.openKeyValueStore()</code></a> function instead.</p>
+<a href="apify#module_Apify.openKeyValueStore"><code>Apify.openKeyValueStore()</code></a> function instead.</p>
 <p>Each actor run is associated with a default key-value store, which is created exclusively
 for the run. By convention, the actor input and output are stored into the
 default key-value store under the <code>INPUT</code> and <code>OUTPUT</code> key, respectively.
 Typically, input and output are JSON files, although it can be any other format.
 To access the default key-value store directly, you can use the
-<a href="apify.getvalue"><code>Apify.getValue()</code></a>
-and <a href="apify.getvalue"><code>Apify.setValue()</code></a> convenience functions.</p>
+<a href="apify#module_Apify.getValue"><code>Apify.getValue()</code></a>
+and <a href="apify#module_Apify.setValue"><code>Apify.setValue()</code></a> convenience functions.</p>
 <p><code>KeyValueStore</code> stores its data either on local disk or in the Apify cloud,
-depending on whether the <code>APIFY_LOCAL_STORAGE_DIR</code> or <code>APIFY_TOKEN</code> environment variable is set.</p>
+depending on whether the <code>APIFY_LOCAL_STORAGE_DIR</code> or <code>APIFY_TOKEN</code> environment variables are set.</p>
 <p>If the <code>APIFY_LOCAL_STORAGE_DIR</code> environment variable is set, the data is stored in
 the local directory in the following files:</p>
-<pre><code class="hljs">[APIFY_LOCAL_STORAGE_DIR]/key_value_stores/[STORE_ID]/[KEY].[EXT]
+<pre><code class="hljs">{APIFY_LOCAL_STORAGE_DIR}/key_value_stores/{STORE_ID}/{INDEX}.{EXT}
 </code></pre>
-<p>Note that <code>[STORE_ID]</code> is the name or ID of the key-value store. The default key value store has ID <code>default</code>,
+<p>Note that <code>{STORE_ID}</code> is the name or ID of the key-value store. The default key value store has ID: <code>default</code>,
 unless you override it by setting the <code>APIFY_DEFAULT_KEY_VALUE_STORE_ID</code> environment variable.
-The <code>[KEY]</code> is the key of the record and <code>[EXT]</code> corresponds to the MIME content type of the data value.</p>
-<p>If the <code>APIFY_TOKEN</code> environment variable is provided instead, the data is stored
-in the <a href="https://www.apify.com/docs/storage#dataset">Apify Dataset</a> cloud storage.</p>
+The <code>{KEY}</code> is the key of the record and <code>{EXT}</code> corresponds to the MIME content type of the data value.</p>
+<p>If the <code>APIFY_TOKEN</code> environment variable is provided instead, the data is stored in the
+<a href="https://www.apify.com/docs/storage#key-value-store" target="_blank">Apify Key-Value Store</a>
+cloud storage.</p>
 <p><strong>Example usage:</strong></p>
 <pre><code class="hljs css language-javascript"><span class="hljs-comment">// Get actor input from the default key-value store</span>
 <span class="hljs-keyword">const</span> input = <span class="hljs-keyword">await</span> Apify.getValue(<span class="hljs-string">'INPUT'</span>);
@@ -95,30 +75,30 @@ in the <a href="https://www.apify.com/docs/storage#dataset">Apify Dataset</a> cl
 <ul>
 <li><a href="keyvaluestore">KeyValueStore</a>
 <ul>
-<li><a href="#KeyValueStore+getValue"><code>.getValue(key)</code></a> ⇒ <code>Promise&lt;Object&gt;</code></li>
+<li><a href="#KeyValueStore+getValue"><code>.getValue(key)</code></a> ⇒ <code>Promise&lt;(Object|String|Buffer)&gt;</code></li>
 <li><a href="#KeyValueStore+setValue"><code>.setValue(key, value, [options])</code></a> ⇒ <code>Promise</code></li>
 <li><a href="#KeyValueStore+delete"><code>.delete()</code></a> ⇒ <code>Promise</code></li>
 </ul></li>
 </ul>
 <p><a name="KeyValueStore+getValue"></a></p>
-<h2><a class="anchor" aria-hidden="true" id="keyvaluestoregetvaluekey-code-promise-lt-object-gt-code"></a><a href="#keyvaluestoregetvaluekey-code-promise-lt-object-gt-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>keyValueStore.getValue(key)</code> ⇒ <code>Promise&lt;Object&gt;</code></h2>
+<h2><a class="anchor" aria-hidden="true" id="keyvaluestoregetvaluekey-code-promise-lt-object-string-buffer-gt-code"></a><a href="#keyvaluestoregetvaluekey-code-promise-lt-object-string-buffer-gt-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>keyValueStore.getValue(key)</code> ⇒ <code>Promise&lt;(Object|String|Buffer)&gt;</code></h2>
 <p>Gets a value from the key-value store.</p>
-<p>The function returns a promise that resolves to the record value,
+<p>The function returns a <code>Promise</code> that resolves to the record value,
 whose JavaScript type depends on the MIME content type of the record.
 Records with the <code>application/json</code>
 content type are automatically parsed and returned as a JavaScript object.
 Similarly, records with <code>text/plain</code> content types are returned as a string.
 For all other content types, the value is returned as a raw
-<a href="https://nodejs.org/api/buffer.html"><code>Buffer</code></a> instance.</p>
-<p>If the record does not exist, the functions resolves to <code>null</code>.</p>
+<a href="https://nodejs.org/api/buffer.html" target="_blank"><code>Buffer</code></a> instance.</p>
+<p>If the record does not exist, the function resolves to <code>null</code>.</p>
 <p>To save or delete a value in the key-value store, use the
-{@linkcode KeyValueStore#setValue|KeyValueStore.setValue()} function.</p>
+<a href="#KeyValueStore+setValue"><code>setValue</code></a> function.</p>
 <p><strong>Example usage:</strong></p>
 <pre><code class="hljs css language-javascript"><span class="hljs-keyword">const</span> store = <span class="hljs-keyword">await</span> Apify.openKeyValueStore(<span class="hljs-string">'my-screenshots'</span>);
 <span class="hljs-keyword">const</span> buffer = <span class="hljs-keyword">await</span> store.getValue(<span class="hljs-string">'screenshot1.png'</span>);
 </code></pre>
-<p><strong>Returns</strong>: <code>Promise&lt;Object&gt;</code> - Returns a promise that resolves to an object, string
-or <a href="https://nodejs.org/api/buffer.html"><code>Buffer</code></a>, depending
+<p><strong>Returns</strong>: <code>Promise&lt;(Object|String|Buffer)&gt;</code> - Returns a promise that resolves to an object, string
+or <a href="https://nodejs.org/api/buffer.html" target="_blank"><code>Buffer</code></a>, depending
 on the MIME content type of the record.</p>
 <table>
 <thead>
@@ -131,7 +111,7 @@ on the MIME content type of the record.</p>
 <td><code>key</code></td><td><code>String</code></td>
 </tr>
 <tr>
-<td colspan="3"><p>Key of the record.</p>
+<td colspan="3"><p>Unique key of the record.</p>
 </td></tr></tbody>
 </table>
 <a name="KeyValueStore+setValue"></a>
@@ -149,14 +129,13 @@ To store the value with another content type, pass it in the options as follows:
 <span class="hljs-keyword">await</span> store.setValue(<span class="hljs-string">'RESULTS'</span>, <span class="hljs-string">'my text data'</span>, { <span class="hljs-attr">contentType</span>: <span class="hljs-string">'text/plain'</span> });
 </code></pre>
 <p>If you set custom content type, <code>value</code> must be either a string or
-<a href="https://nodejs.org/api/buffer.html"><code>Buffer</code></a>, otherwise an error will be thrown.</p>
-<p>If <code>value</code> is null, the record is deleted instead. Note that the <code>setValue()</code> function succeeds
+<a href="https://nodejs.org/api/buffer.html" target="_blank"><code>Buffer</code></a>, otherwise an error will be thrown.</p>
+<p>If <code>value</code> is <code>null</code>, the record is deleted instead. Note that the <code>setValue()</code> function succeeds
 regardless whether the record existed or not.</p>
 <p>To retrieve a value from the key-value store, use the
-{@linkcode KeyValueStore#setValue|KeyValueStore.getValue()} function.</p>
+<a href="#KeyValueStore+getValue"><code>getValue</code></a> function.</p>
 <p><strong>IMPORTANT:</strong> Always make sure to use the <code>await</code> keyword when calling <code>setValue()</code>,
 otherwise the actor process might finish before the value is stored!</p>
-<p><strong>Returns</strong>: <code>Promise</code> - Returns a promise that resolves once the value is stored or deleted.</p>
 <table>
 <thead>
 <tr>
@@ -168,7 +147,7 @@ otherwise the actor process might finish before the value is stored!</p>
 <td><code>key</code></td><td><code>String</code></td>
 </tr>
 <tr>
-<td colspan="3"><p>Unique record key.</p>
+<td colspan="3"><p>Unique key of the record.</p>
 </td></tr><tr>
 <td><code>value</code></td><td><code>Object</code> | <code>String</code> | <code>Buffer</code></td>
 </tr>
@@ -177,8 +156,8 @@ otherwise the actor process might finish before the value is stored!</p>
   <ul>
     <li>If <code>null</code>, the record in the key-value store is deleted.</li>
     <li>If no <code>options.contentType</code> is specified, <code>value</code> can be any JavaScript object and it will be stringified to JSON.</li>
-    <li>If <code>options.contentType</code> is specified, <code>value</code> is considered raw data and it must be a <code>String</code>
-    or <a href="https://nodejs.org/api/buffer.html"><code>Buffer</code></a>.</li>
+    <li>If <code>options.contentType</code> is specified, <code>value</code> is considered raw data and it must be either a <code>String</code>
+    or <a href="https://nodejs.org/api/buffer.html" target="_blank"><code>Buffer</code></a>.</li>
   </ul>
   For any other value an error will be thrown.</p>
 </td></tr><tr>
@@ -196,4 +175,4 @@ otherwise the actor process might finish before the value is stored!</p>
 <h2><a class="anchor" aria-hidden="true" id="keyvaluestoredelete-code-promise-code"></a><a href="#keyvaluestoredelete-code-promise-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>keyValueStore.delete()</code> ⇒ <code>Promise</code></h2>
 <p>Removes the key-value store either from the Apify cloud storage or from the local directory,
 depending on the mode of operation.</p>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/api/dataset"><span class="arrow-prev">← </span><span>Previous</span></a><a class="docs-next button" href="/docs/api/pseudourl"><span>Next</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav docOnPageNav"><ul class="toc-headings"><li><a href="#keyvaluestoregetvaluekey-code-promise-lt-object-gt-code"><code>keyValueStore.getValue(key)</code> ⇒ Promise&lt;Object&gt;</a></li><li><a href="#keyvaluestoresetvaluekey-value-options-code-promise-code"><code>keyValueStore.setValue(key, value, [options])</code> ⇒ Promise</a></li><li><a href="#keyvaluestoredelete-code-promise-code"><code>keyValueStore.delete()</code> ⇒ Promise</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/apify_logo.svg" alt="Apify SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/examples/helloworld.html">Getting Started</a><a href="/docs/en/examples/basiccrawler.html">Guides</a><a href="/docs/en/api/apify.html">API Reference</a></div><div><h5>Community</h5><a href="https://stackoverflow.com/questions/tagged/apify" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://twitter.com/apify" target="_blank" rel="noreferrer noopener">Twitter</a><a href="https://www.facebook.com/apifytech" target="_blank" rel="noreferrer noopener">Facebook</a></div><div><h5>More</h5><a href="https://www.apify.com" target="_blank">Apify Cloud Platform</a><a href="https://github.com/" target="_blank">GitHub</a><a class="github-button" href="https://github.com/apifytech/apify-js" data-icon="octicon-star" data-count-href="/apifytech/apify-js/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star Apify SDK on GitHub">Star</a></div></section><a href="https://code.facebook.com/projects/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2018 Apify Technologies s.r.o.</section></footer></div></body></html>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/api/dataset"><span class="arrow-prev">← </span><span>Previous</span></a><a class="docs-next button" href="/docs/api/pseudourl"><span>Next</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav docOnPageNav"><ul class="toc-headings"><li><a href="#keyvaluestoregetvaluekey-code-promise-lt-object-string-buffer-gt-code"><code>keyValueStore.getValue(key)</code> ⇒ Promise&lt;(Object|String|Buffer)&gt;</a></li><li><a href="#keyvaluestoresetvaluekey-value-options-code-promise-code"><code>keyValueStore.setValue(key, value, [options])</code> ⇒ Promise</a></li><li><a href="#keyvaluestoredelete-code-promise-code"><code>keyValueStore.delete()</code> ⇒ Promise</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/apify_logo.svg" alt="Apify SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/examples/helloworld.html">Getting Started</a><a href="/docs/en/examples/basiccrawler.html">Guides</a><a href="/docs/en/api/apify.html">API Reference</a></div><div><h5>Community</h5><a href="https://stackoverflow.com/questions/tagged/apify" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://twitter.com/apify" target="_blank" rel="noreferrer noopener">Twitter</a><a href="https://www.facebook.com/apifytech" target="_blank" rel="noreferrer noopener">Facebook</a></div><div><h5>More</h5><a href="https://www.apify.com" target="_blank">Apify Cloud Platform</a><a href="https://github.com/apifytech/apify-js" target="_blank">GitHub</a><a class="github-button" href="https://github.com/apifytech/apify-js" data-icon="octicon-star" data-count-href="/apifytech/apify-js/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star Apify SDK on GitHub">Star</a></div></section><a href="https://code.facebook.com/projects/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2018 Apify Technologies s.r.o.</section></footer></div></body></html>

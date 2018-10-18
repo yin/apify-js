@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Request · Apify SDK</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;a name=&quot;Request&quot;&gt;&lt;/a&gt;"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Request · Apify SDK"/><meta property="og:type" content="website"/><meta property="og:url" content="https://sdk.apify.com/index.html"/><meta property="og:description" content="&lt;a name=&quot;Request&quot;&gt;&lt;/a&gt;"/><meta property="og:image" content="https://sdk.apify.com/img/apify_logo.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://sdk.apify.com/img/apify_logo.png"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/apify_logo.svg" alt="Apify SDK"/><h2 class="headerTitleWithLogo">Apify SDK</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/examples/helloworld" target="_self">Docs</a></li><li class=""><a href="/docs/examples/basiccrawler" target="_self">Examples</a></li><li class="siteNavGroupActive"><a href="/docs/api/apify" target="_self">API</a></li><li class=""><a href="https://github.com/apifytech/apify-js" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>API Reference</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Introduction</h3><ul><li class="navListItem"><a class="navItem" href="/docs/examples/helloworld">Hello World</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API Reference</h3><ul><li class="navListItem"><a class="navItem" href="/docs/api/apify">Apify</a></li><li class="navListItem"><a class="navItem" href="/docs/api/autoscaledpool">AutoscaledPool</a></li><li class="navListItem"><a class="navItem" href="/docs/api/basiccrawler">BasicCrawler</a></li><li class="navListItem"><a class="navItem" href="/docs/api/cheeriocrawler">CheerioCrawler</a></li><li class="navListItem"><a class="navItem" href="/docs/api/dataset">Dataset</a></li><li class="navListItem"><a class="navItem" href="/docs/api/keyvaluestore">KeyValueStore</a></li><li class="navListItem"><a class="navItem" href="/docs/api/pseudourl">PseudoUrl</a></li><li class="navListItem"><a class="navItem" href="/docs/api/puppeteercrawler">PuppeteerCrawler</a></li><li class="navListItem"><a class="navItem" href="/docs/api/puppeteerpool">PuppeteerPool</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/api/request">Request</a></li><li class="navListItem"><a class="navItem" href="/docs/api/requestlist">RequestList</a></li><li class="navListItem"><a class="navItem" href="/docs/api/requestqueue">RequestQueue</a></li><li class="navListItem"><a class="navItem" href="/docs/api/utils">utils</a></li><li class="navListItem"><a class="navItem" href="/docs/api/puppeteer">utils.puppeteer</a></li></ul></div></div></section></div><script>
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Request · Apify SDK</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;a name=&quot;Request&quot;&gt;&lt;/a&gt;"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Request · Apify SDK"/><meta property="og:type" content="website"/><meta property="og:url" content="https://sdk.apify.com/index.html"/><meta property="og:description" content="&lt;a name=&quot;Request&quot;&gt;&lt;/a&gt;"/><meta property="og:image" content="https://sdk.apify.com/img/apify_logo.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://sdk.apify.com/img/apify_logo.png"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/apify_logo.svg" alt="Apify SDK"/><h2 class="headerTitleWithLogo">Apify SDK</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/examples/helloworld" target="_self">Guide</a></li><li class=""><a href="/docs/examples/basiccrawler" target="_self">Examples</a></li><li class="siteNavGroupActive"><a href="/docs/api/apify" target="_self">Reference</a></li><li class=""><a href="https://github.com/apifytech/apify-js" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Reference</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Guide</h3><ul><li class="navListItem"><a class="navItem" href="/docs/examples/helloworld">Hello World</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Reference</h3><ul><li class="navListItem"><a class="navItem" href="/docs/api/apify">Apify</a></li><li class="navListItem"><a class="navItem" href="/docs/api/autoscaledpool">AutoscaledPool</a></li><li class="navListItem"><a class="navItem" href="/docs/api/basiccrawler">BasicCrawler</a></li><li class="navListItem"><a class="navItem" href="/docs/api/cheeriocrawler">CheerioCrawler</a></li><li class="navListItem"><a class="navItem" href="/docs/api/dataset">Dataset</a></li><li class="navListItem"><a class="navItem" href="/docs/api/keyvaluestore">KeyValueStore</a></li><li class="navListItem"><a class="navItem" href="/docs/api/pseudourl">PseudoUrl</a></li><li class="navListItem"><a class="navItem" href="/docs/api/puppeteercrawler">PuppeteerCrawler</a></li><li class="navListItem"><a class="navItem" href="/docs/api/puppeteerpool">PuppeteerPool</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/api/request">Request</a></li><li class="navListItem"><a class="navItem" href="/docs/api/requestlist">RequestList</a></li><li class="navListItem"><a class="navItem" href="/docs/api/requestqueue">RequestQueue</a></li><li class="navListItem"><a class="navItem" href="/docs/api/utils">utils</a></li><li class="navListItem"><a class="navItem" href="/docs/api/puppeteer">utils.puppeteer</a></li></ul></div></div></section></div><script>
             document.addEventListener('DOMContentLoaded', function() {
               createToggler('#navToggler', '#docsNav', 'docsSliderActive');
               createToggler('#tocToggler', 'body', 'tocActive');
@@ -28,10 +28,10 @@
         </script></nav></div><div class="container mainContainer docMainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Request</h1></header><article><div><span><p><a name="Request"></a></p>
 <p>Represents a URL to be crawled, optionally including HTTP method, headers, payload and other metadata.
 The <code>Request</code> object also stores information about errors that occurred during processing of the request.</p>
-<p>Each <code>Request</code> instance has the <code>uniqueKey</code> property, which is be either specified
-manually in constructor or generated automatically from the URL. Two requests with the same <code>uniqueKey</code>
-are considered as pointing to the same web page. This behavior applies to all Apify SDK classes,
-such as {@linkcode RequestList}, {@linkcode RequestQueue} or {@linkcode PuppeteerCrawler}.</p>
+<p>Each <code>Request</code> instance has the <code>uniqueKey</code> property, which can be either specified
+manually in the constructor or generated automatically from the URL. Two requests with the same <code>uniqueKey</code>
+are considered as pointing to the same web resource. This behavior applies to all Apify SDK classes,
+such as <a href="requestlist"><code>RequestList</code></a>, <a href="requestqueue"><code>RequestQueue</code></a> or <a href="puppeteercrawler"><code>PuppeteerCrawler</code></a>.</p>
 <p>Example use:</p>
 <pre><code class="hljs css language-javascript"><span class="hljs-keyword">const</span> request = <span class="hljs-keyword">new</span> Apify.Request({
     <span class="hljs-attr">url</span>: <span class="hljs-string">'http://www.example.com'</span>,
@@ -105,25 +105,25 @@ const foo = request.userData.foo;
 <td><code>ignoreErrors</code></td><td><code>Boolean</code></td>
 </tr>
 <tr>
-<td colspan="3"><p>If <code>true</code> then errors in processing of this are ignored.
-  For example, the request won&#39;t be retried in a case of an error for example.</p>
+<td colspan="3"><p>If <code>true</code> then errors in processing of this request are ignored.
+  For example, the request won&#39;t be retried in a case of an error.</p>
 </td></tr><tr>
 <td><code>handledAt</code></td><td><code>Date</code></td>
 </tr>
 <tr>
 <td colspan="3"><p>Indicates the time when the request has been processed.
-  Is <code>null</code> if the request has not been crawler yet.</p>
+  Is <code>null</code> if the request has not been crawled yet.</p>
 </td></tr></tbody>
 </table>
 <ul>
 <li><a href="request">Request</a>
 <ul>
-<li><a href="#new_Request_new"><code>new Request(opts)</code></a></li>
+<li><a href="#new_Request_new"><code>new Request(options)</code></a></li>
 <li><a href="#Request+pushErrorMessage"><code>.pushErrorMessage(errorOrMessage)</code></a></li>
 </ul></li>
 </ul>
 <p><a name="new_Request_new"></a></p>
-<h2><a class="anchor" aria-hidden="true" id="new-requestopts"></a><a href="#new-requestopts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>new Request(opts)</code></h2>
+<h2><a class="anchor" aria-hidden="true" id="new-requestoptions"></a><a href="#new-requestoptions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>new Request(options)</code></h2>
 <table>
 <thead>
 <tr>
@@ -132,76 +132,74 @@ const foo = request.userData.foo;
 </thead>
 <tbody>
 <tr>
-<td><code>opts</code></td><td><code>object</code></td><td></td>
+<td><code>options</code></td><td><code>object</code></td><td></td>
 </tr>
 <tr>
-<td colspan="3"></td></tr><tr>
-<td><code>opts.url</code></td><td><code>String</code></td><td></td>
+<td colspan="3"><p>All <code>Request</code> parameters are passed
+  via an options object with the following keys:</p>
+</td></tr><tr>
+<td><code>options.url</code></td><td><code>String</code></td><td></td>
 </tr>
 <tr>
 <td colspan="3"><p>URL of the web page to crawl.</p>
 </td></tr><tr>
-<td><code>[opts.uniqueKey]</code></td><td><code>String</code></td><td></td>
+<td><code>[options.uniqueKey]</code></td><td><code>String</code></td><td></td>
 </tr>
 <tr>
 <td colspan="3"><p>A unique key identifying the request.
 Two requests with the same <code>uniqueKey</code> are considered as pointing to the same URL.</p>
 <p>If <code>uniqueKey</code> is not provided, then it is automatically generated by normalizing the URL.
-For example, the URL of <code>HTTP://www.EXAMPLE.com/something/</code> will be generated the <code>uniqueKey</code>
-of <code>http://www.example.com/something</code>. The <code>keepUrlFragment</code> option
-determines whether URL hash fragment is included in the <code>uniqueKey</code> or not. Beware that the HTTP method
-and payload is not included in the <code>uniqueKey</code>, so requests to the same URL but with different
-HTTP methods or different POST payloads are all considered equal.</p>
+For example, the URL of <code>HTTP://www.EXAMPLE.com/something/</code> will produce the <code>uniqueKey</code>
+of <code>http://www.example.com/something</code>.</p>
+<p>The <code>keepUrlFragment</code> option determines whether URL hash fragment is included in the <code>uniqueKey</code> or not.
+Beware that the HTTP method and payload are not included in the <code>uniqueKey</code>,
+so requests to the same URL but with different HTTP methods or different POST payloads
+are all considered equal and will be deduplicated by <a href="requestlist"><code>RequestList</code></a> and <a href="requestqueue"><code>RequestQueue</code></a>.</p>
 <p>Pass an arbitrary non-empty text value to the <code>uniqueKey</code> property
 to override the default behavior and specify which URLs shall be considered equal.</p>
 </td></tr><tr>
-<td><code>[opts.method]</code></td><td><code>String</code></td><td><code>&#x27;GET&#x27;</code></td>
+<td><code>[options.method]</code></td><td><code>String</code></td><td><code>&#x27;GET&#x27;</code></td>
 </tr>
 <tr>
 <td colspan="3"></td></tr><tr>
-<td><code>[opts.payload]</code></td><td><code>String</code> | <code>Buffer</code></td><td></td>
+<td><code>[options.payload]</code></td><td><code>String</code> | <code>Buffer</code></td><td></td>
 </tr>
 <tr>
 <td colspan="3"><p>HTTP request payload, e.g. for POST requests.</p>
 </td></tr><tr>
-<td><code>[opts.retryCount]</code></td><td><code>Number</code></td><td><code>0</code></td>
+<td><code>[options.headers]</code></td><td><code>Object</code></td><td><code>{}</code></td>
 </tr>
 <tr>
-<td colspan="3"><p>Indicates how many times the URL was retried in a case of error.</p>
+<td colspan="3"><p>HTTP headers in the following format:</p>
+<pre><code class="hljs">  {
+      Accept: &#39;text/html&#39;,
+      &#39;Content-Type&#39;: &#39;application/json&#39;
+  }
+</code></pre></td></tr><tr>
+<td><code>[options.userData]</code></td><td><code>Object</code></td><td><code>{}</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>Custom user data assigned to the request. Use this to save any request related data to the
+  request&#39;s scope, keeping them accessible on retries, failures etc.</p>
 </td></tr><tr>
-<td><code>[opts.errorMessages]</code></td><td><code>Array&lt;String&gt;</code></td><td></td>
+<td><code>[options.keepUrlFragment]</code></td><td><code>Boolean</code></td><td><code>false</code></td>
 </tr>
 <tr>
-<td colspan="3"><p>An array of error messages from request processing.</p>
-</td></tr><tr>
-<td><code>[opts.headers]</code></td><td><code>Object</code></td><td><code>{}</code></td>
-</tr>
-<tr>
-<td colspan="3"><p>HTTP headers.</p>
-</td></tr><tr>
-<td><code>[opts.userData]</code></td><td><code>Object</code></td><td><code>{}</code></td>
-</tr>
-<tr>
-<td colspan="3"><p>Custom user data assigned to the request.</p>
-</td></tr><tr>
-<td><code>[opts.keepUrlFragment]</code></td><td><code>Boolean</code></td><td><code>false</code></td>
-</tr>
-<tr>
-<td colspan="3"><p>If <code>false</code> then hash part is removed from the URL when computing the <code>uniqueKey</code> property.
+<td colspan="3"><p>If <code>false</code> then the hash part of a URL is removed when computing the <code>uniqueKey</code> property.
   For example, this causes the <code>http://www.example.com#foo</code> and <code>http://www.example.com#bar</code> URLs
   to have the same <code>uniqueKey</code> of <code>http://www.example.com</code> and thus the URLs are considered equal.
-  Note that this option only has effect if <code>uniqueKey</code> is not set.</p>
+  Note that this option only has an effect if <code>uniqueKey</code> is not set.</p>
 </td></tr><tr>
-<td><code>[opts.ignoreErrors]</code></td><td><code>String</code></td><td><code>false</code></td>
+<td><code>[options.ignoreErrors]</code></td><td><code>String</code></td><td><code>false</code></td>
 </tr>
 <tr>
-<td colspan="3"><p>If <code>true</code> then errors in processing of this will be ignored.
-  For example, the request won&#39;t be retried in a case of an error for example.</p>
+<td colspan="3"><p>If <code>true</code> then errors in processing of this request will be ignored.
+  For example, the request won&#39;t be retried in a case of an error.</p>
 </td></tr></tbody>
 </table>
 <a name="Request+pushErrorMessage"></a>
 <h2><a class="anchor" aria-hidden="true" id="requestpusherrormessageerrorormessage"></a><a href="#requestpusherrormessageerrorormessage" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>request.pushErrorMessage(errorOrMessage)</code></h2>
-<p>Stores information about an error occurred during processing of this request.</p>
+<p>Stores information about an error that occurred during processing of this request.</p>
 <table>
 <thead>
 <tr>
@@ -213,7 +211,7 @@ to override the default behavior and specify which URLs shall be considered equa
 <td><code>errorOrMessage</code></td><td><code>Error</code> | <code>String</code></td>
 </tr>
 <tr>
-<td colspan="3"><p>Error object or error message to be stored in request.</p>
+<td colspan="3"><p>Error object or error message to be stored in the request.</p>
 </td></tr></tbody>
 </table>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/api/puppeteerpool"><span class="arrow-prev">← </span><span>Previous</span></a><a class="docs-next button" href="/docs/api/requestlist"><span>Next</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav docOnPageNav"><ul class="toc-headings"><li><a href="#new-requestopts"><code>new Request(opts)</code></a></li><li><a href="#requestpusherrormessageerrorormessage"><code>request.pushErrorMessage(errorOrMessage)</code></a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/apify_logo.svg" alt="Apify SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/examples/helloworld.html">Getting Started</a><a href="/docs/en/examples/basiccrawler.html">Guides</a><a href="/docs/en/api/apify.html">API Reference</a></div><div><h5>Community</h5><a href="https://stackoverflow.com/questions/tagged/apify" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://twitter.com/apify" target="_blank" rel="noreferrer noopener">Twitter</a><a href="https://www.facebook.com/apifytech" target="_blank" rel="noreferrer noopener">Facebook</a></div><div><h5>More</h5><a href="https://www.apify.com" target="_blank">Apify Cloud Platform</a><a href="https://github.com/apifytech/apify-js" target="_blank">GitHub</a><a class="github-button" href="https://github.com/apifytech/apify-js" data-icon="octicon-star" data-count-href="/apifytech/apify-js/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star Apify SDK on GitHub">Star</a></div></section><a href="https://code.facebook.com/projects/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2018 Apify Technologies s.r.o.</section></footer></div></body></html>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/api/puppeteerpool"><span class="arrow-prev">← </span><span>Previous</span></a><a class="docs-next button" href="/docs/api/requestlist"><span>Next</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav docOnPageNav"><ul class="toc-headings"><li><a href="#new-requestoptions"><code>new Request(options)</code></a></li><li><a href="#requestpusherrormessageerrorormessage"><code>request.pushErrorMessage(errorOrMessage)</code></a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/apify_logo.svg" alt="Apify SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/examples/helloworld.html">Guide</a><a href="/docs/en/examples/basiccrawler.html">Examples</a><a href="/docs/en/api/apify.html">Reference</a></div><div><h5>Community</h5><a href="https://stackoverflow.com/questions/tagged/apify" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://twitter.com/apify" target="_blank" rel="noreferrer noopener">Twitter</a><a href="https://www.facebook.com/apifytech" target="_blank" rel="noreferrer noopener">Facebook</a></div><div><h5>More</h5><a href="https://www.apify.com" target="_blank">Apify Cloud Platform</a><a href="https://docusaurus.io" target="_blank">Docusaurus</a><a href="https://github.com/apifytech/apify-js" target="_blank">GitHub</a></div></section><section class="copyright">Copyright © 2018 Apify Technologies s.r.o.</section></footer></div></body></html>

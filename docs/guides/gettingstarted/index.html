@@ -1,0 +1,127 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Getting Started · Apify SDK</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="The Apify SDK requires &lt;a href=&quot;https://nodejs.org/en/&quot; target=&quot;_blank&quot;&gt;Node.js&lt;/a&gt; 8 or later."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Getting Started · Apify SDK"/><meta property="og:type" content="website"/><meta property="og:url" content="https://sdk.apify.com/index.html"/><meta property="og:description" content="The Apify SDK requires &lt;a href=&quot;https://nodejs.org/en/&quot; target=&quot;_blank&quot;&gt;Node.js&lt;/a&gt; 8 or later."/><meta property="og:image" content="https://sdk.apify.com/img/apify_logo.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://sdk.apify.com/img/apify_logo.png"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/apify_logo.svg" alt="Apify SDK"/><h2 class="headerTitleWithLogo">Apify SDK</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class="siteNavGroupActive"><a href="/docs/guides/motivation" target="_self">Guide</a></li><li class=""><a href="/docs/examples/basiccrawler" target="_self">Examples</a></li><li class="siteNavGroupActive"><a href="/docs/api/apify" target="_self">Reference</a></li><li class=""><a href="https://github.com/apifytech/apify-js" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Guide</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Guide</h3><ul><li class="navListItem"><a class="navItem" href="/docs/guides/motivation">Motivation</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/guides/gettingstarted">Getting Started</a></li><li class="navListItem"><a class="navItem" href="/docs/guides/whatisanactor">What is an Actor</a></li><li class="navListItem"><a class="navItem" href="/docs/guides/environmentvariables">Environment Variables</a></li><li class="navListItem"><a class="navItem" href="/docs/guides/datastorage">Data Storage</a></li><li class="navListItem"><a class="navItem" href="/docs/guides/puppeteerliveview">Puppeteer Live View</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Reference</h3><ul><li class="navListItem"><a class="navItem" href="/docs/api/apify">Apify</a></li><li class="navListItem"><a class="navItem" href="/docs/api/autoscaledpool">AutoscaledPool</a></li><li class="navListItem"><a class="navItem" href="/docs/api/basiccrawler">BasicCrawler</a></li><li class="navListItem"><a class="navItem" href="/docs/api/cheeriocrawler">CheerioCrawler</a></li><li class="navListItem"><a class="navItem" href="/docs/api/dataset">Dataset</a></li><li class="navListItem"><a class="navItem" href="/docs/api/keyvaluestore">KeyValueStore</a></li><li class="navListItem"><a class="navItem" href="/docs/api/pseudourl">PseudoUrl</a></li><li class="navListItem"><a class="navItem" href="/docs/api/puppeteercrawler">PuppeteerCrawler</a></li><li class="navListItem"><a class="navItem" href="/docs/api/puppeteerpool">PuppeteerPool</a></li><li class="navListItem"><a class="navItem" href="/docs/api/request">Request</a></li><li class="navListItem"><a class="navItem" href="/docs/api/requestlist">RequestList</a></li><li class="navListItem"><a class="navItem" href="/docs/api/requestqueue">RequestQueue</a></li><li class="navListItem"><a class="navItem" href="/docs/api/utils">utils</a></li><li class="navListItem"><a class="navItem" href="/docs/api/puppeteer">utils.puppeteer</a></li></ul></div></div></section></div><script>
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docMainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Getting Started</h1></header><article><div><span><p>The Apify SDK requires <a href="https://nodejs.org/en/" target="_blank">Node.js</a> 8 or later.</p>
+<h2><a class="anchor" aria-hidden="true" id="local-stand-alone-usage"></a><a href="#local-stand-alone-usage" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Local stand-alone usage</h2>
+<p>Add Apify SDK to any Node.js project by running:</p>
+<pre><code class="hljs css language-bash">npm install apify --save
+</code></pre>
+<p>Run the following example to perform a recursive crawl of a website using Puppeteer.</p>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">const</span> Apify = <span class="hljs-built_in">require</span>(<span class="hljs-string">'apify'</span>);
+
+Apify.main(<span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-keyword">const</span> requestQueue = <span class="hljs-keyword">await</span> Apify.openRequestQueue();
+    <span class="hljs-keyword">await</span> requestQueue.addRequest({ <span class="hljs-attr">url</span>: <span class="hljs-string">'https://www.iana.org/'</span> });
+    <span class="hljs-keyword">const</span> pseudoUrls = [<span class="hljs-keyword">new</span> Apify.PseudoUrl(<span class="hljs-string">'https://www.iana.org/[.*]'</span>)];
+
+    <span class="hljs-keyword">const</span> crawler = <span class="hljs-keyword">new</span> Apify.PuppeteerCrawler({
+        requestQueue,
+        <span class="hljs-attr">handlePageFunction</span>: <span class="hljs-keyword">async</span> ({ request, page }) =&gt; {
+            <span class="hljs-keyword">const</span> title = <span class="hljs-keyword">await</span> page.title();
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Title of <span class="hljs-subst">${request.url}</span>: <span class="hljs-subst">${title}</span>`</span>);
+            <span class="hljs-keyword">await</span> Apify.utils.puppeteer.enqueueLinks(page, <span class="hljs-string">'a'</span>, pseudoUrls, requestQueue);
+        },
+        <span class="hljs-attr">maxRequestsPerCrawl</span>: <span class="hljs-number">100</span>,
+        <span class="hljs-attr">maxConcurrency</span>: <span class="hljs-number">10</span>,
+    });
+
+    <span class="hljs-keyword">await</span> crawler.run();
+});
+</code></pre>
+<p>When you run the example, you should see Apify SDK automating a Chrome browser.</p>
+<p><img src="../../img/chrome_scrape.gif" alt="Chrome Scrape"></p>
+<p>By default, Apify SDK stores data to
+<code>./apify_storage</code> in the current working directory.
+You can override this behavior by setting either the
+<code>APIFY_LOCAL_STORAGE_DIR</code> or <code>APIFY_TOKEN</code> environment variable.
+For details, see <a href="environmentvariables">Environment variables</a>
+and <a href="datastorage">Data storage</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="local-usage-with-apify-command-line-interface-cli"></a><a href="#local-usage-with-apify-command-line-interface-cli" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Local usage with Apify command-line interface (CLI)</h2>
+<p>To avoid the need to set the environment variables manually,
+to create a boilerplate of your project,
+and to enable pushing and running your code on the
+<a href="https://www.apify.com" target="_blank">Apify Cloud</a>,
+you can use the
+<a href="https://github.com/apifytech/apify-cli" target="_blank">Apify command-line interface</a>
+(CLI) tool.</p>
+<p>Install the CLI by running:</p>
+<pre><code class="hljs css language-bash">npm -g install apify-cli
+</code></pre>
+<p>You might need to run the above command with <code>sudo</code>, depending on how crazy your configuration is.</p>
+<p>Now create a boilerplate of your new web crawling project by running:</p>
+<pre><code class="hljs css language-bash">apify create my-hello-world
+</code></pre>
+<p>The CLI will prompt you to select a project boilerplate template - just pick &quot;Hello world&quot;.
+The tool will create a directory called <code>my-hello-world</code> with a Node.js project files.
+You can run the project as follows:</p>
+<pre><code class="hljs css language-bash"><span class="hljs-built_in">cd</span> my-hello-world
+apify run
+</code></pre>
+<p>By default, the crawling data will be stored in a local directory at <code>./apify_storage</code>.
+For example, the input JSON file for the actor is expected to be in the default key-value store
+in <code>./apify_storage/key_value_stores/default/INPUT.json</code>.</p>
+<p>Now you can easily deploy your code to the Apify Cloud by running:</p>
+<pre><code class="hljs css language-bash">apify login
+</code></pre>
+<pre><code class="hljs css language-bash">apify push
+</code></pre>
+<p>Your script will be uploaded to the Apify Cloud and built there so that it can be run.
+For more information, view the
+<a href="https://www.apify.com/docs/cli" target="_blank">Apify CLI</a>
+and
+<a href="https://www.apify.com/docs/actor" target="_blank">Apify Actor</a>
+documentation.</p>
+<h2><a class="anchor" aria-hidden="true" id="usage-on-the-apify-cloud"></a><a href="#usage-on-the-apify-cloud" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Usage on the Apify Cloud</h2>
+<p>You can also develop your web scraping project
+in an online code editor directly on the
+<a href="https://www.apify.com" target="_blank">Apify Cloud</a>.
+You'll need to have an Apify Account.
+Go to <a href="https://my.apify.com/actors" target="_blank">Actors</a>,
+page in the app, click <i>Create new</i> and then go to the
+<i>Source</i> tab and start writing your code or paste one of the examples from the Examples section.</p>
+<p>For more information, view the
+<a href="https://www.apify.com/docs/actor#quick-start" target="_blank">Apify actors quick start guide</a>.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/guides/motivation"><span class="arrow-prev">← </span><span>Previous</span></a><a class="docs-next button" href="/docs/guides/whatisanactor"><span>Next</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav docOnPageNav"><ul class="toc-headings"><li><a href="#local-stand-alone-usage">Local stand-alone usage</a></li><li><a href="#local-usage-with-apify-command-line-interface-cli">Local usage with Apify command-line interface (CLI)</a></li><li><a href="#usage-on-the-apify-cloud">Usage on the Apify Cloud</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/apify_logo.svg" alt="Apify SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/guides/motivation.html">Guide</a><a href="/docs/en/examples/basiccrawler.html">Examples</a><a href="/docs/en/api/apify.html">Reference</a></div><div><h5>Community</h5><a href="https://stackoverflow.com/questions/tagged/apify" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://twitter.com/apify" target="_blank" rel="noreferrer noopener">Twitter</a><a href="https://www.facebook.com/apifytech" target="_blank" rel="noreferrer noopener">Facebook</a></div><div><h5>More</h5><a href="https://www.apify.com" target="_blank">Apify Cloud Platform</a><a href="https://docusaurus.io" target="_blank">Docusaurus</a><a href="https://github.com/apifytech/apify-js" target="_blank">GitHub</a></div></section><section class="copyright">Copyright © 2018 Apify Technologies s.r.o.</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '64ce2544769e34add0e6402688c86e92',
+                indexName: 'apify_sdk',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {}
+              });
+            </script></body></html>

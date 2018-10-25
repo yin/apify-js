@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Cheerio Crawler · Apify SDK</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="This example demonstrates how to use [`CheerioCrawler`](../api/cheeriocrawler)"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Cheerio Crawler · Apify SDK"/><meta property="og:type" content="website"/><meta property="og:url" content="https://sdk.apify.com/index.html"/><meta property="og:description" content="This example demonstrates how to use [`CheerioCrawler`](../api/cheeriocrawler)"/><meta property="og:image" content="https://sdk.apify.com/img/apify_logo.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://sdk.apify.com/img/apify_logo.png"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/apify_logo.svg" alt="Apify SDK"/><h2 class="headerTitleWithLogo">Apify SDK</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class=""><a href="/docs/guides/motivation" target="_self">Guide</a></li><li class="siteNavGroupActive"><a href="/docs/examples/basiccrawler" target="_self">Examples</a></li><li class=""><a href="/docs/api/apify" target="_self">Reference</a></li><li class=""><a href="https://github.com/apifytech/apify-js" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Examples</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Examples</h3><ul><li class="navListItem"><a class="navItem" href="/docs/examples/basiccrawler">Basic Crawler</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/examples/cheeriocrawler">Cheerio Crawler</a></li><li class="navListItem"><a class="navItem" href="/docs/examples/puppeteercrawler">Puppeteer Crawler</a></li><li class="navListItem"><a class="navItem" href="/docs/examples/puppeteerwithproxy">Puppeteer With Proxy</a></li><li class="navListItem"><a class="navItem" href="/docs/examples/puppeteersitemap">Puppeteer Sitemap</a></li><li class="navListItem"><a class="navItem" href="/docs/examples/screenshots">Screenshots</a></li><li class="navListItem"><a class="navItem" href="/docs/examples/callactor">Call Actor</a></li><li class="navListItem"><a class="navItem" href="/docs/examples/synchronousrun">Synchronous Run</a></li></ul></div></div></section></div><script>
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Cheerio Crawler · Apify SDK</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="This example demonstrates how to use [`CheerioCrawler`](../api/cheeriocrawler)"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Cheerio Crawler · Apify SDK"/><meta property="og:type" content="website"/><meta property="og:url" content="https://sdk.apify.com/index.html"/><meta property="og:description" content="This example demonstrates how to use [`CheerioCrawler`](../api/cheeriocrawler)"/><meta property="og:image" content="https://sdk.apify.com/img/apify_logo.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://sdk.apify.com/img/apify_logo.png"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/prism.css"/><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/apify_logo.svg" alt="Apify SDK"/><h2 class="headerTitleWithLogo">Apify SDK</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class=""><a href="/docs/guides/motivation" target="_self">Guide</a></li><li class="siteNavGroupActive"><a href="/docs/examples/basiccrawler" target="_self">Examples</a></li><li class=""><a href="/docs/api/apify" target="_self">Reference</a></li><li class=""><a href="https://github.com/apifytech/apify-js" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Examples</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Examples</h3><ul><li class="navListItem"><a class="navItem" href="/docs/examples/basiccrawler">Basic Crawler</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/examples/cheeriocrawler">Cheerio Crawler</a></li><li class="navListItem"><a class="navItem" href="/docs/examples/puppeteercrawler">Puppeteer Crawler</a></li><li class="navListItem"><a class="navItem" href="/docs/examples/puppeteerwithproxy">Puppeteer With Proxy</a></li><li class="navListItem"><a class="navItem" href="/docs/examples/puppeteersitemap">Puppeteer Sitemap</a></li><li class="navListItem"><a class="navItem" href="/docs/examples/screenshots">Screenshots</a></li><li class="navListItem"><a class="navItem" href="/docs/examples/callactor">Call Actor</a></li><li class="navListItem"><a class="navItem" href="/docs/examples/synchronousrun">Synchronous Run</a></li></ul></div></div></section></div><script>
             document.addEventListener('DOMContentLoaded', function() {
               createToggler('#navToggler', '#docsNav', 'docsSliderActive');
               createToggler('#tocToggler', 'body', 'tocActive');
@@ -29,83 +29,83 @@
 to crawl a list of URLs from an external file,
 load each URL using a plain HTTP request, parse the HTML using <a href="https://www.npmjs.com/package/cheerio" target="_blank">cheerio</a>
 and extract some data from it: the page title and all H1 tags.</p>
-<pre><code class="hljs css language-javascript"><span class="hljs-keyword">const</span> Apify = <span class="hljs-built_in">require</span>(<span class="hljs-string">'apify'</span>);
+<pre><code class="hljs css language-javascript"><span class="token keyword">const</span> Apify <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'apify'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="hljs-comment">// Apify.utils contains various utilities, e.g. for logging.</span>
-<span class="hljs-comment">// Here we turn off the logging of unimportant messages.</span>
-<span class="hljs-keyword">const</span> { log } = Apify.utils;
-log.setLevel(log.LEVELS.WARNING);
+<span class="token comment">// Apify.utils contains various utilities, e.g. for logging.</span>
+<span class="token comment">// Here we turn off the logging of unimportant messages.</span>
+<span class="token keyword">const</span> <span class="token punctuation">{</span> log <span class="token punctuation">}</span> <span class="token operator">=</span> Apify<span class="token punctuation">.</span>utils<span class="token punctuation">;</span>
+log<span class="token punctuation">.</span><span class="token function">setLevel</span><span class="token punctuation">(</span>log<span class="token punctuation">.</span><span class="token constant">LEVELS</span><span class="token punctuation">.</span><span class="token constant">WARNING</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="hljs-comment">// A link to a list of Fortune 500 companies' websites available on GitHub.</span>
-<span class="hljs-keyword">const</span> CSV_LINK = <span class="hljs-string">'https://gist.githubusercontent.com/hrbrmstr/ae574201af3de035c684/raw/f1000.csv'</span>;
+<span class="token comment">// A link to a list of Fortune 500 companies' websites available on GitHub.</span>
+<span class="token keyword">const</span> <span class="token constant">CSV_LINK</span> <span class="token operator">=</span> <span class="token string">'https://gist.githubusercontent.com/hrbrmstr/ae574201af3de035c684/raw/f1000.csv'</span><span class="token punctuation">;</span>
 
-<span class="hljs-comment">// Apify.main() function wraps the crawler logic (it is optional).</span>
-Apify.main(<span class="hljs-keyword">async</span> () =&gt; {
-    <span class="hljs-comment">// Create an instance of the RequestList class that contains a list of URLs to crawl.</span>
-    <span class="hljs-comment">// Here we download and parse the list of URLs from an external file.</span>
-    <span class="hljs-keyword">const</span> requestList = <span class="hljs-keyword">new</span> Apify.RequestList({
-        <span class="hljs-attr">sources</span>: [{ <span class="hljs-attr">requestsFromUrl</span>: CSV_LINK }],
-    });
-    <span class="hljs-keyword">await</span> requestList.initialize();
+<span class="token comment">// Apify.main() function wraps the crawler logic (it is optional).</span>
+Apify<span class="token punctuation">.</span><span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token comment">// Create an instance of the RequestList class that contains a list of URLs to crawl.</span>
+    <span class="token comment">// Here we download and parse the list of URLs from an external file.</span>
+    <span class="token keyword">const</span> requestList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Apify<span class="token punctuation">.</span>RequestList</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        sources<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span> requestsFromUrl<span class="token punctuation">:</span> <span class="token constant">CSV_LINK</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">await</span> requestList<span class="token punctuation">.</span><span class="token function">initialize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="hljs-comment">// Create an instance of the CheerioCrawler class - a crawler</span>
-    <span class="hljs-comment">// that automatically loads the URLs and parses their HTML using the cheerio library.</span>
-    <span class="hljs-keyword">const</span> crawler = <span class="hljs-keyword">new</span> Apify.CheerioCrawler({
-        <span class="hljs-comment">// Let the crawler fetch URLs from our list.</span>
-        requestList,
+    <span class="token comment">// Create an instance of the CheerioCrawler class - a crawler</span>
+    <span class="token comment">// that automatically loads the URLs and parses their HTML using the cheerio library.</span>
+    <span class="token keyword">const</span> crawler <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Apify<span class="token punctuation">.</span>CheerioCrawler</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        <span class="token comment">// Let the crawler fetch URLs from our list.</span>
+        requestList<span class="token punctuation">,</span>
 
-        <span class="hljs-comment">// The crawler downloads and processes the web pages in parallel, with a concurrency</span>
-        <span class="hljs-comment">// automatically managed based on the available system memory and CPU (see AutoscaledPool class).</span>
-        <span class="hljs-comment">// Here we define some hard limits for the concurrency.</span>
-        minConcurrency: <span class="hljs-number">10</span>,
-        <span class="hljs-attr">maxConcurrency</span>: <span class="hljs-number">50</span>,
+        <span class="token comment">// The crawler downloads and processes the web pages in parallel, with a concurrency</span>
+        <span class="token comment">// automatically managed based on the available system memory and CPU (see AutoscaledPool class).</span>
+        <span class="token comment">// Here we define some hard limits for the concurrency.</span>
+        minConcurrency<span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
+        maxConcurrency<span class="token punctuation">:</span> <span class="token number">50</span><span class="token punctuation">,</span>
 
-        <span class="hljs-comment">// On error, retry each page at most once.</span>
-        maxRequestRetries: <span class="hljs-number">1</span>,
+        <span class="token comment">// On error, retry each page at most once.</span>
+        maxRequestRetries<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
 
-        <span class="hljs-comment">// Increase the timeout for processing of each page.</span>
-        handlePageTimeoutSecs: <span class="hljs-number">60</span>,
+        <span class="token comment">// Increase the timeout for processing of each page.</span>
+        handlePageTimeoutSecs<span class="token punctuation">:</span> <span class="token number">60</span><span class="token punctuation">,</span>
 
-        <span class="hljs-comment">// This function will be called for each URL to crawl.</span>
-        <span class="hljs-comment">// It accepts a single parameter, which is an object with the following fields:</span>
-        <span class="hljs-comment">// - request: an instance of the Request class with information such as URL and HTTP method</span>
-        <span class="hljs-comment">// - html: contains raw HTML of the page</span>
-        <span class="hljs-comment">// - $: the cheerio object containing parsed HTML</span>
-        handlePageFunction: <span class="hljs-keyword">async</span> ({ request, html, $ }) =&gt; {
-            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Processing <span class="hljs-subst">${request.url}</span>...`</span>);
+        <span class="token comment">// This function will be called for each URL to crawl.</span>
+        <span class="token comment">// It accepts a single parameter, which is an object with the following fields:</span>
+        <span class="token comment">// - request: an instance of the Request class with information such as URL and HTTP method</span>
+        <span class="token comment">// - html: contains raw HTML of the page</span>
+        <span class="token comment">// - $: the cheerio object containing parsed HTML</span>
+        handlePageFunction<span class="token punctuation">:</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> request<span class="token punctuation">,</span> html<span class="token punctuation">,</span> $ <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`Processing </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>request<span class="token punctuation">.</span>url<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">...`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-            <span class="hljs-comment">// Extract data from the page using cheerio.</span>
-            <span class="hljs-keyword">const</span> title = $(<span class="hljs-string">'title'</span>).text();
-            <span class="hljs-keyword">const</span> h1texts = [];
-            $(<span class="hljs-string">'h1'</span>).each(<span class="hljs-function">(<span class="hljs-params">index, el</span>) =&gt;</span> {
-                h1texts.push({
-                    <span class="hljs-attr">text</span>: $(el).text(),
-                });
-            });
+            <span class="token comment">// Extract data from the page using cheerio.</span>
+            <span class="token keyword">const</span> title <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'title'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">const</span> h1texts <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'h1'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">each</span><span class="token punctuation">(</span><span class="token punctuation">(</span>index<span class="token punctuation">,</span> el<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+                h1texts<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+                    text<span class="token punctuation">:</span> <span class="token function">$</span><span class="token punctuation">(</span>el<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-            <span class="hljs-comment">// Store the results to the default dataset. In local configuration,</span>
-            <span class="hljs-comment">// the data will be stored as JSON files in ./apify_storage/datasets/default</span>
-            <span class="hljs-keyword">await</span> Apify.pushData({
-                <span class="hljs-attr">url</span>: request.url,
-                title,
-                h1texts,
-                html,
-            });
-        },
+            <span class="token comment">// Store the results to the default dataset. In local configuration,</span>
+            <span class="token comment">// the data will be stored as JSON files in ./apify_storage/datasets/default</span>
+            <span class="token keyword">await</span> Apify<span class="token punctuation">.</span><span class="token function">pushData</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+                url<span class="token punctuation">:</span> request<span class="token punctuation">.</span>url<span class="token punctuation">,</span>
+                title<span class="token punctuation">,</span>
+                h1texts<span class="token punctuation">,</span>
+                html<span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-        <span class="hljs-comment">// This function is called if the page processing failed more than maxRequestRetries+1 times.</span>
-        handleFailedRequestFunction: <span class="hljs-keyword">async</span> ({ request }) =&gt; {
-            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Request <span class="hljs-subst">${request.url}</span> failed twice.`</span>);
-        },
-    });
+        <span class="token comment">// This function is called if the page processing failed more than maxRequestRetries+1 times.</span>
+        handleFailedRequestFunction<span class="token punctuation">:</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> request <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`Request </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>request<span class="token punctuation">.</span>url<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> failed twice.`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="hljs-comment">// Run the crawler and wait for it to finish.</span>
-    <span class="hljs-keyword">await</span> crawler.run();
+    <span class="token comment">// Run the crawler and wait for it to finish.</span>
+    <span class="token keyword">await</span> crawler<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Crawler finished.'</span>);
-});
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Crawler finished.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/examples/basiccrawler"><span class="arrow-prev">← </span><span>Previous</span></a><a class="docs-next button" href="/docs/examples/puppeteercrawler"><span>Next</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav docOnPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/apify_logo.svg" alt="Apify SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/guides/motivation.html">Guide</a><a href="/docs/en/examples/basiccrawler.html">Examples</a><a href="/docs/en/api/apify.html">Reference</a></div><div><h5>Community</h5><a href="https://stackoverflow.com/questions/tagged/apify" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://twitter.com/apify" target="_blank" rel="noreferrer noopener">Twitter</a><a href="https://www.facebook.com/apifytech" target="_blank" rel="noreferrer noopener">Facebook</a></div><div><h5>More</h5><a href="https://www.apify.com" target="_blank">Apify Cloud Platform</a><a href="https://docusaurus.io" target="_blank">Docusaurus</a><a href="https://github.com/apifytech/apify-js" target="_blank">GitHub</a></div></section><section class="copyright">Copyright © 2018 Apify Technologies s.r.o.</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/examples/basiccrawler"><span class="arrow-prev">← </span><span>Previous</span></a><a class="docs-next button" href="/docs/examples/puppeteercrawler"><span>Next</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav docOnPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/apify_logo.svg" alt="Apify SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/guides/motivation.html">Guide</a><a href="/docs/examples/basiccrawler.html">Examples</a><a href="/docs/api/apify.html">Reference</a></div><div><h5>Community</h5><a href="https://stackoverflow.com/questions/tagged/apify" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://twitter.com/apify" target="_blank" rel="noreferrer noopener">Twitter</a><a href="https://www.facebook.com/apifytech" target="_blank" rel="noreferrer noopener">Facebook</a></div><div><h5>More</h5><a href="https://www.apify.com" target="_blank">Apify Cloud Platform</a><a href="https://docusaurus.io" target="_blank">Docusaurus</a><a href="https://github.com/apifytech/apify-js" target="_blank">GitHub</a></div></section><section class="copyright">Copyright © 2018 Apify Technologies s.r.o.</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;

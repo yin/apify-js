@@ -38,7 +38,7 @@ Apify<span class="token punctuation">.</span><span class="token function">main</
     <span class="token comment">// Create and initialize an instance of the RequestList class that contains the start URL.</span>
     <span class="token keyword">const</span> requestList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Apify<span class="token punctuation">.</span>RequestList</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
         sources<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-            <span class="token punctuation">{</span> url<span class="token punctuation">:</span> <span class="token string">'http://www.ycombinator.com/'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span> url<span class="token punctuation">:</span> <span class="token string">'https://news.ycombinator.com/'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
         <span class="token punctuation">]</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">await</span> requestList<span class="token punctuation">.</span><span class="token function">initialize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -54,9 +54,12 @@ Apify<span class="token punctuation">.</span><span class="token function">main</
         requestList<span class="token punctuation">,</span>
         requestQueue<span class="token punctuation">,</span>
 
-        <span class="token comment">// Run Puppeteer in headless mode. If you set headless to false, you'll see the scraping</span>
-        <span class="token comment">// browsers showing up on your screen. This is great for debugging.</span>
-        launchPuppeteerOptions<span class="token punctuation">:</span> <span class="token punctuation">{</span> headless<span class="token punctuation">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token comment">// Here you can set options that are passed to the Apify.launchPuppeteer() function.</span>
+        <span class="token comment">// For example, you can set "slowMo" to slow down Puppeteer operations to simplify debugging</span>
+        launchPuppeteerOptions<span class="token punctuation">:</span> <span class="token punctuation">{</span> slowMo<span class="token punctuation">:</span> <span class="token number">500</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+        <span class="token comment">// Stop crawling after several pages</span>
+        maxRequestsPerCrawl<span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
 
         <span class="token comment">// This function will be called for each URL to crawl.</span>
         <span class="token comment">// Here you can write the Puppeteer scripts you are familiar with,</span>

@@ -48,9 +48,11 @@ the local directory in the following files:</p>
 <p>Note that <code>{STORE_ID}</code> is the name or ID of the key-value store. The default key value store has ID: <code>default</code>,
 unless you override it by setting the <code>APIFY_DEFAULT_KEY_VALUE_STORE_ID</code> environment variable.
 The <code>{KEY}</code> is the key of the record and <code>{EXT}</code> corresponds to the MIME content type of the data value.</p>
-<p>If the <code>APIFY_TOKEN</code> environment variable is provided instead, the data is stored in the
-<a href="https://www.apify.com/docs/storage#key-value-store" target="_blank">Apify Key-Value Store</a>
-cloud storage.</p>
+<p>If the <code>APIFY_TOKEN</code> environment variable is set but <code>APIFY_LOCAL_STORAGE_DIR</code> not, the data is stored in the
+<a href="https://www.apify.com/docs/storage#key-value-store" target="_blank">Apify Key-value store</a>
+cloud storage. Note that you can force usage of the cloud storage also by passing the <code>forceCloud</code>
+option to <a href="apify#module_Apify.openKeyValueStore"><code>Apify.openKeyValueStore()</code></a> function,
+even if the <code>APIFY_LOCAL_STORAGE_DIR</code> variable is set.</p>
 <p><strong>Example usage:</strong></p>
 <pre><code class="hljs css language-javascript"><span class="token comment">// Get actor input from the default key-value store</span>
 <span class="token keyword">const</span> input <span class="token operator">=</span> <span class="token keyword">await</span> Apify<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token string">'INPUT'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -111,7 +113,8 @@ on the MIME content type of the record.</p>
 <td><code>key</code></td><td><code>String</code></td>
 </tr>
 <tr>
-<td colspan="3"><p>Unique key of the record.</p>
+<td colspan="3"><p>Unique key of the record. It can be at most 256 characters long and only consist
+  of the following characters: <code>[a-zA-Z0-9!-_.&#39;()</code></p>
 </td></tr></tbody>
 </table>
 <a name="KeyValueStore+setValue"></a>
@@ -122,6 +125,7 @@ The function returns a promise that resolves once the record has been saved or d
 <pre><code class="hljs css language-javascript"><span class="token keyword">const</span> store <span class="token operator">=</span> <span class="token keyword">await</span> Apify<span class="token punctuation">.</span><span class="token function">openKeyValueStore</span><span class="token punctuation">(</span><span class="token string">'my-store'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">await</span> store<span class="token punctuation">.</span><span class="token function">setValue</span><span class="token punctuation">(</span><span class="token string">'RESULTS'</span><span class="token punctuation">,</span> <span class="token string">'my text data'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> contentType<span class="token punctuation">:</span> <span class="token string">'text/plain'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+<p>Beware that the key can be at most 256 characters long and only contain the following characters: <code>a-zA-Z0-9!-_.'()</code></p>
 <p>By default, <code>value</code> is converted to JSON and stored with the
 <code>application/json; charset=utf-8</code> MIME content type.
 To store the value with another content type, pass it in the options as follows:</p>
@@ -147,7 +151,8 @@ otherwise the actor process might finish before the value is stored!</p>
 <td><code>key</code></td><td><code>String</code></td>
 </tr>
 <tr>
-<td colspan="3"><p>Unique key of the record.</p>
+<td colspan="3"><p>Unique key of the record. It can be at most 256 characters long and only consist
+  of the following characters: <code>[a-zA-Z0-9!-_.&#39;()</code></p>
 </td></tr><tr>
 <td><code>value</code></td><td><code>Object</code> | <code>String</code> | <code>Buffer</code></td>
 </tr>
@@ -175,7 +180,7 @@ otherwise the actor process might finish before the value is stored!</p>
 <h2><a class="anchor" aria-hidden="true" id="keyvaluestoredelete-code-promise-code"></a><a href="#keyvaluestoredelete-code-promise-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>keyValueStore.delete()</code> ⇒ <code>Promise</code></h2>
 <p>Removes the key-value store either from the Apify cloud storage or from the local directory,
 depending on the mode of operation.</p>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/api/dataset"><span class="arrow-prev">← </span><span>Previous</span></a><a class="docs-next button" href="/docs/api/pseudourl"><span>Next</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav docOnPageNav"><ul class="toc-headings"><li><a href="#keyvaluestoregetvaluekey-code-promise-lt-object-string-buffer-gt-code"><code>keyValueStore.getValue(key)</code> ⇒ Promise&lt;(Object|String|Buffer)&gt;</a></li><li><a href="#keyvaluestoresetvaluekey-value-options-code-promise-code"><code>keyValueStore.setValue(key, value, [options])</code> ⇒ Promise</a></li><li><a href="#keyvaluestoredelete-code-promise-code"><code>keyValueStore.delete()</code> ⇒ Promise</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/apify_logo.svg" alt="Apify SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/guides/motivation.html">Guide</a><a href="/docs/examples/basiccrawler.html">Examples</a><a href="/docs/api/apify.html">Reference</a></div><div><h5>Community</h5><a href="https://stackoverflow.com/questions/tagged/apify" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://twitter.com/apify" target="_blank" rel="noreferrer noopener">Twitter</a><a href="https://www.facebook.com/apifytech" target="_blank" rel="noreferrer noopener">Facebook</a></div><div><h5>More</h5><a href="https://www.apify.com" target="_blank">Apify Cloud Platform</a><a href="https://docusaurus.io" target="_blank">Docusaurus</a><a href="https://github.com/apifytech/apify-js" target="_blank">GitHub</a></div></section><section class="copyright">Copyright © 2018 Apify Technologies s.r.o.</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/api/dataset"><span class="arrow-prev">← </span><span>Previous</span></a><a class="docs-next button" href="/docs/api/pseudourl"><span>Next</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav docOnPageNav"><ul class="toc-headings"><li><a href="#keyvaluestoregetvaluekey-code-promise-lt-object-string-buffer-gt-code"><code>keyValueStore.getValue(key)</code> ⇒ Promise&lt;(Object|String|Buffer)&gt;</a></li><li><a href="#keyvaluestoresetvaluekey-value-options-code-promise-code"><code>keyValueStore.setValue(key, value, [options])</code> ⇒ Promise</a></li><li><a href="#keyvaluestoredelete-code-promise-code"><code>keyValueStore.delete()</code> ⇒ Promise</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/apify_logo.svg" alt="Apify SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/guides/motivation">Guide</a><a href="/docs/examples/basiccrawler">Examples</a><a href="/docs/api/apify">Reference</a></div><div><h5>Community</h5><a href="https://stackoverflow.com/questions/tagged/apify" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://twitter.com/apify" target="_blank" rel="noreferrer noopener">Twitter</a><a href="https://www.facebook.com/apifytech" target="_blank" rel="noreferrer noopener">Facebook</a></div><div><h5>More</h5><a href="https://www.apify.com" target="_blank">Apify Cloud</a><a href="https://docusaurus.io" target="_blank">Docusaurus</a><a href="https://github.com/apifytech/apify-js" target="_blank">GitHub</a></div></section><section class="copyright">Copyright © 2018 Apify Technologies s.r.o.</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;

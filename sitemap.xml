@@ -46,5 +46,5 @@
 <url> <loc>https://sdk.apify.com/docs/typedefs/apifycallerror</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://sdk.apify.com/docs/typedefs/apifycallerror" /> </url>
 <url> <loc>https://sdk.apify.com/docs/typedefs/launchpuppeteeroptions</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://sdk.apify.com/docs/typedefs/launchpuppeteeroptions" /> </url>
 <url> <loc>https://sdk.apify.com/docs/typedefs/paginationlist</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://sdk.apify.com/docs/typedefs/paginationlist" /> </url>
-<url> <loc>https://sdk.apify.com/docs/typedefs/requestoperationinfo</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://sdk.apify.com/docs/typedefs/requestoperationinfo" /> </url>
+<url> <loc>https://sdk.apify.com/docs/typedefs/queueoperationinfo</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://sdk.apify.com/docs/typedefs/queueoperationinfo" /> </url>
 </urlset>

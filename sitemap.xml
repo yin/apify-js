@@ -22,6 +22,7 @@
 <url> <loc>https://sdk.apify.com/docs/api/requestlist</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://sdk.apify.com/docs/api/requestlist" /> </url>
 <url> <loc>https://sdk.apify.com/docs/api/requestqueue</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://sdk.apify.com/docs/api/requestqueue" /> </url>
 <url> <loc>https://sdk.apify.com/docs/api/snapshotter</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://sdk.apify.com/docs/api/snapshotter" /> </url>
+<url> <loc>https://sdk.apify.com/docs/api/social</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://sdk.apify.com/docs/api/social" /> </url>
 <url> <loc>https://sdk.apify.com/docs/api/systemstatus</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://sdk.apify.com/docs/api/systemstatus" /> </url>
 <url> <loc>https://sdk.apify.com/docs/api/utils</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://sdk.apify.com/docs/api/utils" /> </url>
 <url> <loc>https://sdk.apify.com/docs/examples/basiccrawler</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://sdk.apify.com/docs/examples/basiccrawler" /> </url>

@@ -342,13 +342,14 @@ describe('AutoscaledPool', () => {
         let finished = false;
         let aborted = false;
         const pool = new AutoscaledPool({
-            runTaskFunction: async () => {
+            runTaskFunction: () => {
                 if (!aborted) {
-                    await pool.abort();
-                    aborted = true;
-                } else {
-                    return null;
+                    return (async () => {
+                        await pool.abort();
+                        aborted = true;
+                    })();
                 }
+                return null;
             },
             isFinishedFunction: () => { finished = true; },
             isTaskReadyFunction: () => !aborted,
@@ -380,42 +381,6 @@ describe('AutoscaledPool', () => {
         await pool.run();
         expect(started).to.be.eql(true);
         expect(completed).to.be.eql(true);
-    });
-
-    it('should pause and resume', async () => {
-        let count = 0;
-        const results = [];
-        let pauseResolve;
-        const pausePromise = new Promise((res) => { pauseResolve = res; });
-
-        const pool = new AutoscaledPool({
-            maybeRunIntervalSecs: 0.01,
-            minConcurrency: 10,
-            runTaskFunction: async () => {
-                results.push(count++);
-                if (count === 20) {
-                    pool.pause().then(pauseResolve);
-                }
-            },
-            isFinishedFunction: async () => !(count < 50),
-            isTaskReadyFunction: async () => count < 50,
-        });
-
-        let finished = false;
-        const runPromise = pool.run();
-        runPromise.then(() => { finished = true; });
-        await pausePromise;
-        expect(count).to.be.eql(20);
-        expect(finished).to.be.eql(false);
-        expect(results).to.have.lengthOf(count);
-        results.forEach((r, i) => expect(r).to.be.eql(i));
-
-        pool.resume();
-        await runPromise;
-        expect(count).to.be.eql(50);
-        expect(finished).to.be.eql(true);
-        expect(results).to.have.lengthOf(count);
-        results.forEach((r, i) => expect(r).to.be.eql(i));
     });
 });
 

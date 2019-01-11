@@ -310,7 +310,7 @@ class PuppeteerCrawler {
                     'Operation timed out.',
                 );
             } catch (err) {
-                log.debug('PuppeteerCrawler: Page.close() failed.', { reason: err && err.message });
+                log.debug('PuppeteerCrawler: puppeteerPool.recyclePage() failed.', { reason: err && err.message });
             }
         }
     }

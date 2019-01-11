@@ -440,10 +440,8 @@ class PuppeteerPool {
                 this._incrementPageCount(instance);
                 return idlePage;
             }
-            // Close pages of retired instances so they don't keep hanging there forever.
-            if (pageIsNotClosed && !instanceIsActive) {
-                await idlePage.close();
-            }
+
+            await idlePage.close();
         }
         // If there are no live pages to be reused, we spawn a new tab.
         return this._openNewTab();
@@ -497,11 +495,23 @@ class PuppeteerPool {
                 });
         };
 
+        this._addDefaultListenersToPage(page);
+
+        return page;
+    }
+
+    /**
+     * We need to remove all listeners and re-add them after a page recycle
+     * to prevent listeners from stacking and firing multiple times.
+     *
+     * @param page
+     * @ignore
+     */
+    _addDefaultListenersToPage(page) { // eslint-disable-line class-methods-use-this
         page.once('error', (error) => {
             log.exception(error, 'PuppeteerPool: page crashed.');
             page.close();
         });
-        return page;
     }
 
     /**
@@ -594,10 +604,14 @@ class PuppeteerPool {
      * @return {Promise}
      */
     async recyclePage(page) {
+        log.warning('RECYCLING PAGE')
         if (this.reusePages) {
+            await page.goto('about:blank');
             page.removeAllListeners();
+            this._addDefaultListenersToPage(page);
             this.idlePages.push(page);
         } else {
+            log.warning('CLOSING PAGE')
             await page.close();
         }
     }

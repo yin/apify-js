@@ -78,7 +78,6 @@ to <a href="puppeteerpool"><code>PuppeteerPool</code></a> constructor.</p>
 <ul>
 <li><a href="#new_PuppeteerCrawler_new"><code>new PuppeteerCrawler(options)</code></a></li>
 <li><a href="#PuppeteerCrawler+run"><code>.run()</code></a> ⇒ <code>Promise</code></li>
-<li><a href="#PuppeteerCrawler+abort"><code>.abort()</code></a> ⇒ <code>Promise</code></li>
 </ul></li>
 </ul>
 <p><a name="new_PuppeteerCrawler_new"></a></p>
@@ -106,7 +105,8 @@ to <a href="puppeteerpool"><code>PuppeteerPool</code></a> constructor.</p>
   request: Request,
   response: Response,
   page: Page,
-  puppeteerPool: PuppeteerPool
+  puppeteerPool: PuppeteerPool,
+  autoscaledPool: AutoscaledPool
 }
 </code></pre><p>  <code>request</code> is an instance of the <a href="request"><code>Request</code></a> object with details about the URL to open, HTTP method etc.
   <code>response</code> is an instance of the <code>Puppeteer</code>
@@ -180,6 +180,13 @@ to <a href="puppeteerpool"><code>PuppeteerPool</code></a> constructor.</p>
 <td colspan="3"><p>Maximum number of pages that the crawler will open. The crawl will stop when this limit is reached.
   Always set this value in order to prevent infinite loops in misconfigured crawlers.
   Note that in cases of parallel crawling, the actual number of pages visited might be slightly higher than this value.</p>
+</td></tr><tr>
+<td><code>[options.reusePages]</code></td><td><code>boolean</code></td><td><code>false</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>Individual browser tabs will be reused after their task is complete instead
+  of closing them and spawning a new tab. This saves CPU resources.
+  See <code>reusePages</code> parameter of <a href="puppeteerpool"><code>PuppeteerPool</code></a>.</p>
 </td></tr><tr>
 <td><code>[options.maxOpenPagesPerInstance]</code></td><td><code>Number</code></td><td><code>50</code></td>
 </tr>
@@ -256,10 +263,7 @@ to <a href="puppeteerpool"><code>PuppeteerPool</code></a> constructor.</p>
 <a name="PuppeteerCrawler+run"></a>
 <h2><a class="anchor" aria-hidden="true" id="puppeteercrawlerrun-code-promise-code"></a><a href="#puppeteercrawlerrun-code-promise-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>puppeteerCrawler.run()</code> ⇒ <code>Promise</code></h2>
 <p>Runs the crawler. Returns promise that gets resolved once all the requests got processed.</p>
-<p><a name="PuppeteerCrawler+abort"></a></p>
-<h2><a class="anchor" aria-hidden="true" id="puppeteercrawlerabort-code-promise-code"></a><a href="#puppeteercrawlerabort-code-promise-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>puppeteerCrawler.abort()</code> ⇒ <code>Promise</code></h2>
-<p>Aborts the crawler by preventing crawls of additional pages and terminating the running ones.</p>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/api/pseudourl"><span class="arrow-prev">← </span><span class="function-name-prevnext">PseudoUrl</span></a><a class="docs-next button" href="/docs/api/puppeteerpool"><span class="function-name-prevnext">PuppeteerPool</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#new-puppeteercrawleroptions"><code>new PuppeteerCrawler(options)</code></a></li><li><a href="#puppeteercrawlerrun-code-promise-code"><code>puppeteerCrawler.run()</code> ⇒ Promise</a></li><li><a href="#puppeteercrawlerabort-code-promise-code"><code>puppeteerCrawler.abort()</code> ⇒ Promise</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/apify_logo.svg" alt="Apify SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/guides/motivation">Guide</a><a href="/docs/examples/basiccrawler">Examples</a><a href="/docs/api/apify">Reference</a></div><div><h5>Community</h5><a href="https://stackoverflow.com/questions/tagged/apify" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://twitter.com/apify" target="_blank" rel="noreferrer noopener">Twitter</a><a href="https://www.facebook.com/apifytech" target="_blank" rel="noreferrer noopener">Facebook</a></div><div><h5>More</h5><a href="https://www.apify.com" target="_blank">Apify Cloud</a><a href="https://docusaurus.io" target="_blank">Docusaurus</a><a href="https://github.com/apifytech/apify-js" target="_blank">GitHub</a></div></section><section class="copyright">Copyright © 2019 Apify Technologies s.r.o.</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/api/pseudourl"><span class="arrow-prev">← </span><span class="function-name-prevnext">PseudoUrl</span></a><a class="docs-next button" href="/docs/api/puppeteerpool"><span class="function-name-prevnext">PuppeteerPool</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#new-puppeteercrawleroptions"><code>new PuppeteerCrawler(options)</code></a></li><li><a href="#puppeteercrawlerrun-code-promise-code"><code>puppeteerCrawler.run()</code> ⇒ Promise</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/apify_logo.svg" alt="Apify SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/guides/motivation">Guide</a><a href="/docs/examples/basiccrawler">Examples</a><a href="/docs/api/apify">Reference</a></div><div><h5>Community</h5><a href="https://stackoverflow.com/questions/tagged/apify" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://twitter.com/apify" target="_blank" rel="noreferrer noopener">Twitter</a><a href="https://www.facebook.com/apifytech" target="_blank" rel="noreferrer noopener">Facebook</a></div><div><h5>More</h5><a href="https://www.apify.com" target="_blank">Apify Cloud</a><a href="https://docusaurus.io" target="_blank">Docusaurus</a><a href="https://github.com/apifytech/apify-js" target="_blank">GitHub</a></div></section><section class="copyright">Copyright © 2019 Apify Technologies s.r.o.</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;

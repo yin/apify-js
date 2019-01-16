@@ -48,6 +48,7 @@ accessible from the left sidebar.</p>
 <li><a href="#module_Apify.main"><code>.main(userFunc)</code></a></li>
 <li><a href="#module_Apify.openDataset"><code>.openDataset([datasetIdOrName], [options])</code></a> ⇒ <a href="dataset"><code>Promise&lt;Dataset&gt;</code></a></li>
 <li><a href="#module_Apify.openKeyValueStore"><code>.openKeyValueStore([storeIdOrName], [options])</code></a> ⇒ <a href="keyvaluestore"><code>Promise&lt;KeyValueStore&gt;</code></a></li>
+<li><a href="#module_Apify.openRequestList"><code>.openRequestList</code></a> ⇒ <a href="requestlist"><code>Promise&lt;RequestList&gt;</code></a></li>
 <li><a href="#module_Apify.openRequestQueue"><code>.openRequestQueue</code></a> ⇒ <a href="requestqueue"><code>Promise&lt;RequestQueue&gt;</code></a></li>
 <li><a href="#module_Apify.pushData"><code>.pushData(item)</code></a> ⇒ <code>Promise</code></li>
 <li><a href="#module_Apify.setValue"><code>.setValue(key, value, [options])</code></a> ⇒ <code>Promise</code></li>
@@ -653,6 +654,59 @@ The actual data is stored either on a local filesystem or in the Apify cloud.</p
   environment variable is set. This way it is possible to combine local and cloud storage.</p>
 </td></tr></tbody>
 </table>
+<a name="module_Apify.openRequestList"></a>
+<h2><a class="anchor" aria-hidden="true" id="apifyopenrequestlist-code-promise-lt-requestlist-gt-code-requestlist"></a><a href="#apifyopenrequestlist-code-promise-lt-requestlist-gt-code-requestlist" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>Apify.openRequestList</code> ⇒ <a href="requestlist"><code>Promise&lt;RequestList&gt;</code></a></h2>
+<p>Opens a request list and returns a promise resolving to an instance
+of the <a href="requestlist"><code>RequestList</code></a> class that is already initialized.</p>
+<p><a href="requestlist"><code>RequestList</code></a> represents a list of URLs to crawl, which is always stored in memory.
+To enable picking up where left off after a process restart, the request list sources
+are persisted to the key value store at initialization of the list. Then, while crawling,
+a small state object is regularly persisted to keep track of the crawling status.</p>
+<p>For more details and code examples, see the <a href="requestlist"><code>RequestList</code></a> class.</p>
+<p><strong>Example Usage:</strong></p>
+<pre><code class="hljs css language-javascript"><span class="token keyword">const</span> sources <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token string">'https://www.example.com'</span><span class="token punctuation">,</span>
+    <span class="token string">'https://www.google.com'</span><span class="token punctuation">,</span>
+    <span class="token string">'https://www.bing.com'</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> requestList <span class="token operator">=</span> <span class="token keyword">await</span> Apify<span class="token punctuation">.</span><span class="token function">openRequestList</span><span class="token punctuation">(</span><span class="token string">'my-name'</span><span class="token punctuation">,</span> sources<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Param</th><th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>listName</code></td><td><code>string</code> | <code>null</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>Name of the request list to be opened. Setting a name enables the <code>RequestList</code>&#39;s state to be persisted
+  in the key value store. This is useful in case of a restart or migration. Since <code>RequestList</code> is only
+  stored in memory, a restart or migration wipes it clean. Setting a name will enable the <code>RequestList</code>&#39;s
+  state to survive those situations and continue where it left off.</p>
+<p>  The name will be used as a prefix in key value store, producing keys such as <code>NAME-REQUEST_LIST_STATE</code>
+  and <code>NAME-REQUEST_LIST_SOURCES</code>.</p>
+<p>  If <code>null</code>, the list will not be persisted and will only be stored in memory. Process restart
+  will then cause the list to be crawled again from the beginning. We suggest always using a name.</p>
+</td></tr><tr>
+<td><code>sources</code></td><td><code>Array&lt;Object&gt;</code> | <code>Array&lt;string&gt;</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>Sources represent the URLs to crawl. It can either be a <code>string[]</code> with plain URLs or an <code>Object[]</code>.
+  The objects&#39; contents can either be just plain objects, defining at least the &#39;url&#39; property
+  or instances of the <a href="request"><code>Request</code></a> class. See the (<code>new RequestList</code>)(RequestList#new_RequestList_new)
+  options for details.</p>
+</td></tr><tr>
+<td><code>[options]</code></td><td><code>Object</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>The (<code>new RequestList</code>)(RequestList#new_RequestList_new) options. Note that the listName parameter supersedes
+  the <code>persistStateKey</code> and <code>persistSourcesKey</code> options and the sources parameter supersedes the <code>sources</code> option.</p>
+</td></tr></tbody>
+</table>
 <a name="module_Apify.openRequestQueue"></a>
 <h2><a class="anchor" aria-hidden="true" id="apifyopenrequestqueue-code-promise-lt-requestqueue-gt-code-requestqueue"></a><a href="#apifyopenrequestqueue-code-promise-lt-requestqueue-gt-code-requestqueue" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>Apify.openRequestQueue</code> ⇒ <a href="requestqueue"><code>Promise&lt;RequestQueue&gt;</code></a></h2>
 <p>Opens a request queue and returns a promise resolving to an instance
@@ -765,7 +819,7 @@ and <a href="keyvaluestore#KeyValueStore+getValue"><code>keyValueStore.getValue(
 <td colspan="3"><p>Specifies a custom MIME content type of the record.</p>
 </td></tr></tbody>
 </table>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/guides/puppeteerliveview"><span class="arrow-prev">← </span><span>Puppeteer Live View</span></a><a class="docs-next button" href="/docs/api/autoscaledpool"><span class="function-name-prevnext">AutoscaledPool</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#apifycallactid-input-options-code-promise-lt-actorrun-gt-code-typedefs-actorrun"><code>Apify.call(actId, [input], [options])</code> ⇒ <a href="../typedefs/actorrun">Promise&lt;ActorRun&gt;</a></a></li><li><a href="#apifycalltasktaskid-input-options-code-promise-lt-actorrun-gt-code-typedefs-actorrun"><code>Apify.callTask(taskId, [input], [options])</code> ⇒ <a href="../typedefs/actorrun">Promise&lt;ActorRun&gt;</a></a></li><li><a href="#apifyclient"><code>Apify.client</code></a></li><li><a href="#apifyevents"><code>Apify.events</code></a></li><li><a href="#apifygetapifyproxyurloptions-code-string-code"><code>Apify.getApifyProxyUrl(options)</code> ⇒ String</a></li><li><a href="#apifygetenv-code-object-code"><code>Apify.getEnv()</code> ⇒ Object</a></li><li><a href="#apifygetmemoryinfo-code-promise-lt-object-gt-code"><code>Apify.getMemoryInfo()</code> ⇒ Promise&lt;Object&gt;</a></li><li><a href="#apifygetvaluekey-code-promise-lt-object-gt-code"><code>Apify.getValue(key)</code> ⇒ Promise&lt;Object&gt;</a></li><li><a href="#apifyisathome-code-boolean-code"><code>Apify.isAtHome()</code> ⇒ Boolean</a></li><li><a href="#apifylaunchpuppeteer-options-code-promise-lt-browser-gt-code"><code>Apify.launchPuppeteer([options])</code> ⇒ Promise&lt;Browser&gt;</a></li><li><a href="#apifylaunchwebdriver-options-code-promise-code"><code>Apify.launchWebDriver([options])</code> ⇒ Promise</a></li><li><a href="#apifymainuserfunc"><code>Apify.main(userFunc)</code></a></li><li><a href="#apifyopendataset-datasetidorname-options-code-promise-lt-dataset-gt-code-dataset"><code>Apify.openDataset([datasetIdOrName], [options])</code> ⇒ <a href="dataset">Promise&lt;Dataset&gt;</a></a></li><li><a href="#apifyopenkeyvaluestore-storeidorname-options-code-promise-lt-keyvaluestore-gt-code-keyvaluestore"><code>Apify.openKeyValueStore([storeIdOrName], [options])</code> ⇒ <a href="keyvaluestore">Promise&lt;KeyValueStore&gt;</a></a></li><li><a href="#apifyopenrequestqueue-code-promise-lt-requestqueue-gt-code-requestqueue"><code>Apify.openRequestQueue</code> ⇒ <a href="requestqueue">Promise&lt;RequestQueue&gt;</a></a></li><li><a href="#apifypushdataitem-code-promise-code"><code>Apify.pushData(item)</code> ⇒ Promise</a></li><li><a href="#apifysetvaluekey-value-options-code-promise-code"><code>Apify.setValue(key, value, [options])</code> ⇒ Promise</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/apify_logo.svg" alt="Apify SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/guides/motivation">Guide</a><a href="/docs/examples/basiccrawler">Examples</a><a href="/docs/api/apify">Reference</a></div><div><h5>Community</h5><a href="https://stackoverflow.com/questions/tagged/apify" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://twitter.com/apify" target="_blank" rel="noreferrer noopener">Twitter</a><a href="https://www.facebook.com/apifytech" target="_blank" rel="noreferrer noopener">Facebook</a></div><div><h5>More</h5><a href="https://www.apify.com" target="_blank">Apify Cloud</a><a href="https://docusaurus.io" target="_blank">Docusaurus</a><a href="https://github.com/apifytech/apify-js" target="_blank">GitHub</a></div></section><section class="copyright">Copyright © 2019 Apify Technologies s.r.o.</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/guides/puppeteerliveview"><span class="arrow-prev">← </span><span>Puppeteer Live View</span></a><a class="docs-next button" href="/docs/api/autoscaledpool"><span class="function-name-prevnext">AutoscaledPool</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#apifycallactid-input-options-code-promise-lt-actorrun-gt-code-typedefs-actorrun"><code>Apify.call(actId, [input], [options])</code> ⇒ <a href="../typedefs/actorrun">Promise&lt;ActorRun&gt;</a></a></li><li><a href="#apifycalltasktaskid-input-options-code-promise-lt-actorrun-gt-code-typedefs-actorrun"><code>Apify.callTask(taskId, [input], [options])</code> ⇒ <a href="../typedefs/actorrun">Promise&lt;ActorRun&gt;</a></a></li><li><a href="#apifyclient"><code>Apify.client</code></a></li><li><a href="#apifyevents"><code>Apify.events</code></a></li><li><a href="#apifygetapifyproxyurloptions-code-string-code"><code>Apify.getApifyProxyUrl(options)</code> ⇒ String</a></li><li><a href="#apifygetenv-code-object-code"><code>Apify.getEnv()</code> ⇒ Object</a></li><li><a href="#apifygetmemoryinfo-code-promise-lt-object-gt-code"><code>Apify.getMemoryInfo()</code> ⇒ Promise&lt;Object&gt;</a></li><li><a href="#apifygetvaluekey-code-promise-lt-object-gt-code"><code>Apify.getValue(key)</code> ⇒ Promise&lt;Object&gt;</a></li><li><a href="#apifyisathome-code-boolean-code"><code>Apify.isAtHome()</code> ⇒ Boolean</a></li><li><a href="#apifylaunchpuppeteer-options-code-promise-lt-browser-gt-code"><code>Apify.launchPuppeteer([options])</code> ⇒ Promise&lt;Browser&gt;</a></li><li><a href="#apifylaunchwebdriver-options-code-promise-code"><code>Apify.launchWebDriver([options])</code> ⇒ Promise</a></li><li><a href="#apifymainuserfunc"><code>Apify.main(userFunc)</code></a></li><li><a href="#apifyopendataset-datasetidorname-options-code-promise-lt-dataset-gt-code-dataset"><code>Apify.openDataset([datasetIdOrName], [options])</code> ⇒ <a href="dataset">Promise&lt;Dataset&gt;</a></a></li><li><a href="#apifyopenkeyvaluestore-storeidorname-options-code-promise-lt-keyvaluestore-gt-code-keyvaluestore"><code>Apify.openKeyValueStore([storeIdOrName], [options])</code> ⇒ <a href="keyvaluestore">Promise&lt;KeyValueStore&gt;</a></a></li><li><a href="#apifyopenrequestlist-code-promise-lt-requestlist-gt-code-requestlist"><code>Apify.openRequestList</code> ⇒ <a href="requestlist">Promise&lt;RequestList&gt;</a></a></li><li><a href="#apifyopenrequestqueue-code-promise-lt-requestqueue-gt-code-requestqueue"><code>Apify.openRequestQueue</code> ⇒ <a href="requestqueue">Promise&lt;RequestQueue&gt;</a></a></li><li><a href="#apifypushdataitem-code-promise-code"><code>Apify.pushData(item)</code> ⇒ Promise</a></li><li><a href="#apifysetvaluekey-value-options-code-promise-code"><code>Apify.setValue(key, value, [options])</code> ⇒ Promise</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/apify_logo.svg" alt="Apify SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/guides/motivation">Guide</a><a href="/docs/examples/basiccrawler">Examples</a><a href="/docs/api/apify">Reference</a></div><div><h5>Community</h5><a href="https://stackoverflow.com/questions/tagged/apify" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://twitter.com/apify" target="_blank" rel="noreferrer noopener">Twitter</a><a href="https://www.facebook.com/apifytech" target="_blank" rel="noreferrer noopener">Facebook</a></div><div><h5>More</h5><a href="https://www.apify.com" target="_blank">Apify Cloud</a><a href="https://docusaurus.io" target="_blank">Docusaurus</a><a href="https://github.com/apifytech/apify-js" target="_blank">GitHub</a></div></section><section class="copyright">Copyright © 2019 Apify Technologies s.r.o.</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;

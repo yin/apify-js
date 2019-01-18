@@ -82,6 +82,7 @@ even if the <code>APIFY_LOCAL_STORAGE_DIR</code> variable is set.</p>
 <li><a href="#KeyValueStore+getValue"><code>.getValue(key)</code></a> ⇒ <code>Promise&lt;(Object|String|Buffer)&gt;</code></li>
 <li><a href="#KeyValueStore+setValue"><code>.setValue(key, value, [options])</code></a> ⇒ <code>Promise</code></li>
 <li><a href="#KeyValueStore+delete"><code>.delete()</code></a> ⇒ <code>Promise</code></li>
+<li><a href="#KeyValueStore+forEachKey"><code>.forEachKey(iteratee, [options])</code></a> ⇒ <code>Promise</code></li>
 </ul></li>
 </ul>
 <p><a name="KeyValueStore+getValue"></a></p>
@@ -182,7 +183,44 @@ otherwise the actor process might finish before the value is stored!</p>
 <h2><a class="anchor" aria-hidden="true" id="keyvaluestoredelete-code-promise-code"></a><a href="#keyvaluestoredelete-code-promise-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>keyValueStore.delete()</code> ⇒ <code>Promise</code></h2>
 <p>Removes the key-value store either from the Apify cloud storage or from the local directory,
 depending on the mode of operation.</p>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/api/dataset"><span class="arrow-prev">← </span><span>Dataset</span></a><a class="docs-next button" href="/docs/api/pseudourl"><span class="function-name-prevnext">PseudoUrl</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#keyvaluestoregetvaluekey-code-promise-lt-object-string-buffer-gt-code"><code>keyValueStore.getValue(key)</code> ⇒ Promise&lt;(Object|String|Buffer)&gt;</a></li><li><a href="#keyvaluestoresetvaluekey-value-options-code-promise-code"><code>keyValueStore.setValue(key, value, [options])</code> ⇒ Promise</a></li><li><a href="#keyvaluestoredelete-code-promise-code"><code>keyValueStore.delete()</code> ⇒ Promise</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/apify_logo.svg" alt="Apify SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/guides/motivation">Guide</a><a href="/docs/examples/basiccrawler">Examples</a><a href="/docs/api/apify">Reference</a></div><div><h5>Community</h5><a href="https://stackoverflow.com/questions/tagged/apify" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://twitter.com/apify" target="_blank" rel="noreferrer noopener">Twitter</a><a href="https://www.facebook.com/apifytech" target="_blank" rel="noreferrer noopener">Facebook</a></div><div><h5>More</h5><a href="https://www.apify.com" target="_blank">Apify Cloud</a><a href="https://docusaurus.io" target="_blank">Docusaurus</a><a href="https://github.com/apifytech/apify-js" target="_blank">GitHub</a></div></section><section class="copyright">Copyright © 2019 Apify Technologies s.r.o.</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+<p><a name="KeyValueStore+forEachKey"></a></p>
+<h2><a class="anchor" aria-hidden="true" id="keyvaluestoreforeachkeyiteratee-options-code-promise-code"></a><a href="#keyvaluestoreforeachkeyiteratee-options-code-promise-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>keyValueStore.forEachKey(iteratee, [options])</code> ⇒ <code>Promise</code></h2>
+<p>Iterates over key value store keys, yielding each in turn to an <code>iteratee</code> function.
+Each invocation of <code>iteratee</code> is called with two arguments: <code>(item, index)</code>.</p>
+<p>If the <code>iteratee</code> function returns a Promise then it is awaited before the next call.
+If it throws an error, the iteration is aborted and the <code>forEachKey</code> function throws the error.</p>
+<p><strong>Example usage</strong></p>
+<pre><code class="hljs css language-javascript"><span class="token keyword">const</span> keyValueStore <span class="token operator">=</span> <span class="token keyword">await</span> Apify<span class="token punctuation">.</span><span class="token function">openKeyValueStore</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+keyValueStore<span class="token punctuation">.</span><span class="token function">forEachKey</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span>key<span class="token punctuation">,</span> index<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`Key at </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>index<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>key<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Param</th><th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>iteratee</code></td><td><code>function</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>A function that is called for every key in the key value store.</p>
+</td></tr><tr>
+<td><code>[options]</code></td><td><code>Object</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>All <code>forEachKey()</code> parameters are passed
+  via an options object with the following keys:</p>
+</td></tr><tr>
+<td><code>[options.exclusiveStartKey]</code></td><td><code>string</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>All keys up to this one (including) are skipped from the result.</p>
+</td></tr></tbody>
+</table>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/api/dataset"><span class="arrow-prev">← </span><span>Dataset</span></a><a class="docs-next button" href="/docs/api/pseudourl"><span class="function-name-prevnext">PseudoUrl</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#keyvaluestoregetvaluekey-code-promise-lt-object-string-buffer-gt-code"><code>keyValueStore.getValue(key)</code> ⇒ Promise&lt;(Object|String|Buffer)&gt;</a></li><li><a href="#keyvaluestoresetvaluekey-value-options-code-promise-code"><code>keyValueStore.setValue(key, value, [options])</code> ⇒ Promise</a></li><li><a href="#keyvaluestoredelete-code-promise-code"><code>keyValueStore.delete()</code> ⇒ Promise</a></li><li><a href="#keyvaluestoreforeachkeyiteratee-options-code-promise-code"><code>keyValueStore.forEachKey(iteratee, [options])</code> ⇒ Promise</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/apify_logo.svg" alt="Apify SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/guides/motivation">Guide</a><a href="/docs/examples/basiccrawler">Examples</a><a href="/docs/api/apify">Reference</a></div><div><h5>Community</h5><a href="https://stackoverflow.com/questions/tagged/apify" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://twitter.com/apify" target="_blank" rel="noreferrer noopener">Twitter</a><a href="https://www.facebook.com/apifytech" target="_blank" rel="noreferrer noopener">Facebook</a></div><div><h5>More</h5><a href="https://www.apify.com" target="_blank">Apify Cloud</a><a href="https://docusaurus.io" target="_blank">Docusaurus</a><a href="https://github.com/apifytech/apify-js" target="_blank">GitHub</a></div></section><section class="copyright">Copyright © 2019 Apify Technologies s.r.o.</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;

@@ -94,17 +94,14 @@ Apify<span class="token punctuation">.</span><span class="token function">main</
             <span class="token comment">// Store the results to the default dataset.</span>
             <span class="token keyword">await</span> Apify<span class="token punctuation">.</span><span class="token function">pushData</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-            <span class="token comment">// Find the link to the next page using Puppeteer functions.</span>
-            <span class="token keyword">let</span> nextHref<span class="token punctuation">;</span>
-            <span class="token keyword">try</span> <span class="token punctuation">{</span>
-                nextHref <span class="token operator">=</span> <span class="token keyword">await</span> page<span class="token punctuation">.</span><span class="token function">$eval</span><span class="token punctuation">(</span><span class="token string">'.morelink'</span><span class="token punctuation">,</span> el <span class="token operator">=></span> el<span class="token punctuation">.</span>href<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">err</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>request<span class="token punctuation">.</span>url<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> is the last page!`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">return</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
+            <span class="token comment">// Find a link to the next page and enqueue it if it exists.</span>
+            <span class="token keyword">const</span> infos <span class="token operator">=</span> <span class="token keyword">await</span> Apify<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>puppeteer<span class="token punctuation">.</span><span class="token function">enqueueLinks</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+                page<span class="token punctuation">,</span>
+                requestQueue<span class="token punctuation">,</span>
+                selector<span class="token punctuation">:</span> <span class="token string">'.morelink'</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-            <span class="token comment">// Enqueue the link to the RequestQueue</span>
-            <span class="token keyword">await</span> requestQueue<span class="token punctuation">.</span><span class="token function">addRequest</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Apify<span class="token punctuation">.</span>Request</span><span class="token punctuation">(</span><span class="token punctuation">{</span> url<span class="token punctuation">:</span> nextHref <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>infos<span class="token punctuation">.</span>length <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>request<span class="token punctuation">.</span>url<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> is the last page!`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
         <span class="token comment">// This function is called if the page processing failed more than maxRequestRetries+1 times.</span>

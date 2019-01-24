@@ -28,11 +28,11 @@
               }
             });
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">LaunchPuppeteerOptions</h1></header><article><div><span><p><a name="LaunchPuppeteerOptions"></a></p>
-<p>An object representing options passed to the
-<a href="../api/apify#module_Apify.launchPuppeteer"><code>Apify.launchPuppeteer()</code></a>
-function. In this object, you can pass any options supported by the
-<a href="https://pptr.dev/#?product=Puppeteer&amp;show=api-puppeteerlaunchoptions"><code>puppeteer.launch()</code></a>,
-as well as the additional options provided by Apify SDK listed below.</p>
+<p>Apify extends the launch options of Puppeteer.
+You can use any of the
+<a href="https://pptr.dev/#?product=Puppeteer&show=api-puppeteerlaunchoptions" target="_blank"><code>puppeteer.launch()</code></a>
+options in the <a href="../api/apify#module_Apify.launchPuppeteer"><code>Apify.launchPuppeteer()</code></a>
+function and in addition, all the options available below.</p>
 <p><strong>Properties</strong></p>
 <table>
 <thead>
@@ -42,6 +42,13 @@ as well as the additional options provided by Apify SDK listed below.</p>
 </thead>
 <tbody>
 <tr>
+<td><code>...</code></td><td></td><td></td>
+</tr>
+<tr>
+<td colspan="3"><p>You can use any of the
+  <a href="https://pptr.dev/#?product=Puppeteer&show=api-puppeteerlaunchoptions" target="_blank"><code>puppeteer.launch()</code></a>
+  options.</p>
+</td></tr><tr>
 <td><code>[proxyUrl]</code></td><td><code>String</code></td><td></td>
 </tr>
 <tr>

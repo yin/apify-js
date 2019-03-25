@@ -28,8 +28,7 @@
               }
             });
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Puppeteer Crawler</h1></header><article><div><span><p>This example demonstrates how to use <a href="../api/puppeteercrawler"><code>PuppeteerCrawler</code></a>
-in combination with <a href="../api/requestlist"><code>RequestList</code></a>
-and <a href="../api/requestqueue"><code>RequestQueue</code></a> to recursively scrape the
+in combination with <a href="../api/requestqueue"><code>RequestQueue</code></a> to recursively scrape the
 <a href="https://news.ycombinator.com" target="_blank">Hacker News website</a> using headless Chrome / Puppeteer.
 The crawler starts with a single URL, finds links to next pages,
 enqueues them and continues until no more desired links are available.
@@ -39,23 +38,14 @@ on the source tab of your actor configuration.</p>
 <pre><code class="hljs css language-javascript"><span class="token keyword">const</span> Apify <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'apify'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 Apify<span class="token punctuation">.</span><span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-    <span class="token comment">// Create and initialize an instance of the RequestList class that contains the start URL.</span>
-    <span class="token keyword">const</span> requestList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Apify<span class="token punctuation">.</span>RequestList</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-        sources<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-            <span class="token punctuation">{</span> url<span class="token punctuation">:</span> <span class="token string">'https://news.ycombinator.com/'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-        <span class="token punctuation">]</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">await</span> requestList<span class="token punctuation">.</span><span class="token function">initialize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
     <span class="token comment">// Apify.openRequestQueue() is a factory to get a preconfigured RequestQueue instance.</span>
+    <span class="token comment">// We add our first request to it - the initial page the crawler will visit.</span>
     <span class="token keyword">const</span> requestQueue <span class="token operator">=</span> <span class="token keyword">await</span> Apify<span class="token punctuation">.</span><span class="token function">openRequestQueue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">await</span> requestQueue<span class="token punctuation">.</span><span class="token function">addRequest</span><span class="token punctuation">(</span><span class="token punctuation">{</span> url<span class="token punctuation">:</span> <span class="token string">'https://news.ycombinator.com/'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     <span class="token comment">// Create an instance of the PuppeteerCrawler class - a crawler</span>
     <span class="token comment">// that automatically loads the URLs in headless Chrome / Puppeteer.</span>
     <span class="token keyword">const</span> crawler <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Apify<span class="token punctuation">.</span>PuppeteerCrawler</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-        <span class="token comment">// The crawler will first fetch start URLs from the RequestList</span>
-        <span class="token comment">// and then the newly discovered URLs from the RequestQueue</span>
-        requestList<span class="token punctuation">,</span>
         requestQueue<span class="token punctuation">,</span>
 
         <span class="token comment">// Here you can set options that are passed to the Apify.launchPuppeteer() function.</span>
@@ -107,6 +97,9 @@ Apify<span class="token punctuation">.</span><span class="token function">main</
         <span class="token comment">// This function is called if the page processing failed more than maxRequestRetries+1 times.</span>
         handleFailedRequestFunction<span class="token punctuation">:</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> request <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
             console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`Request </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>request<span class="token punctuation">.</span>url<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> failed too many times`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">await</span> Apify<span class="token punctuation">.</span><span class="token function">pushData</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+                <span class="token string">'#debug'</span><span class="token punctuation">:</span> Apify<span class="token punctuation">.</span>utils<span class="token punctuation">.</span><span class="token function">createRequestDebugInfo</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 

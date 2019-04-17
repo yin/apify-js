@@ -49,7 +49,8 @@
         }
         function onMessageFromPlatform(msg) {
             if (msg.data === 'LIVE_VIEW_TAB_OPENED') {
-                msg.source.postMessage('ACK', msg.origin);
+                console.log('Sending ACK');
+                msg.source.postMessage('ACK', '*');
                 if (!liveViewSocket) liveViewSocket = connect();
             }
             if (msg.data === 'LIVE_VIEW_TAB_CLOSED' && liveViewSocket) {

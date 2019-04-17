@@ -46,6 +46,11 @@
             });
             return socket;
         }
+        window.addEventListener('message', (msg) => {
+            console.log('MSG SOURCE:', msg.source)
+            console.log('MSG ORIGIN:', msg.origin)
+            console.log('MSG DATA:', msg.data)
+        })
         $(() => {
             let socket;
             // Show initial snapshot obtained from /init-last-snapshot.js

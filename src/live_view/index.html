@@ -48,10 +48,9 @@
             return socket;
         }
         function onMessageFromPlatform(msg) {
-            if (!/\.apify\.com$|localhost:3000$/.test(msg.origin)) return;
-            if (msg.data === 'LIVE_VIEW_TAB_OPENED' && !liveViewSocket) {
-                liveViewSocket = connect();
+            if (msg.data === 'LIVE_VIEW_TAB_OPENED') {
                 msg.source.postMessage('ACK', msg.origin);
+                if (!liveViewSocket) liveViewSocket = connect();
             }
             if (msg.data === 'LIVE_VIEW_TAB_CLOSED' && liveViewSocket) {
                 liveViewSocket.close();

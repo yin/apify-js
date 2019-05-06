@@ -14,6 +14,7 @@
 <url> <loc>https://sdk.apify.com/docs/api/cheeriocrawler</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://sdk.apify.com/docs/api/cheeriocrawler" /> </url>
 <url> <loc>https://sdk.apify.com/docs/api/dataset</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://sdk.apify.com/docs/api/dataset" /> </url>
 <url> <loc>https://sdk.apify.com/docs/api/keyvaluestore</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://sdk.apify.com/docs/api/keyvaluestore" /> </url>
+<url> <loc>https://sdk.apify.com/docs/api/liveviewserver</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://sdk.apify.com/docs/api/liveviewserver" /> </url>
 <url> <loc>https://sdk.apify.com/docs/api/log</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://sdk.apify.com/docs/api/log" /> </url>
 <url> <loc>https://sdk.apify.com/docs/api/pseudourl</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://sdk.apify.com/docs/api/pseudourl" /> </url>
 <url> <loc>https://sdk.apify.com/docs/api/puppeteer</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://sdk.apify.com/docs/api/puppeteer" /> </url>

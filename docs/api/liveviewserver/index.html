@@ -1,0 +1,185 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>LiveViewServer · Apify SDK</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;p&gt;&lt;a name=&quot;LiveViewServer&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="LiveViewServer · Apify SDK"/><meta property="og:type" content="website"/><meta property="og:url" content="https://sdk.apify.com/"/><meta property="og:description" content="&lt;p&gt;&lt;a name=&quot;LiveViewServer&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+"/><meta property="og:image" content="https://sdk.apify.com/img/apify_logo.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://sdk.apify.com/img/apify_logo.png"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/prism.css"/><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/apify_logo.svg" alt="Apify SDK"/><h2 class="headerTitleWithLogo">Apify SDK</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class="siteNavGroupActive"><a href="/docs/guides/motivation" target="_self">Guide</a></li><li class=""><a href="/docs/examples/basiccrawler" target="_self">Examples</a></li><li class="siteNavGroupActive"><a href="/docs/api/apify" target="_self">Reference</a></li><li class=""><a href="https://github.com/apifytech/apify-js" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Reference</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Guide</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/guides/motivation">Motivation</a></li><li class="navListItem"><a class="navItem" href="/docs/guides/gettingstarted">Getting Started</a></li><li class="navListItem"><a class="navItem" href="/docs/guides/quickstart">Quick Start</a></li><li class="navListItem"><a class="navItem" href="/docs/guides/whatisanactor">What is an Actor</a></li><li class="navListItem"><a class="navItem" href="/docs/guides/environmentvariables">Environment Variables</a></li><li class="navListItem"><a class="navItem" href="/docs/guides/datastorage">Data Storage</a></li><li class="navListItem"><a class="navItem" href="/docs/guides/puppeteerliveview">Puppeteer Live View</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Reference</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/api/apify">Apify</a></li><li class="navListItem"><a class="navItem" href="/docs/api/autoscaledpool">AutoscaledPool</a></li><li class="navListItem"><a class="navItem" href="/docs/api/basiccrawler">BasicCrawler</a></li><li class="navListItem"><a class="navItem" href="/docs/api/cheeriocrawler">CheerioCrawler</a></li><li class="navListItem"><a class="navItem" href="/docs/api/dataset">Dataset</a></li><li class="navListItem"><a class="navItem" href="/docs/api/keyvaluestore">KeyValueStore</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/api/liveviewserver">LiveViewServer</a></li><li class="navListItem"><a class="navItem" href="/docs/api/pseudourl">PseudoUrl</a></li><li class="navListItem"><a class="navItem" href="/docs/api/puppeteercrawler">PuppeteerCrawler</a></li><li class="navListItem"><a class="navItem" href="/docs/api/puppeteerpool">PuppeteerPool</a></li><li class="navListItem"><a class="navItem" href="/docs/api/request">Request</a></li><li class="navListItem"><a class="navItem" href="/docs/api/requestlist">RequestList</a></li><li class="navListItem"><a class="navItem" href="/docs/api/requestqueue">RequestQueue</a></li><li class="navListItem"><a class="navItem" href="/docs/api/utils">utils</a></li><li class="navListItem"><a class="navItem" href="/docs/api/log">utils.log</a></li><li class="navListItem"><a class="navItem" href="/docs/api/puppeteer">utils.puppeteer</a></li><li class="navListItem"><a class="navItem" href="/docs/api/social">utils.social</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">LiveViewServer</h1></header><article><div><span><p><a name="LiveViewServer"></a></p>
+<p><code>LiveViewServer</code> enables serving of browser snapshots via web sockets. It includes its own client
+that provides a simple frontend to viewing the captured snapshots. A snapshot consists of three
+pieces of information, the currently opened URL, the content of the page (HTML) and its screenshot.</p>
+<pre><code class="hljs css language-json"><span class="token punctuation">{</span>
+    <span class="token property">"pageUrl"</span><span class="token operator">:</span> <span class="token string">"https://www.example.com"</span><span class="token punctuation">,</span>
+    <span class="token property">"htmlContent"</span><span class="token operator">:</span> <span class="token string">"&lt;html>&lt;body> ...."</span><span class="token punctuation">,</span>
+    <span class="token property">"screenshotIndex"</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+    <span class="token property">"createdAt"</span><span class="token operator">:</span> <span class="token string">"2019-04-18T11:50:40.060Z"</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>LiveViewServer</code> is useful when you want to be able to inspect the current browser status on demand.
+When no client is connected, the webserver consumes very low resources so it should have a close
+to zero impact on performance. Only once a client connects the server will start serving snapshots.
+Once no longer needed, it can be disabled again in the client to remove any performance impact.</p>
+<p>NOTE: Screenshot taking in browser typically takes around 300ms. So having the <code>LiveViewServer</code>
+always serve snapshots will have a significant impact on performance.</p>
+<p>When using <a href="puppeteerpool"><code>PuppeteerPool</code></a>, the <code>LiveViewServer</code> can be
+easily used just by providing the <code>useLiveView = true</code> option to the <a href="puppeteerpool"><code>PuppeteerPool</code></a>.
+It can also be initiated via <a href="puppeteercrawler"><code>PuppeteerCrawler</code></a> <code>puppeteerPoolOptions</code>.</p>
+<p>It will take snapshots of the first page of the latest browser. Taking snapshots of only a
+single page improves performance and stability dramatically in high concurrency situations.</p>
+<p>When running locally, it is often best to use a headful browser for debugging, since it provides
+a better view into the browser, including DevTools, but <code>LiveViewServer</code> works too.</p>
+<ul>
+<li><a href="liveviewserver">LiveViewServer</a>
+<ul>
+<li><a href="#new_LiveViewServer_new"><code>new LiveViewServer([options])</code></a></li>
+<li><a href="#LiveViewServer+start"><code>.start()</code></a> ⇒ <code>Promise</code></li>
+<li><a href="#LiveViewServer+stop"><code>.stop()</code></a> ⇒ <code>Promise</code></li>
+<li><a href="#LiveViewServer+serve"><code>.serve(page)</code></a> ⇒ <code>Promise</code></li>
+<li><a href="#LiveViewServer+getLastSnapshot"><code>.getLastSnapshot()</code></a> ⇒ <code>Object</code></li>
+<li><a href="#LiveViewServer+isRunning"><code>.isRunning()</code></a> ⇒ <code>boolean</code></li>
+<li><a href="#LiveViewServer+hasClients"><code>.hasClients()</code></a> ⇒ <code>boolean</code></li>
+</ul></li>
+</ul>
+<p><a name="new_LiveViewServer_new"></a></p>
+<h2><a class="anchor" aria-hidden="true" id="new-liveviewserver-options"></a><a href="#new-liveviewserver-options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>new LiveViewServer([options])</code></h2>
+<table>
+<thead>
+<tr>
+<th>Param</th><th>Type</th><th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[options]</code></td><td><code>Object</code></td><td></td>
+</tr>
+<tr>
+<td colspan="3"><p>All <code>LiveViewServer</code> parameters are passed
+  via an options object with the following keys:</p>
+</td></tr><tr>
+<td><code>[options.screenshotDirectoryPath]</code></td><td><code>string</code></td><td></td>
+</tr>
+<tr>
+<td colspan="3"><p>By default, the screenshots are saved to
+  the <code>live_view</code> directory in the process&#39; working directory. Provide a different
+  absolute path to change the settings.</p>
+</td></tr><tr>
+<td><code>[options.maxScreenshotFiles]</code></td><td><code>number</code></td><td><code>10</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>Limits the number of screenshots stored
+  by the server. This is to prevent using up too much disk space.</p>
+</td></tr><tr>
+<td><code>[options.snapshotTimeoutSecs]</code></td><td><code>number</code></td><td><code>3</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>If a snapshot is not made within the timeout,
+  its creation will be aborted. This is to prevent
+  pages from being hung up by a stalled screenshot.</p>
+</td></tr><tr>
+<td><code>[options.maxSnapshotFrequencySecs]</code></td><td><code>number</code></td><td><code>2</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>Use this parameter to further decrease the resource consumption
+  of <code>LiveViewServer</code> by limiting the frequency at which it&#39;ll
+  serve snapshots.</p>
+</td></tr></tbody>
+</table>
+<a name="LiveViewServer+start"></a>
+<h2><a class="anchor" aria-hidden="true" id="liveviewserverstart-code-promise-code"></a><a href="#liveviewserverstart-code-promise-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>liveViewServer.start()</code> ⇒ <code>Promise</code></h2>
+<p>Starts the HTTP server with web socket connections enabled.
+Snapshots will not be created until a client has connected.</p>
+<p><a name="LiveViewServer+stop"></a></p>
+<h2><a class="anchor" aria-hidden="true" id="liveviewserverstop-code-promise-code"></a><a href="#liveviewserverstop-code-promise-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>liveViewServer.stop()</code> ⇒ <code>Promise</code></h2>
+<p>Prevents the server from receiving more connections. Existing connections
+will not be terminated, but the server will not prevent a process exit.</p>
+<p><a name="LiveViewServer+serve"></a></p>
+<h2><a class="anchor" aria-hidden="true" id="liveviewserverservepage-code-promise-code"></a><a href="#liveviewserverservepage-code-promise-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>liveViewServer.serve(page)</code> ⇒ <code>Promise</code></h2>
+<p>Serves a snapshot to all connected clients.
+Screenshots are not served directly, only their index number
+which is used by client to retrieve the screenshot.</p>
+<p>Will time out and throw in <code>options.snapshotTimeoutSecs</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Param</th><th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>page</code></td><td><code>Page</code></td>
+</tr>
+<tr>
+</tr></tbody>
+</table>
+<a name="LiveViewServer+getLastSnapshot"></a>
+<h2><a class="anchor" aria-hidden="true" id="liveviewservergetlastsnapshot-code-object-code"></a><a href="#liveviewservergetlastsnapshot-code-object-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>liveViewServer.getLastSnapshot()</code> ⇒ <code>Object</code></h2>
+<p><a name="LiveViewServer+isRunning"></a></p>
+<h2><a class="anchor" aria-hidden="true" id="liveviewserverisrunning-code-boolean-code"></a><a href="#liveviewserverisrunning-code-boolean-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>liveViewServer.isRunning()</code> ⇒ <code>boolean</code></h2>
+<p><a name="LiveViewServer+hasClients"></a></p>
+<h2><a class="anchor" aria-hidden="true" id="liveviewserverhasclients-code-boolean-code"></a><a href="#liveviewserverhasclients-code-boolean-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>liveViewServer.hasClients()</code> ⇒ <code>boolean</code></h2>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/api/keyvaluestore"><span class="arrow-prev">← </span><span class="function-name-prevnext">KeyValueStore</span></a><a class="docs-next button" href="/docs/api/pseudourl"><span class="function-name-prevnext">PseudoUrl</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#new-liveviewserver-options"><code>new LiveViewServer([options])</code></a></li><li><a href="#liveviewserverstart-code-promise-code"><code>liveViewServer.start()</code> ⇒ Promise</a></li><li><a href="#liveviewserverstop-code-promise-code"><code>liveViewServer.stop()</code> ⇒ Promise</a></li><li><a href="#liveviewserverservepage-code-promise-code"><code>liveViewServer.serve(page)</code> ⇒ Promise</a></li><li><a href="#liveviewservergetlastsnapshot-code-object-code"><code>liveViewServer.getLastSnapshot()</code> ⇒ Object</a></li><li><a href="#liveviewserverisrunning-code-boolean-code"><code>liveViewServer.isRunning()</code> ⇒ boolean</a></li><li><a href="#liveviewserverhasclients-code-boolean-code"><code>liveViewServer.hasClients()</code> ⇒ boolean</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/apify_logo.svg" alt="Apify SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/guides/motivation">Guide</a><a href="/docs/examples/basiccrawler">Examples</a><a href="/docs/api/apify">Reference</a></div><div><h5>Community</h5><a href="https://stackoverflow.com/questions/tagged/apify" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://twitter.com/apify" target="_blank" rel="noreferrer noopener">Twitter</a><a href="https://www.facebook.com/apifytech" target="_blank" rel="noreferrer noopener">Facebook</a></div><div><h5>More</h5><a href="https://apify.com" target="_blank">Apify Cloud</a><a href="https://docusaurus.io" target="_blank">Docusaurus</a><a href="https://github.com/apifytech/apify-js" target="_blank">GitHub</a></div></section><section class="copyright">Copyright © 2019 Apify Technologies s.r.o.</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '64ce2544769e34add0e6402688c86e92',
+                indexName: 'apify_sdk',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {}
+              });
+            </script></body></html>

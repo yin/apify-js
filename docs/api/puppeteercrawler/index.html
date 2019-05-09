@@ -52,7 +52,13 @@
             });
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">PuppeteerCrawler</h1></header><article><div><span><p><a name="PuppeteerCrawler"></a></p>
 <p>Provides a simple framework for parallel crawling of web pages
-using headless Chrome with <a href="https://github.com/GoogleChrome/puppeteer" target="_blank">Puppeteer</a>.</p>
+using headless Chrome with <a href="https://github.com/GoogleChrome/puppeteer" target="_blank">Puppeteer</a>.
+The URLs to crawl are fed either from a static list of URLs
+or from a dynamic queue of URLs enabling recursive crawling of websites.</p>
+<p>Since <code>PuppeteerCrawler</code> uses headless Chrome to download web pages and extract data,
+it is useful for crawling of websites that require to execute JavaScript.
+If the target website doesn't need JavaScript, consider using <a href="cheeriocrawler"><code>CheerioCrawler</code></a>,
+which downloads the pages using raw HTTP requests and is about 10x faster.</p>
 <p>The source URLs are represented using <a href="request"><code>Request</code></a> objects that are fed from
 <a href="requestlist"><code>RequestList</code></a> or <a href="requestqueue"><code>RequestQueue</code></a> instances provided by the <a href="#new_PuppeteerCrawler_new"><code>requestList</code></a>
 or <a href="#new_PuppeteerCrawler_new"><code>requestQueue</code></a> constructor options, respectively.</p>

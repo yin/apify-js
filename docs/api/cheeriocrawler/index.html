@@ -52,7 +52,13 @@
             });
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">CheerioCrawler</h1></header><article><div><span><p><a name="CheerioCrawler"></a></p>
 <p>Provides a framework for the parallel crawling of web pages using plain HTTP requests and
-<a href="https://www.npmjs.com/package/cheerio" target="_blank">cheerio</a> HTML parser.</p>
+<a href="https://www.npmjs.com/package/cheerio" target="_blank">cheerio</a> HTML parser.
+The URLs to crawl are fed either from a static list of URLs
+or from a dynamic queue of URLs enabling recursive crawling of websites.</p>
+<p>Since <code>CheerioCrawler</code> uses raw HTTP requests to download web pages,
+it is very fast and efficient on data bandwidth. However, if the target website requires JavaScript
+to display the content, you might need to use <a href="puppeteercrawler"><code>PuppeteerCrawler</code></a> instead,
+because it loads the pages using full-featured headless Chrome browser.</p>
 <p><code>CheerioCrawler</code> downloads each URL using a plain HTTP request,
 parses the HTML content using <a href="https://www.npmjs.com/package/cheerio" target="_blank">Cheerio</a>
 and then invokes the user-provided <a href="#new_CheerioCrawler_new"><code>handlePageFunction()</code></a> to extract page data
@@ -135,7 +141,7 @@ parameter of the <code>CheerioCrawler</code> constructor. For user convenience, 
 <p>  The function receives the following object as an argument:</p>
 <pre><code class="hljs">{
   $: Cheerio, // the Cheerio object with parsed HTML
-  html: String // the raw HTML of the page
+  html: String // the raw HTML of the page, lazy loaded only when used
   request: Request,
   response: Object // An instance of Node&#39;s http.IncomingMessage object,
   autoscaledPool: AutoscaledPool

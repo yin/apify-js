@@ -51,9 +51,13 @@
               }
             });
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">BasicCrawler</h1></header><article><div><span><p><a name="BasicCrawler"></a></p>
-<p>Provides a simple framework for parallel crawling of web pages,
-whose URLs are fed either from a static list
-or from a dynamic queue of URLs.</p>
+<p>Provides a simple framework for parallel crawling of web pages.
+The URLs to crawl are fed either from a static list of URLs
+or from a dynamic queue of URLs enabling recursive crawling of websites.</p>
+<p><code>BasicCrawler</code> is a low-level tool that requires the user to implement the page
+download and data extraction functionality themselves.
+If you want a crawler that already facilitates this functionality,
+please consider using <a href="puppeteercrawler"><code>PuppeteerCrawler</code></a> or <a href="cheeriocrawler"><code>CheerioCrawler</code></a>.</p>
 <p><code>BasicCrawler</code> invokes the user-provided <a href="#new_BasicCrawler_new"><code>handleRequestFunction()</code></a>
 for each <a href="request"><code>Request</code></a> object, which represents a single URL to crawl.
 The <a href="request"><code>Request</code></a> objects are fed from the <a href="requestlist"><code>RequestList</code></a> or the <a href="requestqueue"><code>RequestQueue</code></a>

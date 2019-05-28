@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Snapshotter · Apify SDK</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;p&gt;&lt;a name=&quot;Snapshotter&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 "/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Snapshotter · Apify SDK"/><meta property="og:type" content="website"/><meta property="og:url" content="https://sdk.apify.com/"/><meta property="og:description" content="&lt;p&gt;&lt;a name=&quot;Snapshotter&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-"/><meta property="og:image" content="https://sdk.apify.com/img/apify_logo.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://sdk.apify.com/img/apify_logo.png"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/prism.css"/><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/apify_logo.svg" alt="Apify SDK"/><h2 class="headerTitleWithLogo">Apify SDK</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class=""><a href="/docs/guides/motivation" target="_self">Guide</a></li><li class=""><a href="/docs/examples/basiccrawler" target="_self">Examples</a></li><li class=""><a href="/docs/api/apify" target="_self">Reference</a></li><li class=""><a href="https://github.com/apifytech/apify-js" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Autoscaling Tools</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Autoscaling Tools</h3><ul class=""><li class="navListItem navListItemActive"><a class="navItem" href="/docs/api/snapshotter">Snapshotter</a></li><li class="navListItem"><a class="navItem" href="/docs/api/systemstatus">SystemStatus</a></li></ul></div></div></section></div><script>
+"/><meta property="og:image" content="https://sdk.apify.com/img/apify_logo.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://sdk.apify.com/img/apify_logo.png"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/prism.css"/><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/apify_logo.svg" alt="Apify SDK"/><h2 class="headerTitleWithLogo">Apify SDK</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class=""><a href="/docs/guides/motivation" target="_self">Guide</a></li><li class=""><a href="/docs/examples/basiccrawler" target="_self">Examples</a></li><li class=""><a href="/docs/api/apify" target="_self">Reference</a></li><li class=""><a href="https://github.com/apifytech/apify-js" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Autoscaling Tools</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Autoscaling Tools</h3><ul class=""><li class="navListItem navListItemActive"><a class="navItem" href="/docs/api/snapshotter">Snapshotter</a></li><li class="navListItem"><a class="navItem" href="/docs/api/systemstatus">SystemStatus</a></li></ul></div></div></section></div><script>
             var coll = document.getElementsByClassName('collapsible');
             var checkActiveCategory = true;
             for (var i = 0; i < coll.length; i++) {
@@ -28,10 +28,16 @@
               createToggler('#navToggler', '#docsNav', 'docsSliderActive');
               createToggler('#tocToggler', 'body', 'tocActive');
 
-              const headings = document.querySelector('.toc-headings');
+              var headings = document.querySelector('.toc-headings');
               headings && headings.addEventListener('click', function(event) {
-                if (event.target.tagName === 'A') {
-                  document.body.classList.remove('tocActive');
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
                 }
               }, false);
 
@@ -55,17 +61,19 @@
 as either overloaded or not during the last interval. Keeps a history of the snapshots.
 It tracks the following resources: Memory, EventLoop, API and CPU.
 The class is used by the <a href="autoscaledpool"><code>AutoscaledPool</code></a> class.</p>
-<p>There are differences in behavior when running locally and on the Apify platform,
-but those differences are handled internally by the class and do not affect its interface.</p>
+<p>When running on the Apify platform, the CPU and memory statistics are provided by the platform,
+as collected from the running Docker container. When running locally, <code>Snapshotter</code>
+makes its own statistics by querying the OS.</p>
+<p>CPU becomes overloaded locally when its current use exceeds the <code>maxUsedCpuRatio</code> option or
+when Apify platform marks it as overloaded.</p>
 <p>Memory becomes overloaded if its current use exceeds the <code>maxUsedMemoryRatio</code> option.
 It's computed using the total memory available to the container when running on
 the Apify platform and a quarter of total system memory when running locally.
-Max total memory may be overridden by using the <code>APIFY_MEMORY_MBYTES</code> environment variable.</p>
+Max total memory when running locally may be overridden by using the <code>APIFY_MEMORY_MBYTES</code>
+environment variable.</p>
 <p>Event loop becomes overloaded if it slows down by more than the <code>maxBlockedMillis</code> option.</p>
 <p>Client becomes overloaded when rate limit errors (429 - Too Many Requests),
-typically received from the request queue exceed the set limit within the set interval.</p>
-<p>CPU tracking is available only on the Apify platform and the CPU overloaded event is read
-directly off the container and is not configurable.</p>
+typically received from the request queue, exceed the set limit within the set interval.</p>
 <ul>
 <li><a href="snapshotter">Snapshotter</a>
 <ul>
@@ -111,10 +119,25 @@ directly off the container and is not configurable.</p>
 <td colspan="3"><p>Maximum allowed delay of the event loop in milliseconds.
   Exceeding this limit overloads the event loop.</p>
 </td></tr><tr>
+<td><code>[options.cpuSnapshotIntervalSecs]</code></td><td><code>Number</code></td><td><code>1</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>Defines the interval of measuring CPU usage.
+  This is only used when running locally. On the Apify platform,
+  the statistics are provided externally at a fixed interval.</p>
+</td></tr><tr>
+<td><code>[options.maxUsedCpuRatio]</code></td><td><code>Number</code></td><td><code>0.95</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>Defines the maximum usage of CPU.
+  Exceeding this limit overloads the CPU.</p>
+</td></tr><tr>
 <td><code>[options.memorySnapshotIntervalSecs]</code></td><td><code>Number</code></td><td><code>1</code></td>
 </tr>
 <tr>
 <td colspan="3"><p>Defines the interval of measuring memory consumption.
+  This is only used when running locally. On the Apify platform,
+  the statistics are provided externally at a fixed interval.
   The measurement itself is resource intensive (25 - 50ms async).
   Therefore, setting this interval below 1 second is not recommended.</p>
 </td></tr><tr>
@@ -138,13 +161,13 @@ directly off the container and is not configurable.</p>
 </td></tr></tbody>
 </table>
 <a name="Snapshotter+start"></a>
-<h2><a class="anchor" aria-hidden="true" id="snapshotterstart-code-promise-code"></a><a href="#snapshotterstart-code-promise-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>snapshotter.start()</code> ⇒ <code>Promise</code></h2>
+<h2><a class="anchor" aria-hidden="true" id="snapshotterstart-promise"></a><a href="#snapshotterstart-promise" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>snapshotter.start()</code> ⇒ <code>Promise</code></h2>
 <p>Starts capturing snapshots at configured intervals.</p>
 <p><a name="Snapshotter+stop"></a></p>
-<h2><a class="anchor" aria-hidden="true" id="snapshotterstop-code-promise-code"></a><a href="#snapshotterstop-code-promise-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>snapshotter.stop()</code> ⇒ <code>Promise</code></h2>
+<h2><a class="anchor" aria-hidden="true" id="snapshotterstop-promise"></a><a href="#snapshotterstop-promise" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>snapshotter.stop()</code> ⇒ <code>Promise</code></h2>
 <p>Stops all resource capturing.</p>
 <p><a name="Snapshotter+getMemorySample"></a></p>
-<h2><a class="anchor" aria-hidden="true" id="snapshottergetmemorysample-sampledurationmillis-code-array-code"></a><a href="#snapshottergetmemorysample-sampledurationmillis-code-array-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>snapshotter.getMemorySample([sampleDurationMillis])</code> ⇒ <code>Array</code></h2>
+<h2><a class="anchor" aria-hidden="true" id="snapshottergetmemorysample-sampledurationmillis-array"></a><a href="#snapshottergetmemorysample-sampledurationmillis-array" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>snapshotter.getMemorySample([sampleDurationMillis])</code> ⇒ <code>Array</code></h2>
 <p>Returns a sample of latest memory snapshots, with the size of the sample defined
 by the sampleDurationMillis parameter. If omitted, it returns a full snapshot history.</p>
 <table>
@@ -161,7 +184,7 @@ by the sampleDurationMillis parameter. If omitted, it returns a full snapshot hi
 </tr></tbody>
 </table>
 <a name="Snapshotter+getEventLoopSample"></a>
-<h2><a class="anchor" aria-hidden="true" id="snapshottergeteventloopsample-sampledurationmillis-code-array-code"></a><a href="#snapshottergeteventloopsample-sampledurationmillis-code-array-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>snapshotter.getEventLoopSample([sampleDurationMillis])</code> ⇒ <code>Array</code></h2>
+<h2><a class="anchor" aria-hidden="true" id="snapshottergeteventloopsample-sampledurationmillis-array"></a><a href="#snapshottergeteventloopsample-sampledurationmillis-array" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>snapshotter.getEventLoopSample([sampleDurationMillis])</code> ⇒ <code>Array</code></h2>
 <p>Returns a sample of latest event loop snapshots, with the size of the sample defined
 by the sampleDurationMillis parameter. If omitted, it returns a full snapshot history.</p>
 <table>
@@ -178,7 +201,7 @@ by the sampleDurationMillis parameter. If omitted, it returns a full snapshot hi
 </tr></tbody>
 </table>
 <a name="Snapshotter+getCpuSample"></a>
-<h2><a class="anchor" aria-hidden="true" id="snapshottergetcpusample-sampledurationmillis-code-array-code"></a><a href="#snapshottergetcpusample-sampledurationmillis-code-array-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>snapshotter.getCpuSample([sampleDurationMillis])</code> ⇒ <code>Array</code></h2>
+<h2><a class="anchor" aria-hidden="true" id="snapshottergetcpusample-sampledurationmillis-array"></a><a href="#snapshottergetcpusample-sampledurationmillis-array" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>snapshotter.getCpuSample([sampleDurationMillis])</code> ⇒ <code>Array</code></h2>
 <p>Returns a sample of latest CPU snapshots, with the size of the sample defined
 by the sampleDurationMillis parameter. If omitted, it returns a full snapshot history.</p>
 <table>
@@ -195,7 +218,7 @@ by the sampleDurationMillis parameter. If omitted, it returns a full snapshot hi
 </tr></tbody>
 </table>
 <a name="Snapshotter+getClientSample"></a>
-<h2><a class="anchor" aria-hidden="true" id="snapshottergetclientsamplesampledurationmillis-code-array-code"></a><a href="#snapshottergetclientsamplesampledurationmillis-code-array-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>snapshotter.getClientSample(sampleDurationMillis)</code> ⇒ <code>Array</code></h2>
+<h2><a class="anchor" aria-hidden="true" id="snapshottergetclientsamplesampledurationmillis-array"></a><a href="#snapshottergetclientsamplesampledurationmillis-array" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>snapshotter.getClientSample(sampleDurationMillis)</code> ⇒ <code>Array</code></h2>
 <p>Returns a sample of latest Client snapshots, with the size of the sample defined
 by the sampleDurationMillis parameter. If omitted, it returns a full snapshot history.</p>
 <table>
@@ -211,7 +234,7 @@ by the sampleDurationMillis parameter. If omitted, it returns a full snapshot hi
 <tr>
 </tr></tbody>
 </table>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-next button" href="/docs/api/systemstatus"><span class="function-name-prevnext">SystemStatus</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#new-snapshotter-options"><code>new Snapshotter([options])</code></a></li><li><a href="#snapshotterstart-code-promise-code"><code>snapshotter.start()</code> ⇒ Promise</a></li><li><a href="#snapshotterstop-code-promise-code"><code>snapshotter.stop()</code> ⇒ Promise</a></li><li><a href="#snapshottergetmemorysample-sampledurationmillis-code-array-code"><code>snapshotter.getMemorySample([sampleDurationMillis])</code> ⇒ Array</a></li><li><a href="#snapshottergeteventloopsample-sampledurationmillis-code-array-code"><code>snapshotter.getEventLoopSample([sampleDurationMillis])</code> ⇒ Array</a></li><li><a href="#snapshottergetcpusample-sampledurationmillis-code-array-code"><code>snapshotter.getCpuSample([sampleDurationMillis])</code> ⇒ Array</a></li><li><a href="#snapshottergetclientsamplesampledurationmillis-code-array-code"><code>snapshotter.getClientSample(sampleDurationMillis)</code> ⇒ Array</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/apify_logo.svg" alt="Apify SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/guides/motivation">Guide</a><a href="/docs/examples/basiccrawler">Examples</a><a href="/docs/api/apify">Reference</a></div><div><h5>Community</h5><a href="https://stackoverflow.com/questions/tagged/apify" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://twitter.com/apify" target="_blank" rel="noreferrer noopener">Twitter</a><a href="https://www.facebook.com/apifytech" target="_blank" rel="noreferrer noopener">Facebook</a></div><div><h5>More</h5><a href="https://apify.com" target="_blank">Apify Cloud</a><a href="https://docusaurus.io" target="_blank">Docusaurus</a><a href="https://github.com/apifytech/apify-js" target="_blank">GitHub</a></div></section><section class="copyright">Copyright © 2019 Apify Technologies s.r.o.</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-next button" href="/docs/api/systemstatus"><span class="function-name-prevnext">SystemStatus</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#new-snapshotter-options"><code>new Snapshotter([options])</code></a></li><li><a href="#snapshotterstart-promise"><code>snapshotter.start()</code> ⇒ <code>Promise</code></a></li><li><a href="#snapshotterstop-promise"><code>snapshotter.stop()</code> ⇒ <code>Promise</code></a></li><li><a href="#snapshottergetmemorysample-sampledurationmillis-array"><code>snapshotter.getMemorySample([sampleDurationMillis])</code> ⇒ <code>Array</code></a></li><li><a href="#snapshottergeteventloopsample-sampledurationmillis-array"><code>snapshotter.getEventLoopSample([sampleDurationMillis])</code> ⇒ <code>Array</code></a></li><li><a href="#snapshottergetcpusample-sampledurationmillis-array"><code>snapshotter.getCpuSample([sampleDurationMillis])</code> ⇒ <code>Array</code></a></li><li><a href="#snapshottergetclientsamplesampledurationmillis-array"><code>snapshotter.getClientSample(sampleDurationMillis)</code> ⇒ <code>Array</code></a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/apify_logo.svg" alt="Apify SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/guides/motivation">Guide</a><a href="/docs/examples/basiccrawler">Examples</a><a href="/docs/api/apify">Reference</a></div><div><h5>Community</h5><a href="https://stackoverflow.com/questions/tagged/apify" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://twitter.com/apify" target="_blank" rel="noreferrer noopener">Twitter</a><a href="https://www.facebook.com/apifytech" target="_blank" rel="noreferrer noopener">Facebook</a></div><div><h5>More</h5><a href="https://apify.com" target="_blank">Apify Cloud</a><a href="https://docusaurus.io" target="_blank">Docusaurus</a><a href="https://github.com/apifytech/apify-js" target="_blank">GitHub</a></div></section><section class="copyright">Copyright © 2019 Apify Technologies s.r.o.</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;

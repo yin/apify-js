@@ -61,25 +61,28 @@ including screenshots of pages and snapshots of HTML.
 This is useful for debugging your crawlers that run in headless mode.</p>
 <p>The live view dashboard is run on a web server that is started on a port specified
 by the <code>APIFY_CONTAINER_PORT</code> environment variable (typically 4321).
-To enable live view, pass the <code>liveView: true</code> option to
-<a href="../api/apify#module_Apify.launchPuppeteer"><code>Apify.launchPuppeteer()</code></a>:</p>
-<pre><code class="hljs css language-js"><span class="token keyword">const</span> browser <span class="token operator">=</span> Apify<span class="token punctuation">.</span><span class="token function">launchPuppeteer</span><span class="token punctuation">(</span><span class="token punctuation">{</span> liveView<span class="token punctuation">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+To enable live view, pass the <code>useliveView: true</code> option to
+the <code>puppeteerPoolOptions</code> of <a href="../api/puppeteercrawler#new_PuppeteerCrawler_new"><code>PuppeteerCrawler</code></a>:</p>
+<pre><code class="hljs css language-js"><span class="token keyword">const</span> crawler <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Apify<span class="token punctuation">.</span>PuppeteerCrawler</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    puppeteerPoolOptions<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        useLiveView<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// other options</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p>or to <a href="../api/puppeteercrawler#new_PuppeteerCrawler_new"><code>PuppeteerCrawler</code></a> constructor as follows:</p>
-<pre><code class="hljs css language-js"><span class="token keyword">const</span> crawler <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PuppeteerCrawler</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    launchPuppeteerOptions<span class="token punctuation">:</span> <span class="token punctuation">{</span> liveView<span class="token punctuation">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<p>or directly to the <a href="../api/puppeteerpool"><code>PuppeteerPool</code></a> constructor, when using it standalone:</p>
+<pre><code class="hljs css language-js"><span class="token keyword">const</span> pool <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Apify<span class="token punctuation">.</span>PuppeteerPool</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    useLiveView<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
     <span class="token comment">// other options</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre>
 <p>To simplify debugging, you may also want to add the
-<code>{ slowMo: 300 }</code> option to slow down all browser operation.
+<code>{ slowMo: 300 }</code> option to slow down all browser operations.
 See <a href="https://pptr.dev/#?product=Puppeteer&show=api-puppeteerlaunchoptions" target="_blank">Puppeteer documentation</a> for details.</p>
-<p>Once live view is enabled, you can open <code>http://localhost:4321</code> and you will see a page like this:</p>
-<p><img src="../../img/puppeteer-live-view-dashboard.png" alt="Puppeteer Live View Dashboard"></p>
-<p>Click on the magnifying glass icon to view page detail, showing page screenshot and raw HTML:</p>
-<p><img src="../../img/puppeteer-live-view-detail.png" alt="Puppeteer Live View Detail"></p>
-<p>For more information, read the <a href="https://kb.apify.com/actor/debugging-your-actors-with-live-view" target="_blank">Debugging your actors with Live View</a>
-article in Apify Knowledge Base.</p>
+<p>Once live view is enabled, you can open <code>http://localhost:4321</code> and as the crawler runs,
+you should see screenshots and HTML of the pages it opens displayed in your browser.</p>
+<p>To use live view on the Apify Platform (after enabling it in your actor),
+simply select the Live View tab in your actor run view.</p>
 </span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/guides/datastorage"><span class="arrow-prev">← </span><span>Data Storage</span></a><a class="docs-next button" href="/docs/api/apify"><span>Apify</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/apify_logo.svg" alt="Apify SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/guides/motivation">Guide</a><a href="/docs/examples/basiccrawler">Examples</a><a href="/docs/api/apify">Reference</a></div><div><h5>Community</h5><a href="https://stackoverflow.com/questions/tagged/apify" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://twitter.com/apify" target="_blank" rel="noreferrer noopener">Twitter</a><a href="https://www.facebook.com/apifytech" target="_blank" rel="noreferrer noopener">Facebook</a></div><div><h5>More</h5><a href="https://apify.com" target="_blank">Apify Cloud</a><a href="https://docusaurus.io" target="_blank">Docusaurus</a><a href="https://github.com/apifytech/apify-js" target="_blank">GitHub</a></div></section><section class="copyright">Copyright © 2019 Apify Technologies s.r.o.</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {

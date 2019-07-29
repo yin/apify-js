@@ -57,19 +57,15 @@
               }
             });
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">utils.log</h1></header><article><div><span><p><a name="log"></a></p>
-<p>The log instance enables level aware logging of messages and we advise
-to use it instead of <code>console.log()</code> and its aliases in most development
+<p>The log instance enables level aware logging of messages and we advise to use it instead of <code>console.log()</code> and its aliases in most development
 scenarios.</p>
-<p>A very useful use case for <code>log</code> is using <code>log.debug</code> liberally throughout
-the codebase to get useful logging messages only when appropriate log level is set
-and keeping the console tidy in production environments.</p>
-<p>The available logging levels are, in this order: <code>DEBUG</code>, <code>INFO</code>, <code>WARNING</code>, <code>ERROR</code>, <code>OFF</code>
-and can be referenced from the <code>log.LEVELS</code> constant, such as <code>log.LEVELS.ERROR</code>.</p>
-<p>To log messages to the system console, use the <code>log.level(message)</code> invocation,
-such as <code>log.debug('this is a debug message')</code>.</p>
-<p>To prevent writing of messages above a certain log level to the console, simply
-set the appropriate level. The default log level is <code>INFO</code>, which means that
-<code>DEBUG</code> messages will not be printed, unless enabled.</p>
+<p>A very useful use case for <code>log</code> is using <code>log.debug</code> liberally throughout the codebase to get useful logging messages only when appropriate log level
+is set and keeping the console tidy in production environments.</p>
+<p>The available logging levels are, in this order: <code>DEBUG</code>, <code>INFO</code>, <code>WARNING</code>, <code>ERROR</code>, <code>OFF</code> and can be referenced from the <code>log.LEVELS</code> constant, such
+as <code>log.LEVELS.ERROR</code>.</p>
+<p>To log messages to the system console, use the <code>log.level(message)</code> invocation, such as <code>log.debug('this is a debug message')</code>.</p>
+<p>To prevent writing of messages above a certain log level to the console, simply set the appropriate level. The default log level is <code>INFO</code>, which
+means that <code>DEBUG</code> messages will not be printed, unless enabled.</p>
 <p><strong>Example:</strong></p>
 <pre><code class="hljs"><span class="token keyword">const</span> Apify <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'apify'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> <span class="token punctuation">{</span> log <span class="token punctuation">}</span> <span class="token operator">=</span> Apify<span class="token punctuation">.</span>utils<span class="token punctuation">;</span>
@@ -91,9 +87,8 @@ log<span class="token punctuation">.</span><span class="token function">error</s
   log<span class="token punctuation">.</span><span class="token function">exception</span><span class="token punctuation">(</span>e<span class="token punctuation">,</span> <span class="token string">'Exception occurred'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> errorDetails<span class="token punctuation">:</span> <span class="token string">'This is really bad!'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// prints message</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>Another very useful way of setting the log level is by setting the <code>APIFY_LOG_LEVEL</code>
-environment variable, such as <code>APIFY_LOG_LEVEL=DEBUG</code>. This way, no code changes
-are necessary to turn on your debug messages and start debugging right away.</p>
+<p>Another very useful way of setting the log level is by setting the <code>APIFY_LOG_LEVEL</code> environment variable, such as <code>APIFY_LOG_LEVEL=DEBUG</code>. This way,
+no code changes are necessary to turn on your debug messages and start debugging right away.</p>
 <ul>
 <li><a href="#log"><code>log</code></a> : <code>object</code>
 <ul>
@@ -109,12 +104,12 @@ are necessary to turn on your debug messages and start debugging right away.</p>
 </ul>
 <p><a name="log.LEVELS"></a></p>
 <h2><a class="anchor" aria-hidden="true" id="loglevels-object"></a><a href="#loglevels-object" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>log.LEVELS</code> : <code>Object</code></h2>
-<p>Map of available log levels that's useful for easy setting of appropriate log levels.
-Each log level is represented internally by a number. Eg. <code>log.LEVELS.DEBUG === 5</code>.</p>
+<p>Map of available log levels that's useful for easy setting of appropriate log levels. Each log level is represented internally by a number. Eg.
+<code>log.LEVELS.DEBUG === 5</code>.</p>
 <p><a name="log.setLevel"></a></p>
 <h2><a class="anchor" aria-hidden="true" id="logsetlevellevel"></a><a href="#logsetlevellevel" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>log.setLevel(level)</code></h2>
-<p>Sets the log level to the given value, preventing messages from less important log levels
-from being printed to the console. Use in conjunction with the <code>log.LEVELS</code> constants such as</p>
+<p>Sets the log level to the given value, preventing messages from less important log levels from being printed to the console. Use in conjunction with
+the <code>log.LEVELS</code> constants such as</p>
 <pre><code class="hljs">log<span class="token punctuation">.</span><span class="token function">setLevel</span><span class="token punctuation">(</span>log<span class="token punctuation">.</span><span class="token constant">LEVELS</span><span class="token punctuation">.</span><span class="token constant">DEBUG</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>Default log level is INFO.</p>
@@ -133,16 +128,14 @@ from being printed to the console. Use in conjunction with the <code>log.LEVELS<
 </table>
 <a name="log.getLevel"></a>
 <h2><a class="anchor" aria-hidden="true" id="loggetlevel"></a><a href="#loggetlevel" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>log.getLevel()</code></h2>
-<p>Returns the currently selected logging level. This is useful for checking whether a message
-will actually be printed to the console before one actually performs a resource intensive operation
-to construct the message, such as querying a DB for some metadata that need to be added. If the log
+<p>Returns the currently selected logging level. This is useful for checking whether a message will actually be printed to the console before one
+actually performs a resource intensive operation to construct the message, such as querying a DB for some metadata that need to be added. If the log
 level is not high enough at the moment, it doesn't make sense to execute the query.</p>
 <p><a name="log.debug"></a></p>
 <h2><a class="anchor" aria-hidden="true" id="logdebugmessage-data"></a><a href="#logdebugmessage-data" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>log.debug(message, [data])</code></h2>
-<p>Logs a <code>DEBUG</code> message. By default, it will not be written to the console. To see <code>DEBUG</code>
-messages in the console, set the log level to <code>DEBUG</code> either using the <code>log.setLevel(log.LEVELS.DEBUG)</code>
-method or using the environment variable <code>APIFY_LOG_LEVEL=DEBUG</code>. Data are stringified and appended
-to the message.</p>
+<p>Logs a <code>DEBUG</code> message. By default, it will not be written to the console. To see <code>DEBUG</code> messages in the console, set the log level to <code>DEBUG</code> either
+using the <code>log.setLevel(log.LEVELS.DEBUG)</code> method or using the environment variable <code>APIFY_LOG_LEVEL=DEBUG</code>. Data are stringified and appended to the
+message.</p>
 <table>
 <thead>
 <tr>
@@ -162,8 +155,8 @@ to the message.</p>
 </table>
 <a name="log.info"></a>
 <h2><a class="anchor" aria-hidden="true" id="loginfomessage-data"></a><a href="#loginfomessage-data" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>log.info(message, [data])</code></h2>
-<p>Logs an <code>INFO</code> message. <code>INFO</code> is the default log level so info messages will be always logged,
-unless the log level is changed. Data are stringified and appended to the message.</p>
+<p>Logs an <code>INFO</code> message. <code>INFO</code> is the default log level so info messages will be always logged, unless the log level is changed. Data are stringified
+and appended to the message.</p>
 <table>
 <thead>
 <tr>
@@ -203,8 +196,8 @@ unless the log level is changed. Data are stringified and appended to the messag
 </table>
 <a name="log.error"></a>
 <h2><a class="anchor" aria-hidden="true" id="logerrormessage-data"></a><a href="#logerrormessage-data" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>log.error(message, [data])</code></h2>
-<p>Logs an <code>ERROR</code> message. Use this method to log error messages that are not directly connected
-to an exception. For logging exceptions, use the <code>log.exception</code> method.</p>
+<p>Logs an <code>ERROR</code> message. Use this method to log error messages that are not directly connected to an exception. For logging exceptions, use the
+<code>log.exception</code> method.</p>
 <table>
 <thead>
 <tr>
@@ -224,8 +217,8 @@ to an exception. For logging exceptions, use the <code>log.exception</code> meth
 </table>
 <a name="log.exception"></a>
 <h2><a class="anchor" aria-hidden="true" id="logexceptionexception-message-data"></a><a href="#logexceptionexception-message-data" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>log.exception(exception, [message], [data])</code></h2>
-<p>Logs an <code>ERROR</code> level message with a nicely formatted exception. Note that the exception is the first parameter
-here and an additional message is only optional.</p>
+<p>Logs an <code>ERROR</code> level message with a nicely formatted exception. Note that the exception is the first parameter here and an additional message is only
+optional.</p>
 <table>
 <thead>
 <tr>

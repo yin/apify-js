@@ -57,36 +57,31 @@
               }
             });
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">PseudoUrl</h1></header><article><div><span><p><a name="PseudoUrl"></a></p>
-<p>Represents a pseudo-URL (PURL) - an URL pattern used by web crawlers
-to specify which URLs should the crawler visit.
-This class is used by the <a href="utils#utils.enqueueLinks"><code>utils.enqueueLinks()</code></a> function.</p>
-<p>A PURL is simply a URL with special directives enclosed in <code>[]</code> brackets.
-Currently, the only supported directive is <code>[RegExp]</code>,
-which defines a JavaScript-style regular expression to match against the URL.</p>
-<p>The <code>PseudoUrl</code> class can be constructed either using a pseudo-URL string
-or a regular expression (an instance of the <code>RegExp</code> object).
-With a pseudo-URL string, the matching is always case-insensitive.
-If you need case-sensitive matching, use an appropriate <code>RegExp</code> object.</p>
+<p>Represents a pseudo-URL (PURL) - an URL pattern used by web crawlers to specify which URLs should the crawler visit. This class is used by the
+<a href="utils#utils.enqueueLinks"><code>utils.enqueueLinks()</code></a> function.</p>
+<p>A PURL is simply a URL with special directives enclosed in <code>[]</code> brackets. Currently, the only supported directive is <code>[RegExp]</code>, which defines a
+JavaScript-style regular expression to match against the URL.</p>
+<p>The <code>PseudoUrl</code> class can be constructed either using a pseudo-URL string or a regular expression (an instance of the <code>RegExp</code> object). With a
+pseudo-URL string, the matching is always case-insensitive. If you need case-sensitive matching, use an appropriate <code>RegExp</code> object.</p>
 <p>For example, a PURL <code>http://www.example.com/pages/[(\w|-)*]</code> will match all of the following URLs:</p>
 <ul>
     <li><code>http://www.example.com/pages/</code></li>
     <li><code>http://www.example.com/pages/my-awesome-page</code></li>
     <li><code>http://www.example.com/pages/something</code></li>
 </ul>
-<p>Be careful to correctly escape special characters in the pseudo-URL string.
-If either <code>[</code> or <code>]</code> is part of the normal query string, it must be encoded as <code>[\x5B]</code> or <code>[\x5D]</code>,
-respectively. For example, the following PURL:</p>
+<p>Be careful to correctly escape special characters in the pseudo-URL string. If either <code>[</code> or <code>]</code> is part of the normal query string, it must be
+encoded as <code>[\x5B]</code> or <code>[\x5D]</code>, respectively. For example, the following PURL:</p>
 <pre><code class="hljs css language-http"><span class="token header-name keyword">http:</span>//www.example.com/search?do[\x5B]load[\x5D]=1
 </code></pre>
 <p>will match the URL:</p>
 <pre><code class="hljs css language-http"><span class="token header-name keyword">http:</span>//www.example.com/search?do[load]=1
 </code></pre>
-<p>If the regular expression in the pseudo-URL contains a backslash character (),
-you need to escape it with another back backslash, as shown in the example below.</p>
+<p>If the regular expression in the pseudo-URL contains a backslash character (), you need to escape it with another back backslash, as shown in the
+example below.</p>
 <p><strong>Example usage:</strong></p>
 <pre><code class="hljs css language-javascript"><span class="token comment">// Using a pseudo-URL string</span>
 <span class="token keyword">const</span> purl <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Apify<span class="token punctuation">.</span>PseudoUrl</span><span class="token punctuation">(</span><span class="token string">'http://www.example.com/pages/[(\\w|-)+]'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-  userData<span class="token punctuation">:</span> <span class="token punctuation">{</span> foo<span class="token punctuation">:</span> <span class="token string">'bar'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    userData<span class="token punctuation">:</span> <span class="token punctuation">{</span> foo<span class="token punctuation">:</span> <span class="token string">'bar'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token comment">// Using a regular expression</span>
@@ -146,11 +141,9 @@ you need to escape it with another back backslash, as shown in the example below
 </table>
 <a name="PseudoUrl+createRequest"></a>
 <h2><a class="anchor" aria-hidden="true" id="pseudourlcreaterequesturlorprops-request-request"></a><a href="#pseudourlcreaterequesturlorprops-request-request" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>pseudoUrl.createRequest(urlOrProps)</code> ⇒ <a href="request"><code>Request</code></a></h2>
-<p>Creates a Request object from a provided <code>requestTemplate</code> and a given URL
-or an object that specifies $<a href="request"><code>Request</code></a> properties. In case of a collision
-the properties will override the template, except for <code>userData</code>, which will
-be merged together, with the <code>userData</code> property having preference over the template.
-This enables dynamic overriding of the template.</p>
+<p>Creates a Request object from a provided <code>requestTemplate</code> and a given URL or an object that specifies $<a href="request"><code>Request</code></a> properties. In case of a
+collision the properties will override the template, except for <code>userData</code>, which will be merged together, with the <code>userData</code> property having
+preference over the template. This enables dynamic overriding of the template.</p>
 <table>
 <thead>
 <tr>

@@ -82,14 +82,12 @@
 </ul>
 <p><a name="utils.enqueueLinks"></a></p>
 <h2><a class="anchor" aria-hidden="true" id="utilsenqueuelinks-promise-array-queueoperationinfo"></a><a href="#utilsenqueuelinks-promise-array-queueoperationinfo" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>utils.enqueueLinks</code> ⇒ <code>Promise&lt;Array&lt;QueueOperationInfo&gt;&gt;</code></h2>
-<p>The function finds elements matching a specific CSS selector (HTML anchor (<code>&lt;a&gt;</code>) by default)
-either in a Puppeteer page, or in a Cheerio object (parsed HTML),
-and enqueues the URLs in their <code>href</code> attributes to the provided <a href="requestqueue"><code>RequestQueue</code></a>.
-If you're looking to find URLs in JavaScript heavy pages where links are not available
-in <code>href</code> elements, but rather navigations are triggered in click handlers
-see <a href="puppeteer#puppeteer.enqueueLinksByClickingElements"><code>enqueueLinksByClickingElements()</code></a>.</p>
-<p>Optionally, the function allows you to filter the target links' URLs using an array of <a href="pseudourl"><code>PseudoUrl</code></a> objects
-and override settings of the enqueued <a href="request"><code>Request</code></a> objects.</p>
+<p>The function finds elements matching a specific CSS selector (HTML anchor (<code>&lt;a&gt;</code>) by default) either in a Puppeteer page, or in a Cheerio object
+(parsed HTML), and enqueues the URLs in their <code>href</code> attributes to the provided <a href="requestqueue"><code>RequestQueue</code></a>. If you're looking to find URLs in
+JavaScript heavy pages where links are not available in <code>href</code> elements, but rather navigations are triggered in click handlers see
+<a href="puppeteer#puppeteer.enqueueLinksByClickingElements"><code>enqueueLinksByClickingElements()</code></a>.</p>
+<p>Optionally, the function allows you to filter the target links' URLs using an array of <a href="pseudourl"><code>PseudoUrl</code></a> objects and override settings of the
+enqueued <a href="request"><code>Request</code></a> objects.</p>
 <p><strong>Example usage</strong></p>
 <pre><code class="hljs css language-javascript"><span class="token keyword">const</span> Apify <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'apify'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -98,16 +96,14 @@ and override settings of the enqueued <a href="request"><code>Request</code></a>
 <span class="token keyword">const</span> requestQueue <span class="token operator">=</span> <span class="token keyword">await</span> Apify<span class="token punctuation">.</span><span class="token function">openRequestQueue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token keyword">await</span> Apify<span class="token punctuation">.</span>utils<span class="token punctuation">.</span><span class="token function">enqueueLinks</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  page<span class="token punctuation">,</span>
-  requestQueue<span class="token punctuation">,</span>
-  selector<span class="token punctuation">:</span> <span class="token string">'a.product-detail'</span><span class="token punctuation">,</span>
-  pseudoUrls<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-      <span class="token string">'https://www.example.com/handbags/[.*]'</span><span class="token punctuation">,</span>
-      <span class="token string">'https://www.example.com/purses/[.*]'</span>
-  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    page<span class="token punctuation">,</span>
+    requestQueue<span class="token punctuation">,</span>
+    selector<span class="token punctuation">:</span> <span class="token string">'a.product-detail'</span><span class="token punctuation">,</span>
+    pseudoUrls<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'https://www.example.com/handbags/[.*]'</span><span class="token punctuation">,</span> <span class="token string">'https://www.example.com/purses/[.*]'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p><strong>Returns</strong>: <code>Promise&lt;Array&lt;QueueOperationInfo&gt;&gt;</code> - Promise that resolves to an array of <a href="../typedefs/queueoperationinfo"><code>QueueOperationInfo</code></a> objects.</p>
+<p><strong>Returns</strong>: <code>Promise&lt;Array&lt;QueueOperationInfo&gt;&gt;</code> - Promise that resolves to an array of <a href="../typedefs/queueoperationinfo"><code>QueueOperationInfo</code></a>
+objects.</p>
 <table>
 <thead>
 <tr>
@@ -174,8 +170,8 @@ and override settings of the enqueued <a href="request"><code>Request</code></a>
 </table>
 <a name="utils.sleep"></a>
 <h2><a class="anchor" aria-hidden="true" id="utilssleep-promise"></a><a href="#utilssleep-promise" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>utils.sleep</code> ⇒ <code>Promise</code></h2>
-<p>Returns a <code>Promise</code> that resolves after a specific period of time. This is useful to implement waiting
-in your code, e.g. to prevent overloading of target website or to avoid bot detection.</p>
+<p>Returns a <code>Promise</code> that resolves after a specific period of time. This is useful to implement waiting in your code, e.g. to prevent overloading of
+target website or to avoid bot detection.</p>
 <p><strong>Example usage:</strong></p>
 <pre><code class="hljs"><span class="token keyword">const</span> Apify <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'apify'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -200,19 +196,19 @@ in your code, e.g. to prevent overloading of target website or to avoid bot dete
 </table>
 <a name="utils.URL_NO_COMMAS_REGEX"></a>
 <h2><a class="anchor" aria-hidden="true" id="utilsurl_no_commas_regex"></a><a href="#utilsurl_no_commas_regex" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>utils.URL_NO_COMMAS_REGEX</code></h2>
-<p>Default regular expression to match URLs in a string that may be plain text, JSON, CSV or other. It supports common URL characters
-and does not support URLs containing commas or spaces. The URLs also may contain Unicode letters (not symbols).</p>
+<p>Default regular expression to match URLs in a string that may be plain text, JSON, CSV or other. It supports common URL characters and does not
+support URLs containing commas or spaces. The URLs also may contain Unicode letters (not symbols).</p>
 <p><a name="utils.URL_WITH_COMMAS_REGEX"></a></p>
 <h2><a class="anchor" aria-hidden="true" id="utilsurl_with_commas_regex"></a><a href="#utilsurl_with_commas_regex" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>utils.URL_WITH_COMMAS_REGEX</code></h2>
-<p>Regular expression that, in addition to the default regular expression <code>URL_NO_COMMAS_REGEX</code>, supports matching commas in URL path and query.
-Note, however, that this may prevent parsing URLs from comma delimited lists, or the URLs may become malformed.</p>
+<p>Regular expression that, in addition to the default regular expression <code>URL_NO_COMMAS_REGEX</code>, supports matching commas in URL path and query. Note,
+however, that this may prevent parsing URLs from comma delimited lists, or the URLs may become malformed.</p>
 <p><a name="utils.isDocker"></a></p>
 <h2><a class="anchor" aria-hidden="true" id="utilsisdocker-promise"></a><a href="#utilsisdocker-promise" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>utils.isDocker()</code> ⇒ <code>Promise</code></h2>
 <p>Returns a <code>Promise</code> that resolves to true if the code is running in a Docker container.</p>
 <p><a name="utils.downloadListOfUrls"></a></p>
 <h2><a class="anchor" aria-hidden="true" id="utilsdownloadlistofurlsoptions-promise-array-string"></a><a href="#utilsdownloadlistofurlsoptions-promise-array-string" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>utils.downloadListOfUrls(options)</code> ⇒ <code>Promise&lt;Array&lt;String&gt;&gt;</code></h2>
-<p>Returns a promise that resolves to an array of urls parsed from the resource available at the provided url.
-Optionally, custom regular expression and encoding may be provided.</p>
+<p>Returns a promise that resolves to an array of urls parsed from the resource available at the provided url. Optionally, custom regular expression and
+encoding may be provided.</p>
 <table>
 <thead>
 <tr>
@@ -272,19 +268,17 @@ Optionally, custom regular expression and encoding may be provided.</p>
 <p><a name="utils.htmlToText"></a></p>
 <h2><a class="anchor" aria-hidden="true" id="utilshtmltotexthtml-string"></a><a href="#utilshtmltotexthtml-string" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>utils.htmlToText(html)</code> ⇒ <code>String</code></h2>
 <p>The function converts a HTML document to a plain text.</p>
-<p>The plain text generated by the function is similar to a text captured
-by pressing Ctrl+A and Ctrl+C on a page when loaded in a web browser.
-The function doesn't aspire to preserve the formatting or to be perfectly correct with respect to HTML specifications.
-However, it attempts to generate newlines and whitespaces in and around HTML elements
-to avoid merging distinct parts of text and thus enable extraction of data from the text (e.g. phone numbers).</p>
+<p>The plain text generated by the function is similar to a text captured by pressing Ctrl+A and Ctrl+C on a page when loaded in a web browser. The
+function doesn't aspire to preserve the formatting or to be perfectly correct with respect to HTML specifications. However, it attempts to generate
+newlines and whitespaces in and around HTML elements to avoid merging distinct parts of text and thus enable extraction of data from the text (e.g.
+phone numbers).</p>
 <p><strong>Example usage</strong></p>
 <pre><code class="hljs css language-javascript"><span class="token keyword">const</span> text <span class="token operator">=</span> <span class="token function">htmlToText</span><span class="token punctuation">(</span><span class="token string">'&lt;html>&lt;body>Some text&lt;/body>&lt;/html>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p>Note that the function uses <a href="https://www.npmjs.com/package/cheerio">cheerio</a> to parse the HTML.
-Optionally, to avoid duplicate parsing of HTML and thus improve performance, you can pass
-an existing Cheerio object to the function instead of the HTML text. The HTML should be parsed
-with the <code>decodeEntities</code> option set to <code>true</code>. For example:</p>
+<p>Note that the function uses <a href="https://www.npmjs.com/package/cheerio">cheerio</a> to parse the HTML. Optionally, to avoid duplicate parsing of HTML and
+thus improve performance, you can pass an existing Cheerio object to the function instead of the HTML text. The HTML should be parsed with the
+<code>decodeEntities</code> option set to <code>true</code>. For example:</p>
 <pre><code class="hljs css language-javascript"><span class="token keyword">const</span> cheerio <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'cheerio'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> html <span class="token operator">=</span> <span class="token string">'&lt;html>&lt;body>Some text&lt;/body>&lt;/html>'</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> text <span class="token operator">=</span> <span class="token function">htmlToText</span><span class="token punctuation">(</span>cheerio<span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span>html<span class="token punctuation">,</span> <span class="token punctuation">{</span> decodeEntities<span class="token punctuation">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>

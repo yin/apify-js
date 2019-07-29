@@ -57,23 +57,18 @@
               }
             });
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Snapshotter</h1></header><article><div><span><p><a name="Snapshotter"></a></p>
-<p>Creates snapshots of system resources at given intervals and marks the resource
-as either overloaded or not during the last interval. Keeps a history of the snapshots.
-It tracks the following resources: Memory, EventLoop, API and CPU.
-The class is used by the <a href="autoscaledpool"><code>AutoscaledPool</code></a> class.</p>
-<p>When running on the Apify platform, the CPU and memory statistics are provided by the platform,
-as collected from the running Docker container. When running locally, <code>Snapshotter</code>
-makes its own statistics by querying the OS.</p>
-<p>CPU becomes overloaded locally when its current use exceeds the <code>maxUsedCpuRatio</code> option or
-when Apify platform marks it as overloaded.</p>
-<p>Memory becomes overloaded if its current use exceeds the <code>maxUsedMemoryRatio</code> option.
-It's computed using the total memory available to the container when running on
-the Apify platform and a quarter of total system memory when running locally.
-Max total memory when running locally may be overridden by using the <code>APIFY_MEMORY_MBYTES</code>
-environment variable.</p>
+<p>Creates snapshots of system resources at given intervals and marks the resource as either overloaded or not during the last interval. Keeps a history
+of the snapshots. It tracks the following resources: Memory, EventLoop, API and CPU. The class is used by the <a href="autoscaledpool"><code>AutoscaledPool</code></a>
+class.</p>
+<p>When running on the Apify platform, the CPU and memory statistics are provided by the platform, as collected from the running Docker container. When
+running locally, <code>Snapshotter</code> makes its own statistics by querying the OS.</p>
+<p>CPU becomes overloaded locally when its current use exceeds the <code>maxUsedCpuRatio</code> option or when Apify platform marks it as overloaded.</p>
+<p>Memory becomes overloaded if its current use exceeds the <code>maxUsedMemoryRatio</code> option. It's computed using the total memory available to the container
+when running on the Apify platform and a quarter of total system memory when running locally. Max total memory when running locally may be overridden
+by using the <code>APIFY_MEMORY_MBYTES</code> environment variable.</p>
 <p>Event loop becomes overloaded if it slows down by more than the <code>maxBlockedMillis</code> option.</p>
-<p>Client becomes overloaded when rate limit errors (429 - Too Many Requests),
-typically received from the request queue, exceed the set limit within the set interval.</p>
+<p>Client becomes overloaded when rate limit errors (429 - Too Many Requests), typically received from the request queue, exceed the set limit within the
+set interval.</p>
 <ul>
 <li><a href="snapshotter">Snapshotter</a>
 <ul>
@@ -168,8 +163,8 @@ typically received from the request queue, exceed the set limit within the set i
 <p>Stops all resource capturing.</p>
 <p><a name="Snapshotter+getMemorySample"></a></p>
 <h2><a class="anchor" aria-hidden="true" id="snapshottergetmemorysample-sampledurationmillis-array"></a><a href="#snapshottergetmemorysample-sampledurationmillis-array" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>snapshotter.getMemorySample([sampleDurationMillis])</code> ⇒ <code>Array</code></h2>
-<p>Returns a sample of latest memory snapshots, with the size of the sample defined
-by the sampleDurationMillis parameter. If omitted, it returns a full snapshot history.</p>
+<p>Returns a sample of latest memory snapshots, with the size of the sample defined by the sampleDurationMillis parameter. If omitted, it returns a full
+snapshot history.</p>
 <table>
 <thead>
 <tr>
@@ -185,8 +180,8 @@ by the sampleDurationMillis parameter. If omitted, it returns a full snapshot hi
 </table>
 <a name="Snapshotter+getEventLoopSample"></a>
 <h2><a class="anchor" aria-hidden="true" id="snapshottergeteventloopsample-sampledurationmillis-array"></a><a href="#snapshottergeteventloopsample-sampledurationmillis-array" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>snapshotter.getEventLoopSample([sampleDurationMillis])</code> ⇒ <code>Array</code></h2>
-<p>Returns a sample of latest event loop snapshots, with the size of the sample defined
-by the sampleDurationMillis parameter. If omitted, it returns a full snapshot history.</p>
+<p>Returns a sample of latest event loop snapshots, with the size of the sample defined by the sampleDurationMillis parameter. If omitted, it returns a
+full snapshot history.</p>
 <table>
 <thead>
 <tr>
@@ -202,8 +197,8 @@ by the sampleDurationMillis parameter. If omitted, it returns a full snapshot hi
 </table>
 <a name="Snapshotter+getCpuSample"></a>
 <h2><a class="anchor" aria-hidden="true" id="snapshottergetcpusample-sampledurationmillis-array"></a><a href="#snapshottergetcpusample-sampledurationmillis-array" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>snapshotter.getCpuSample([sampleDurationMillis])</code> ⇒ <code>Array</code></h2>
-<p>Returns a sample of latest CPU snapshots, with the size of the sample defined
-by the sampleDurationMillis parameter. If omitted, it returns a full snapshot history.</p>
+<p>Returns a sample of latest CPU snapshots, with the size of the sample defined by the sampleDurationMillis parameter. If omitted, it returns a full
+snapshot history.</p>
 <table>
 <thead>
 <tr>
@@ -219,8 +214,8 @@ by the sampleDurationMillis parameter. If omitted, it returns a full snapshot hi
 </table>
 <a name="Snapshotter+getClientSample"></a>
 <h2><a class="anchor" aria-hidden="true" id="snapshottergetclientsamplesampledurationmillis-array"></a><a href="#snapshottergetclientsamplesampledurationmillis-array" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>snapshotter.getClientSample(sampleDurationMillis)</code> ⇒ <code>Array</code></h2>
-<p>Returns a sample of latest Client snapshots, with the size of the sample defined
-by the sampleDurationMillis parameter. If omitted, it returns a full snapshot history.</p>
+<p>Returns a sample of latest Client snapshots, with the size of the sample defined by the sampleDurationMillis parameter. If omitted, it returns a full
+snapshot history.</p>
 <table>
 <thead>
 <tr>

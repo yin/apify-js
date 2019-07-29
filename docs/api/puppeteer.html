@@ -57,8 +57,7 @@
               }
             });
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">utils.puppeteer</h1></header><article><div><span><p><a name="puppeteer"></a></p>
-<p>A namespace that contains various utilities for
-<a href="https://github.com/GoogleChrome/puppeteer">Puppeteer</a> - the headless Chrome Node API.</p>
+<p>A namespace that contains various utilities for <a href="https://github.com/GoogleChrome/puppeteer">Puppeteer</a> - the headless Chrome Node API.</p>
 <p><strong>Example usage:</strong></p>
 <pre><code class="hljs css language-javascript"><span class="token keyword">const</span> Apify <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'apify'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> <span class="token punctuation">{</span> puppeteer <span class="token punctuation">}</span> <span class="token operator">=</span> Apify<span class="token punctuation">.</span>utils<span class="token punctuation">;</span>
@@ -89,25 +88,21 @@
 </ul>
 <p><a name="puppeteer.enqueueLinksByClickingElements"></a></p>
 <h2><a class="anchor" aria-hidden="true" id="puppeteerenqueuelinksbyclickingelements-promise-array-queueoperationinfo"></a><a href="#puppeteerenqueuelinksbyclickingelements-promise-array-queueoperationinfo" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>puppeteer.enqueueLinksByClickingElements</code> ⇒ <code>Promise&lt;Array&lt;QueueOperationInfo&gt;&gt;</code></h2>
-<p>The function finds elements matching a specific CSS selector in a Puppeteer page,
-clicks all those elements using a mouse move and a left mouse button click and intercepts
-all the navigation requests that are subsequently produced by the page. The intercepted
-requests, including their methods, headers and payloads are then enqueued to a provided
-<a href="requestqueue"><code>RequestQueue</code></a>. This is useful to crawl JavaScript heavy pages where links are not available
-in <code>href</code> elements, but rather navigations are triggered in click handlers.
-If you're looking to find URLs in <code>href</code> attributes of the page, see <a href="utils#utils.enqueueLinks"><code>enqueueLinks()</code></a>.</p>
-<p>Optionally, the function allows you to filter the target links' URLs using an array of <a href="pseudourl"><code>PseudoUrl</code></a> objects
-and override settings of the enqueued <a href="request"><code>Request</code></a> objects.</p>
-<p><strong>IMPORTANT</strong>: To be able to do this, this function uses various mutations on the page,
-such as changing the Z-index of elements being clicked and their visibility. Therefore,
-it is recommended to only use this function as the last operation in the page.</p>
-<p><strong>USING HEADFUL BROWSER</strong>: When using a headful browser, this function will only be able to click elements
-in the focused tab, effectively limiting concurrency to 1. In headless mode, full concurrency can be achieved.</p>
-<p><strong>PERFORMANCE</strong>: Clicking elements with a mouse and intercepting requests is not a low level operation
-that takes nanoseconds. It's not very CPU intensive, but it takes time. We strongly recommend limiting
-the scope of the clicking as much as possible by using a specific selector that targets only the elements
-that you assume or know will produce a navigation. You can certainly click everything by using
-the <code>*</code> selector, but be prepared to wait minutes to get results on a large and complex page.</p>
+<p>The function finds elements matching a specific CSS selector in a Puppeteer page, clicks all those elements using a mouse move and a left mouse button
+click and intercepts all the navigation requests that are subsequently produced by the page. The intercepted requests, including their methods,
+headers and payloads are then enqueued to a provided <a href="requestqueue"><code>RequestQueue</code></a>. This is useful to crawl JavaScript heavy pages where links are
+not available in <code>href</code> elements, but rather navigations are triggered in click handlers. If you're looking to find URLs in <code>href</code> attributes of the
+page, see <a href="utils#utils.enqueueLinks"><code>enqueueLinks()</code></a>.</p>
+<p>Optionally, the function allows you to filter the target links' URLs using an array of <a href="pseudourl"><code>PseudoUrl</code></a> objects and override settings of the
+enqueued <a href="request"><code>Request</code></a> objects.</p>
+<p><strong>IMPORTANT</strong>: To be able to do this, this function uses various mutations on the page, such as changing the Z-index of elements being clicked and
+their visibility. Therefore, it is recommended to only use this function as the last operation in the page.</p>
+<p><strong>USING HEADFUL BROWSER</strong>: When using a headful browser, this function will only be able to click elements in the focused tab, effectively limiting
+concurrency to 1. In headless mode, full concurrency can be achieved.</p>
+<p><strong>PERFORMANCE</strong>: Clicking elements with a mouse and intercepting requests is not a low level operation that takes nanoseconds. It's not very CPU
+intensive, but it takes time. We strongly recommend limiting the scope of the clicking as much as possible by using a specific selector that targets
+only the elements that you assume or know will produce a navigation. You can certainly click everything by using the <code>*</code> selector, but be prepared to
+wait minutes to get results on a large and complex page.</p>
 <p><strong>Example usage</strong></p>
 <pre><code class="hljs css language-javascript"><span class="token keyword">const</span> Apify <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'apify'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -125,7 +120,8 @@ the <code>*</code> selector, but be prepared to wait minutes to get results on a
   <span class="token punctuation">]</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p><strong>Returns</strong>: <code>Promise&lt;Array&lt;QueueOperationInfo&gt;&gt;</code> - Promise that resolves to an array of <a href="../typedefs/queueoperationinfo"><code>QueueOperationInfo</code></a> objects.</p>
+<p><strong>Returns</strong>: <code>Promise&lt;Array&lt;QueueOperationInfo&gt;&gt;</code> - Promise that resolves to an array of <a href="../typedefs/queueoperationinfo"><code>QueueOperationInfo</code></a>
+objects.</p>
 <table>
 <thead>
 <tr>
@@ -209,19 +205,15 @@ the <code>*</code> selector, but be prepared to wait minutes to get results on a
 </table>
 <a name="puppeteer.addInterceptRequestHandler"></a>
 <h2><a class="anchor" aria-hidden="true" id="puppeteeraddinterceptrequesthandler-promise"></a><a href="#puppeteeraddinterceptrequesthandler-promise" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>puppeteer.addInterceptRequestHandler</code> ⇒ <code>Promise</code></h2>
-<p>Adds request interception handler in similar to <code>page.on('request', handler);</code> but in addition to that
-supports multiple parallel handlers.</p>
-<p>All the handlers are executed sequentially in the order as they were added.
-Each of the handlers must call one of <code>request.continue()</code>, <code>request.abort()</code> and <code>request.respond()</code>.
-In addition to that any of the handlers may modify the request object (method, postData, headers)
-by passing its overrides to <code>request.continue()</code>.
-If multiple handlers modify same property then the last one wins. Headers are merged separately so you can
-override only a value of specific header.</p>
-<p>If one the handlers calls <code>request.abort()</code> or <code>request.respond()</code> then request is not propagated further
-to any of the remaining handlers.</p>
+<p>Adds request interception handler in similar to <code>page.on('request', handler);</code> but in addition to that supports multiple parallel handlers.</p>
+<p>All the handlers are executed sequentially in the order as they were added. Each of the handlers must call one of <code>request.continue()</code>,
+<code>request.abort()</code> and <code>request.respond()</code>. In addition to that any of the handlers may modify the request object (method, postData, headers) by
+passing its overrides to <code>request.continue()</code>. If multiple handlers modify same property then the last one wins. Headers are merged separately so you
+can override only a value of specific header.</p>
+<p>If one the handlers calls <code>request.abort()</code> or <code>request.respond()</code> then request is not propagated further to any of the remaining handlers.</p>
 <p><strong>Example usage:</strong></p>
 <pre><code class="hljs css language-javascript"><span class="token comment">// Replace images with placeholder.</span>
-<span class="token keyword">await</span> <span class="token function">addInterceptRequestHandler</span><span class="token punctuation">(</span>page<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">request</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+<span class="token keyword">await</span> <span class="token function">addInterceptRequestHandler</span><span class="token punctuation">(</span>page<span class="token punctuation">,</span> <span class="token parameter">request</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>request<span class="token punctuation">.</span><span class="token function">resourceType</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">'image'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">return</span> request<span class="token punctuation">.</span><span class="token function">respond</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
             statusCode<span class="token punctuation">:</span> <span class="token number">200</span><span class="token punctuation">,</span>
@@ -233,15 +225,15 @@ to any of the remaining handlers.</p>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token comment">// Abort all the scripts.</span>
-<span class="token keyword">await</span> <span class="token function">addInterceptRequestHandler</span><span class="token punctuation">(</span>page<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">request</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+<span class="token keyword">await</span> <span class="token function">addInterceptRequestHandler</span><span class="token punctuation">(</span>page<span class="token punctuation">,</span> <span class="token parameter">request</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>request<span class="token punctuation">.</span><span class="token function">resourceType</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">'script'</span><span class="token punctuation">)</span> <span class="token keyword">return</span> request<span class="token punctuation">.</span><span class="token function">abort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> request<span class="token punctuation">.</span><span class="token function">continue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token comment">// Change requests to post.</span>
-<span class="token keyword">await</span> <span class="token function">addInterceptRequestHandler</span><span class="token punctuation">(</span>page<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">request</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+<span class="token keyword">await</span> <span class="token function">addInterceptRequestHandler</span><span class="token punctuation">(</span>page<span class="token punctuation">,</span> <span class="token parameter">request</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> request<span class="token punctuation">.</span><span class="token function">continue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-         method<span class="token punctuation">:</span> <span class="token string">'POST'</span><span class="token punctuation">,</span>
+        method<span class="token punctuation">:</span> <span class="token string">'POST'</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -290,11 +282,10 @@ to any of the remaining handlers.</p>
 </table>
 <a name="puppeteer.gotoExtended"></a>
 <h2><a class="anchor" aria-hidden="true" id="puppeteergotoextended-promise-response"></a><a href="#puppeteergotoextended-promise-response" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>puppeteer.gotoExtended</code> ⇒ <code>Promise&lt;Response&gt;</code></h2>
-<p>Extended version of Puppeteer's <code>page.goto()</code> allowing to perform requests with HTTP method other than GET,
-with custom headers and POST payload. URL, method, headers and payload are taken from
-request parameter that must be an instance of Apify.Request class.</p>
-<p><em>NOTE:</em> In recent versions of Puppeteer using requests other than GET, overriding headers and adding payloads disables
-browser cache which degrades performance.</p>
+<p>Extended version of Puppeteer's <code>page.goto()</code> allowing to perform requests with HTTP method other than GET, with custom headers and POST payload. URL,
+method, headers and payload are taken from request parameter that must be an instance of Apify.Request class.</p>
+<p><em>NOTE:</em> In recent versions of Puppeteer using requests other than GET, overriding headers and adding payloads disables browser cache which degrades
+performance.</p>
 <table>
 <thead>
 <tr>
@@ -320,8 +311,7 @@ browser cache which degrades performance.</p>
 </table>
 <a name="puppeteer.infiniteScroll"></a>
 <h2><a class="anchor" aria-hidden="true" id="puppeteerinfinitescroll-promise"></a><a href="#puppeteerinfinitescroll-promise" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>puppeteer.infiniteScroll</code> ⇒ <code>Promise</code></h2>
-<p>Scrolls to the bottom of a page, or until it times out.
-Loads dynamic content when it hits the bottom of a page, and then continues scrolling.</p>
+<p>Scrolls to the bottom of a page, or until it times out. Loads dynamic content when it hits the bottom of a page, and then continues scrolling.</p>
 <table>
 <thead>
 <tr>
@@ -352,9 +342,8 @@ Loads dynamic content when it hits the bottom of a page, and then continues scro
 </table>
 <a name="puppeteer.injectFile"></a>
 <h2><a class="anchor" aria-hidden="true" id="puppeteerinjectfilepage-filepath-options-promise"></a><a href="#puppeteerinjectfilepage-filepath-options-promise" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>puppeteer.injectFile(page, filePath, [options])</code> ⇒ <code>Promise</code></h2>
-<p>Injects a JavaScript file into a Puppeteer page.
-Unlike Puppeteer's <code>addScriptTag</code> function, this function works on pages
-with arbitrary Cross-Origin Resource Sharing (CORS) policies.</p>
+<p>Injects a JavaScript file into a Puppeteer page. Unlike Puppeteer's <code>addScriptTag</code> function, this function works on pages with arbitrary Cross-Origin
+Resource Sharing (CORS) policies.</p>
 <p>File contents are cached for up to 10 files to limit file system access.</p>
 <table>
 <thead>
@@ -388,22 +377,19 @@ with arbitrary Cross-Origin Resource Sharing (CORS) policies.</p>
 </table>
 <a name="puppeteer.injectJQuery"></a>
 <h2><a class="anchor" aria-hidden="true" id="puppeteerinjectjquerypage-promise"></a><a href="#puppeteerinjectjquerypage-promise" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>puppeteer.injectJQuery(page)</code> ⇒ <code>Promise</code></h2>
-<p>Injects the <a href="https://jquery.com/" target="_blank"><code>jQuery</code></a> library into a Puppeteer page.
-jQuery is often useful for various web scraping and crawling tasks.
-For example, it can help extract text from HTML elements using CSS selectors.</p>
-<p>Beware that the injected jQuery object will be set to the <code>window.$</code> variable and thus it might cause conflicts with
-other libraries included by the page that use the same variable name (e.g. another version of jQuery).
-This can affect functionality of page's scripts.</p>
+<p>Injects the <a href="https://jquery.com/" target="_blank"><code>jQuery</code></a> library into a Puppeteer page. jQuery is often useful for various
+web scraping and crawling tasks. For example, it can help extract text from HTML elements using CSS selectors.</p>
+<p>Beware that the injected jQuery object will be set to the <code>window.$</code> variable and thus it might cause conflicts with other libraries included by the
+page that use the same variable name (e.g. another version of jQuery). This can affect functionality of page's scripts.</p>
 <p>The injected jQuery will survive page navigations and reloads.</p>
 <p><strong>Example usage:</strong></p>
 <pre><code class="hljs css language-javascript"><span class="token keyword">await</span> Apify<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>puppeteer<span class="token punctuation">.</span><span class="token function">injectJQuery</span><span class="token punctuation">(</span>page<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> title <span class="token operator">=</span> <span class="token keyword">await</span> page<span class="token punctuation">.</span><span class="token function">evaluate</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'head title'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'head title'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>Note that <code>injectJQuery()</code> does not affect the Puppeteer's
-<a href="https://pptr.dev/#?product=Puppeteer&show=api-pageselector" target="_blank"><code>Page.$()</code></a>
-function in any way.</p>
+<a href="https://pptr.dev/#?product=Puppeteer&show=api-pageselector" target="_blank"><code>Page.$()</code></a> function in any way.</p>
 <table>
 <thead>
 <tr>
@@ -421,14 +407,13 @@ function in any way.</p>
 <a name="puppeteer.injectUnderscore"></a>
 <h2><a class="anchor" aria-hidden="true" id="puppeteerinjectunderscorepage-promise"></a><a href="#puppeteerinjectunderscorepage-promise" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>puppeteer.injectUnderscore(page)</code> ⇒ <code>Promise</code></h2>
 <p>Injects the <a href="https://underscorejs.org/" target="_blank"><code>Underscore.js</code></a> library into a Puppeteer page.</p>
-<p>Beware that the injected Underscore object will be set to the <code>window._</code> variable and thus it might cause conflicts with
-libraries included by the page that use the same variable name.
-This can affect functionality of page's scripts.</p>
+<p>Beware that the injected Underscore object will be set to the <code>window._</code> variable and thus it might cause conflicts with libraries included by the
+page that use the same variable name. This can affect functionality of page's scripts.</p>
 <p>The injected Underscore will survive page navigations and reloads.</p>
 <p><strong>Example usage:</strong></p>
 <pre><code class="hljs css language-javascript"><span class="token keyword">await</span> Apify<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>puppeteer<span class="token punctuation">.</span><span class="token function">injectUnderscore</span><span class="token punctuation">(</span>page<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> escapedHtml <span class="token operator">=</span> <span class="token keyword">await</span> page<span class="token punctuation">.</span><span class="token function">evaluate</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> _<span class="token punctuation">.</span><span class="token function">escape</span><span class="token punctuation">(</span><span class="token string">'&lt;h1>Hello&lt;/h1>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> _<span class="token punctuation">.</span><span class="token function">escape</span><span class="token punctuation">(</span><span class="token string">'&lt;h1>Hello&lt;/h1>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <table>
@@ -447,20 +432,16 @@ This can affect functionality of page's scripts.</p>
 </table>
 <a name="puppeteer.blockRequests"></a>
 <h2><a class="anchor" aria-hidden="true" id="puppeteerblockrequestspage-options-promise"></a><a href="#puppeteerblockrequestspage-options-promise" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>puppeteer.blockRequests(page, [options])</code> ⇒ <code>Promise</code></h2>
-<p>Forces the Puppeteer browser tab to block loading URLs that match a provided pattern.
-This is useful to speed up crawling of websites, since it reduces the amount
-of data that needs to be downloaded from the web, but it may break some websites
-or unexpectedly prevent loading of resources.</p>
-<p>If the <code>options.urlPatterns</code> parameter is not provided,
-by default the function blocks URLs that include these patterns:</p>
+<p>Forces the Puppeteer browser tab to block loading URLs that match a provided pattern. This is useful to speed up crawling of websites, since it
+reduces the amount of data that needs to be downloaded from the web, but it may break some websites or unexpectedly prevent loading of resources.</p>
+<p>If the <code>options.urlPatterns</code> parameter is not provided, by default the function blocks URLs that include these patterns:</p>
 <pre><code class="hljs css language-json"><span class="token punctuation">[</span><span class="token string">".css"</span><span class="token punctuation">,</span> <span class="token string">".jpg"</span><span class="token punctuation">,</span> <span class="token string">".jpeg"</span><span class="token punctuation">,</span> <span class="token string">".png"</span><span class="token punctuation">,</span> <span class="token string">".svg"</span><span class="token punctuation">,</span> <span class="token string">".gif"</span><span class="token punctuation">,</span> <span class="token string">".woff"</span><span class="token punctuation">,</span> <span class="token string">".pdf"</span><span class="token punctuation">,</span> <span class="token string">".zip"</span><span class="token punctuation">]</span>
 </code></pre>
-<p>The defaults will be concatenated with the patterns you provide in <code>options.urlPatterns</code>.
-If you want to remove the defaults, use <code>options.includeDefaults: false</code>.</p>
-<p>This function does not use Puppeteer's request interception and therefore does not interfere
-with browser cache. It's also faster than blocking requests using interception,
-because the blocking happens directly in the browser without the round-trip to Node.js,
-but it does not provide the extra benefits of request interception.</p>
+<p>The defaults will be concatenated with the patterns you provide in <code>options.urlPatterns</code>. If you want to remove the defaults, use
+<code>options.includeDefaults: false</code>.</p>
+<p>This function does not use Puppeteer's request interception and therefore does not interfere with browser cache. It's also faster than blocking
+requests using interception, because the blocking happens directly in the browser without the round-trip to Node.js, but it does not provide the extra
+benefits of request interception.</p>
 <p>The function will never block main document loads and their respective redirects.</p>
 <p><strong>Example usage</strong></p>
 <pre><code class="hljs css language-javascript"><span class="token keyword">const</span> Apify <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'apify'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -509,11 +490,11 @@ but it does not provide the extra benefits of request interception.</p>
 <a name="puppeteer.cacheResponses"></a>
 <h2><a class="anchor" aria-hidden="true" id="puppeteercacheresponsespage-cache-responseurlrules-promise"></a><a href="#puppeteercacheresponsespage-cache-responseurlrules-promise" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><del><code>puppeteer.cacheResponses(page, cache, responseUrlRules)</code> ⇒ <code>Promise</code></del></h2>
 <p><strong><em>Deprecated</em></strong></p>
-<p><em>NOTE:</em> In recent versions of Puppeteer using this function entirely disables browser cache which resolves in sub-optimal
-performance. Until this resolves, we suggest just relying on the in-browser cache unless absolutely necessary.</p>
-<p>Enables caching of intercepted responses into a provided object. Automatically enables request interception in Puppeteer.
-<em>IMPORTANT</em>: Caching responses stores them to memory, so too loose rules could cause memory leaks for longer running crawlers.
-This issue should be resolved or atleast mitigated in future iterations of this feature.</p>
+<p><em>NOTE:</em> In recent versions of Puppeteer using this function entirely disables browser cache which resolves in sub-optimal performance. Until this
+resolves, we suggest just relying on the in-browser cache unless absolutely necessary.</p>
+<p>Enables caching of intercepted responses into a provided object. Automatically enables request interception in Puppeteer. <em>IMPORTANT</em>: Caching
+responses stores them to memory, so too loose rules could cause memory leaks for longer running crawlers. This issue should be resolved or atleast
+mitigated in future iterations of this feature.</p>
 <table>
 <thead>
 <tr>
@@ -541,26 +522,21 @@ This issue should be resolved or atleast mitigated in future iterations of this 
 </table>
 <a name="puppeteer.compileScript"></a>
 <h2><a class="anchor" aria-hidden="true" id="puppeteercompilescriptscriptstring-context-function"></a><a href="#puppeteercompilescriptscriptstring-context-function" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>puppeteer.compileScript(scriptString, context)</code> ⇒ <code>function</code></h2>
-<p>Compiles a Puppeteer script into an async function that may be executed at any time
-by providing it with the following object:</p>
+<p>Compiles a Puppeteer script into an async function that may be executed at any time by providing it with the following object:</p>
 <pre><code class="hljs"><span class="token punctuation">{</span>
    page<span class="token punctuation">:</span> Page<span class="token punctuation">,</span>
    request<span class="token punctuation">:</span> Request<span class="token punctuation">,</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>Where <code>page</code> is a Puppeteer <a href="https://pptr.dev/#?product=Puppeteer&show=api-class-page" target="_blank"><code>Page</code></a>
-and <code>request</code> is a <a href="request"><code>Request</code></a>.</p>
-<p>The function is compiled by using the <code>scriptString</code> parameter as the function's body,
-so any limitations to function bodies apply. Return value of the compiled function
-is the return value of the function body = the <code>scriptString</code> parameter.</p>
-<p>As a security measure, no globals such as <code>process</code> or <code>require</code> are accessible
-from within the function body. Note that the function does not provide a safe
-sandbox and even though globals are not easily accessible, malicious code may
-still execute in the main process via prototype manipulation. Therefore you
-should only use this function to execute sanitized or safe code.</p>
-<p>Custom context may also be provided using the <code>context</code> parameter. To improve security,
-make sure to only pass the really necessary objects to the context. Preferably making
-secured copies beforehand.</p>
+<p>Where <code>page</code> is a Puppeteer <a href="https://pptr.dev/#?product=Puppeteer&show=api-class-page" target="_blank"><code>Page</code></a> and <code>request</code> is
+a <a href="request"><code>Request</code></a>.</p>
+<p>The function is compiled by using the <code>scriptString</code> parameter as the function's body, so any limitations to function bodies apply. Return value of
+the compiled function is the return value of the function body = the <code>scriptString</code> parameter.</p>
+<p>As a security measure, no globals such as <code>process</code> or <code>require</code> are accessible from within the function body. Note that the function does not provide
+a safe sandbox and even though globals are not easily accessible, malicious code may still execute in the main process via prototype manipulation.
+Therefore you should only use this function to execute sanitized or safe code.</p>
+<p>Custom context may also be provided using the <code>context</code> parameter. To improve security, make sure to only pass the really necessary objects to the
+context. Preferably making secured copies beforehand.</p>
 <p><strong>Returns</strong>: <code>function</code> - <code>async ({ page, request }) =&gt; { scriptString }</code></p>
 <table>
 <thead>

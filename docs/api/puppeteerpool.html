@@ -57,23 +57,20 @@
               }
             });
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">PuppeteerPool</h1></header><article><div><span><p><a name="PuppeteerPool"></a></p>
-<p>Manages a pool of Chrome browser instances controlled using
-<a href="https://github.com/GoogleChrome/puppeteer" target="_blank">Puppeteer</a>.</p>
-<p><code>PuppeteerPool</code> reuses Chrome instances and tabs using specific browser rotation and retirement policies.
-This is useful in order to facilitate rotation of proxies, cookies
-or other settings in order to prevent detection of your web scraping bot,
-access web pages from various countries etc.</p>
-<p>Additionally, the reuse of browser instances instances speeds up crawling,
-and the retirement of instances helps mitigate effects of memory leaks in Chrome.</p>
+<p>Manages a pool of Chrome browser instances controlled using <a href="https://github.com/GoogleChrome/puppeteer" target="_blank">Puppeteer</a>.</p>
+<p><code>PuppeteerPool</code> reuses Chrome instances and tabs using specific browser rotation and retirement policies. This is useful in order to facilitate
+rotation of proxies, cookies or other settings in order to prevent detection of your web scraping bot, access web pages from various countries etc.</p>
+<p>Additionally, the reuse of browser instances instances speeds up crawling, and the retirement of instances helps mitigate effects of memory leaks in
+Chrome.</p>
 <p><code>PuppeteerPool</code> is internally used by the <a href="puppeteercrawler"><code>PuppeteerCrawler</code></a> class.</p>
 <p><strong>Example usage:</strong></p>
 <pre><code class="hljs css language-javascript"><span class="token keyword">const</span> puppeteerPool <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PuppeteerPool</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  <span class="token function-variable function">launchPuppeteerFunction</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-    <span class="token comment">// Use a new proxy with a new IP address for each new Chrome instance</span>
-    <span class="token keyword">return</span> Apify<span class="token punctuation">.</span><span class="token function">launchPuppeteer</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-       apifyProxySession<span class="token punctuation">:</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function-variable function">launchPuppeteerFunction</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        <span class="token comment">// Use a new proxy with a new IP address for each new Chrome instance</span>
+        <span class="token keyword">return</span> Apify<span class="token punctuation">.</span><span class="token function">launchPuppeteer</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+            apifyProxySession<span class="token punctuation">:</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> page1 <span class="token operator">=</span> <span class="token keyword">await</span> puppeteerPool<span class="token punctuation">.</span><span class="token function">newPage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -191,19 +188,17 @@ and the retirement of instances helps mitigate effects of memory leaks in Chrome
 </table>
 <a name="PuppeteerPool+newPage"></a>
 <h2><a class="anchor" aria-hidden="true" id="puppeteerpoolnewpage-promise-page"></a><a href="#puppeteerpoolnewpage-promise-page" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>puppeteerPool.newPage()</code> ⇒ <code>Promise&lt;Page&gt;</code></h2>
-<p>Produces a new page instance either by reusing an idle page that currently isn't processing
-any request or by spawning a new page (new browser tab) in one of the available
-browsers when no idle pages are available.</p>
+<p>Produces a new page instance either by reusing an idle page that currently isn't processing any request or by spawning a new page (new browser tab) in
+one of the available browsers when no idle pages are available.</p>
 <p>To spawn a new browser tab for each page, set the <code>reusePages</code> constructor option to false.</p>
 <p><a name="PuppeteerPool+destroy"></a></p>
 <h2><a class="anchor" aria-hidden="true" id="puppeteerpooldestroy-promise"></a><a href="#puppeteerpooldestroy-promise" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>puppeteerPool.destroy()</code> ⇒ <code>Promise</code></h2>
 <p>Closes all open browsers.</p>
 <p><a name="PuppeteerPool+retire"></a></p>
 <h2><a class="anchor" aria-hidden="true" id="puppeteerpoolretirebrowser-promise"></a><a href="#puppeteerpoolretirebrowser-promise" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>puppeteerPool.retire(browser)</code> ⇒ <code>Promise</code></h2>
-<p>Manually retires a Puppeteer
-<a href="https://pptr.dev/#?product=Puppeteer&show=api-class-browser" target="_blank"><code>Browser</code></a>
-instance from the pool. The browser will continue to process open pages so that they may gracefully finish.
-This is unlike <code>browser.close()</code> which will forcibly terminate the browser and all open pages will be closed.</p>
+<p>Manually retires a Puppeteer <a href="https://pptr.dev/#?product=Puppeteer&show=api-class-browser" target="_blank"><code>Browser</code></a> instance
+from the pool. The browser will continue to process open pages so that they may gracefully finish. This is unlike <code>browser.close()</code> which will
+forcibly terminate the browser and all open pages will be closed.</p>
 <table>
 <thead>
 <tr>
@@ -219,11 +214,9 @@ This is unlike <code>browser.close()</code> which will forcibly terminate the br
 </table>
 <a name="PuppeteerPool+recyclePage"></a>
 <h2><a class="anchor" aria-hidden="true" id="puppeteerpoolrecyclepagepage-promise"></a><a href="#puppeteerpoolrecyclepagepage-promise" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>puppeteerPool.recyclePage(page)</code> ⇒ <code>Promise</code></h2>
-<p>Closes the page, unless the <code>reuseTabs</code> option is set to true.
-Then it would only flag the page for a future reuse, without actually closing it.</p>
-<p>NOTE: LiveView snapshotting is tied to this function. When <code>useLiveView</code> option
-is set to true, a snapshot of the page will be taken just before closing the page
-or flagging it for reuse.</p>
+<p>Closes the page, unless the <code>reuseTabs</code> option is set to true. Then it would only flag the page for a future reuse, without actually closing it.</p>
+<p>NOTE: LiveView snapshotting is tied to this function. When <code>useLiveView</code> option is set to true, a snapshot of the page will be taken just before
+closing the page or flagging it for reuse.</p>
 <table>
 <thead>
 <tr>

@@ -155,7 +155,8 @@ options are available directly in the <code>CheerioCrawler</code> constructor.</
   provided to the <code>options.handleFailedRequestFunction</code> parameter.
   To make this work, you should <strong>always</strong>
   let your function throw exceptions rather than catch them.
-  The exceptions are logged to the request using the <a href="request.pusherrormessage"><code>Request.pushErrorMessage</code></a> function.</p>
+  The exceptions are logged to the request using the
+  <a href="request#Request+pushErrorMessage"><code>request.pushErrorMessage</code></a> function.</p>
 </td></tr><tr>
 <td><code>options.requestList</code></td><td><code><a href="requestlist">RequestList</a></code></td><td></td>
 </tr>
@@ -259,7 +260,7 @@ options are available directly in the <code>CheerioCrawler</code> constructor.</
   error: Error,
 }</code></pre><p>  where the <a href="request"><code>Request</code></a> instance corresponds to the failed request, and the <code>Error</code> instance
   represents the last error thrown during processing of the request.</p>
-<p>  See <a href="https://github.com/apifytech/apify-js/blob/master/src/cheerio_crawler.js#L13">source code</a>
+<p>  See <a href="https://github.com/apifytech/apify-js/blob/master/src/crawlers/cheerio_crawler.js#L13">source code</a>
   for the default implementation of this function.</p>
 </td></tr><tr>
 <td><code>[options.maxRequestRetries]</code></td><td><code>Number</code></td><td><code>3</code></td>

@@ -311,8 +311,8 @@ Facebook profile URLs. The function removes duplicates from the resulting arrays
 <span class="token punctuation">}</span>
 </code></pre>
 <p>Note that the <code>phones</code> field contains phone numbers extracted from the special phone links such as <code>&lt;a href=&quot;tel:+1234556789&quot;&gt;call us&lt;/a&gt;</code> (see
-<a href="phonesfromurls"><code>phonesFromUrls</code></a>) and potentially other sources with high certainty, while <code>phonesUncertain</code> contains phone numbers extracted from
-the plain text, which might be very inaccurate.</p>
+<a href="#social.phonesFromUrls"><code>social.phonesFromUrls()</code></a>]) and potentially other sources with high certainty, while <code>phonesUncertain</code> contains phone
+numbers extracted from the plain text, which might be very inaccurate.</p>
 <p><strong>Example usage:</strong></p>
 <pre><code class="hljs css language-javascript"><span class="token keyword">const</span> Apify <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'apify'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 

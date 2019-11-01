@@ -1,0 +1,195 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>SessionPool · Apify SDK</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;a name=&quot;SessionPool&quot;&gt;&lt;/a&gt;"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="SessionPool · Apify SDK"/><meta property="og:type" content="website"/><meta property="og:url" content="https://sdk.apify.com/"/><meta property="og:description" content="&lt;a name=&quot;SessionPool&quot;&gt;&lt;/a&gt;"/><meta property="og:image" content="https://sdk.apify.com/img/apify_logo.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://sdk.apify.com/img/apify_logo.png"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/prism.css"/><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/apify_logo.svg" alt="Apify SDK"/><h2 class="headerTitleWithLogo">Apify SDK</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class="siteNavGroupActive"><a href="/docs/guides/motivation" target="_self">Guide</a></li><li class=""><a href="/docs/examples/basiccrawler" target="_self">Examples</a></li><li class="siteNavGroupActive"><a href="/docs/api/apify" target="_self">Reference</a></li><li class=""><a href="https://github.com/apifytech/apify-js" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Reference</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Guide</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/guides/motivation">Motivation</a></li><li class="navListItem"><a class="navItem" href="/docs/guides/gettingstarted">Getting Started</a></li><li class="navListItem"><a class="navItem" href="/docs/guides/quickstart">Quick Start</a></li><li class="navListItem"><a class="navItem" href="/docs/guides/whatisanactor">What is an Actor</a></li><li class="navListItem"><a class="navItem" href="/docs/guides/environmentvariables">Environment Variables</a></li><li class="navListItem"><a class="navItem" href="/docs/guides/datastorage">Data Storage</a></li><li class="navListItem"><a class="navItem" href="/docs/guides/puppeteerliveview">Puppeteer Live View</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Reference</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/api/apify">Apify</a></li><li class="navListItem"><a class="navItem" href="/docs/api/autoscaledpool">AutoscaledPool</a></li><li class="navListItem"><a class="navItem" href="/docs/api/basiccrawler">BasicCrawler</a></li><li class="navListItem"><a class="navItem" href="/docs/api/cheeriocrawler">CheerioCrawler</a></li><li class="navListItem"><a class="navItem" href="/docs/api/dataset">Dataset</a></li><li class="navListItem"><a class="navItem" href="/docs/api/keyvaluestore">KeyValueStore</a></li><li class="navListItem"><a class="navItem" href="/docs/api/liveviewserver">LiveViewServer</a></li><li class="navListItem"><a class="navItem" href="/docs/api/pseudourl">PseudoUrl</a></li><li class="navListItem"><a class="navItem" href="/docs/api/puppeteercrawler">PuppeteerCrawler</a></li><li class="navListItem"><a class="navItem" href="/docs/api/puppeteerpool">PuppeteerPool</a></li><li class="navListItem"><a class="navItem" href="/docs/api/request">Request</a></li><li class="navListItem"><a class="navItem" href="/docs/api/requestlist">RequestList</a></li><li class="navListItem"><a class="navItem" href="/docs/api/requestqueue">RequestQueue</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/api/sessionpool">SessionPool</a></li><li class="navListItem"><a class="navItem" href="/docs/api/session">Session</a></li><li class="navListItem"><a class="navItem" href="/docs/api/utils">utils</a></li><li class="navListItem"><a class="navItem" href="/docs/api/log">utils.log</a></li><li class="navListItem"><a class="navItem" href="/docs/api/puppeteer">utils.puppeteer</a></li><li class="navListItem"><a class="navItem" href="/docs/api/social">utils.social</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">SessionPool</h1></header><article><div><span><p><a name="SessionPool"></a></p>
+<p>Handles the sessions rotation, creation and persistence. Creates a pool of <a href="session"><code>Session</code></a> instances, that are randomly rotated. When some
+session is marked as blocked. It is removed and new one is created instead.</p>
+<p>Session pool is by default persisted in default <a href="keyvaluestore"><code>KeyValueStore</code></a>. If you want to have one pool for all runs you have to specify
+<code>persistStateKeyValueStoreId</code>.</p>
+<p><strong>Example usage:</strong></p>
+<pre><code class="hljs css language-javascript"><span class="token keyword">const</span> sessionPool <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SessionPool</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    maxPoolSize<span class="token punctuation">:</span> <span class="token number">25</span><span class="token punctuation">,</span>
+    maxSessionAgeSecs<span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
+    maxSessionAgeSecs<span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
+    maxSessionUsageCount<span class="token punctuation">:</span> <span class="token number">150</span><span class="token punctuation">,</span> <span class="token comment">// for example when you know that the site blocks after 150 requests.</span>
+    persistStateKeyValueStoreId<span class="token punctuation">:</span> <span class="token string">'my-key-value-store-for-sessions'</span><span class="token punctuation">,</span>
+    persistStateKey<span class="token punctuation">:</span> <span class="token string">'my-session-pool'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Now you have to initialize the `SessionPool`.</span>
+<span class="token comment">// If you already have a persisted state in the selected `KeyValueState`.</span>
+<span class="token comment">// The Session pool is recreated, otherwise it creates a new one.</span>
+<span class="token comment">// It also attaches listener to `Apify.events` so it is persisted periodically and not after every change.</span>
+<span class="token keyword">await</span> sessionPool<span class="token punctuation">.</span><span class="token function">initialize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Get random session from the pool</span>
+<span class="token keyword">const</span> session1 <span class="token operator">=</span> <span class="token keyword">await</span> sessionPool<span class="token punctuation">.</span><span class="token function">getSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> session2 <span class="token operator">=</span> <span class="token keyword">await</span> sessionPool<span class="token punctuation">.</span><span class="token function">getSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> session3 <span class="token operator">=</span> <span class="token keyword">await</span> sessionPool<span class="token punctuation">.</span><span class="token function">getSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Now you can mark the session either failed of successful</span>
+
+<span class="token comment">// Marks session as bad after unsuccessful usage -> it increases error count (soft retire)</span>
+session1<span class="token punctuation">.</span><span class="token function">markBad</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Marks as successful.</span>
+session2<span class="token punctuation">.</span><span class="token function">markGood</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Retires session -> session is removed from the pool</span>
+session3<span class="token punctuation">.</span><span class="token function">retire</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<ul>
+<li><a href="sessionpool">SessionPool</a>
+<ul>
+<li><a href="#new_SessionPool_new"><code>new exports.SessionPool(options)</code></a></li>
+<li><a href="#SessionPool+usableSessionsCount"><code>.usableSessionsCount</code></a> ⇒ <code>number</code></li>
+<li><a href="#SessionPool+retiredSessionsCount"><code>.retiredSessionsCount</code></a> ⇒ <code>number</code></li>
+<li><a href="#SessionPool+initialize"><code>.initialize()</code></a> ⇒ <code>Promise&lt;void&gt;</code></li>
+<li><a href="#SessionPool+getSession"><code>.getSession()</code></a> ⇒ <a href="session"><code>Promise&lt;Session&gt;</code></a></li>
+<li><a href="#SessionPool+getState"><code>.getState()</code></a> ⇒ <code>Object</code></li>
+<li><a href="#SessionPool+persistState"><code>.persistState()</code></a> ⇒ <code>Promise</code></li>
+</ul></li>
+</ul>
+<p><a name="new_SessionPool_new"></a></p>
+<h2><a class="anchor" aria-hidden="true" id="new-exportssessionpooloptions"></a><a href="#new-exportssessionpooloptions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>new exports.SessionPool(options)</code></h2>
+<p>Session pool configuration.</p>
+<table>
+<thead>
+<tr>
+<th>Param</th><th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>options</code></td><td></td>
+</tr>
+<tr>
+<td colspan="3"></td></tr><tr>
+<td><code>options.maxPoolSize</code></td><td><code>Number</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>Maximum size of the pool.
+Indicates how many sessions are rotated.</p>
+</td></tr><tr>
+<td><code>options.maxSessionAgeSecs</code></td><td><code>Number</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>Number of seconds after which the session is considered as expired.</p>
+</td></tr><tr>
+<td><code>options.maxSessionUsageCount</code></td><td><code>Number</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>Maximum number of uses per session.
+It useful, when you know the site rate-limits, so you can retire the session before it gets blocked and let it cool down.</p>
+</td></tr><tr>
+<td><code>options.persistStateKeyValueStoreId</code></td><td><code>String</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>Name or Id of <code>KeyValueStore</code> where is the <code>SessionPool</code> state stored.</p>
+</td></tr><tr>
+<td><code>options.persistStateKey</code></td><td><code>String</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>Session pool persists it&#39;s state under this key in Key value store.</p>
+</td></tr><tr>
+<td><code>options.createSessionFunction</code></td><td><code>function</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>Custom function that should return <code>Session</code> instance.
+Function receives <code>SessionPool</code> instance as a parameter</p>
+</td></tr></tbody>
+</table>
+<a name="SessionPool+usableSessionsCount"></a>
+<h2><a class="anchor" aria-hidden="true" id="sessionpoolusablesessionscount-number"></a><a href="#sessionpoolusablesessionscount-number" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>sessionPool.usableSessionsCount</code> ⇒ <code>number</code></h2>
+<p>Gets count of usable sessions in the pool.</p>
+<p><a name="SessionPool+retiredSessionsCount"></a></p>
+<h2><a class="anchor" aria-hidden="true" id="sessionpoolretiredsessionscount-number"></a><a href="#sessionpoolretiredsessionscount-number" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>sessionPool.retiredSessionsCount</code> ⇒ <code>number</code></h2>
+<p>Gets count of retired sessions in the pool.</p>
+<p><a name="SessionPool+initialize"></a></p>
+<h2><a class="anchor" aria-hidden="true" id="sessionpoolinitialize-promise-void"></a><a href="#sessionpoolinitialize-promise-void" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>sessionPool.initialize()</code> ⇒ <code>Promise&lt;void&gt;</code></h2>
+<p>Starts periodic state persistence and potentially loads SessionPool state from <a href="keyvaluestore"><code>KeyValueStore</code></a>. This function must be called before
+you can start using the instance in a meaningful way.</p>
+<p><a name="SessionPool+getSession"></a></p>
+<h2><a class="anchor" aria-hidden="true" id="sessionpoolgetsession-promise-session-session"></a><a href="#sessionpoolgetsession-promise-session-session" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>sessionPool.getSession()</code> ⇒ <a href="session"><code>Promise&lt;Session&gt;</code></a></h2>
+<p>Gets session. If there is space for new session, it creates and return new session. If the session pool is full, it picks a session from the pool, If
+the picked session is usable it is returned, otherwise it creates and returns a new one.</p>
+<p><a name="SessionPool+getState"></a></p>
+<h2><a class="anchor" aria-hidden="true" id="sessionpoolgetstate-object"></a><a href="#sessionpoolgetstate-object" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>sessionPool.getState()</code> ⇒ <code>Object</code></h2>
+<p>Returns an object representing the internal state of the <code>SessionPool</code> instance. Note that the object's fields can change in future releases.</p>
+<p><a name="SessionPool+persistState"></a></p>
+<h2><a class="anchor" aria-hidden="true" id="sessionpoolpersiststate-promise"></a><a href="#sessionpoolpersiststate-promise" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>sessionPool.persistState()</code> ⇒ <code>Promise</code></h2>
+<p>Persists the current state of the <code>SessionPool</code> into the default <a href="keyvaluestore"><code>KeyValueStore</code></a>. The state is persisted automatically in regular
+intervals.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/api/requestqueue"><span class="arrow-prev">← </span><span class="function-name-prevnext">RequestQueue</span></a><a class="docs-next button" href="/docs/api/session"><span>Session</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#new-exportssessionpooloptions"><code>new exports.SessionPool(options)</code></a></li><li><a href="#sessionpoolusablesessionscount-number"><code>sessionPool.usableSessionsCount</code> ⇒ <code>number</code></a></li><li><a href="#sessionpoolretiredsessionscount-number"><code>sessionPool.retiredSessionsCount</code> ⇒ <code>number</code></a></li><li><a href="#sessionpoolinitialize-promise"><code>sessionPool.initialize()</code> ⇒ <code>Promise</code></a></li><li><a href="#sessionpoolgetsession-promise"><code>sessionPool.getSession()</code> ⇒ <a href="session"><code>Promise</code></a></a></li><li><a href="#sessionpoolgetstate-object"><code>sessionPool.getState()</code> ⇒ <code>Object</code></a></li><li><a href="#sessionpoolpersiststate-promise"><code>sessionPool.persistState()</code> ⇒ <code>Promise</code></a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/apify_logo.svg" alt="Apify SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/guides/motivation">Guide</a><a href="/docs/examples/basiccrawler">Examples</a><a href="/docs/api/apify">Reference</a></div><div><h5>Community</h5><a href="https://stackoverflow.com/questions/tagged/apify" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://twitter.com/apify" target="_blank" rel="noreferrer noopener">Twitter</a><a href="https://www.facebook.com/apifytech" target="_blank" rel="noreferrer noopener">Facebook</a></div><div><h5>More</h5><a href="https://apify.com" target="_blank">Apify Cloud</a><a href="https://docusaurus.io" target="_blank">Docusaurus</a><a href="https://github.com/apifytech/apify-js" target="_blank">GitHub</a></div></section><section class="copyright">Copyright © 2019 Apify Technologies s.r.o.</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '64ce2544769e34add0e6402688c86e92',
+                indexName: 'apify_sdk',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {}
+              });
+            </script></body></html>

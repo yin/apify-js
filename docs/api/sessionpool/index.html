@@ -55,16 +55,17 @@
               }
             });
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">SessionPool</h1></header><article><div><span><p><a name="SessionPool"></a></p>
-<p>Handles the sessions rotation, creation and persistence. Creates a pool of <a href="session"><code>Session</code></a> instances, that are randomly rotated. When some
-session is marked as blocked. It is removed and new one is created instead.</p>
+<p>Experimental feature and might change in the future releases. Handles the sessions rotation, creation and persistence. Creates a pool of
+<a href="session"><code>Session</code></a> instances, that are randomly rotated. When some session is marked as blocked. It is removed and new one is created instead.</p>
 <p>Session pool is by default persisted in default <a href="keyvaluestore"><code>KeyValueStore</code></a>. If you want to have one pool for all runs you have to specify
 <code>persistStateKeyValueStoreId</code>.</p>
 <p><strong>Example usage:</strong></p>
 <pre><code class="hljs css language-javascript"><span class="token keyword">const</span> sessionPool <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SessionPool</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
     maxPoolSize<span class="token punctuation">:</span> <span class="token number">25</span><span class="token punctuation">,</span>
-    maxSessionAgeSecs<span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
-    maxSessionAgeSecs<span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
-    maxSessionUsageCount<span class="token punctuation">:</span> <span class="token number">150</span><span class="token punctuation">,</span> <span class="token comment">// for example when you know that the site blocks after 150 requests.</span>
+    sessionOptions<span class="token punctuation">:</span><span class="token punctuation">{</span>
+         maxAgeSecs<span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
+         maxUsageCount<span class="token punctuation">:</span> <span class="token number">150</span><span class="token punctuation">,</span> <span class="token comment">// for example when you know that the site blocks after 150 requests.</span>
+    <span class="token punctuation">}</span>
     persistStateKeyValueStoreId<span class="token punctuation">:</span> <span class="token string">'my-key-value-store-for-sessions'</span><span class="token punctuation">,</span>
     persistStateKey<span class="token punctuation">:</span> <span class="token string">'my-session-pool'</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -83,69 +84,65 @@ session is marked as blocked. It is removed and new one is created instead.</p>
 <span class="token comment">// Now you can mark the session either failed of successful</span>
 
 <span class="token comment">// Marks session as bad after unsuccessful usage -> it increases error count (soft retire)</span>
-session1<span class="token punctuation">.</span><span class="token function">markBad</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+session1<span class="token punctuation">.</span><span class="token function">markBad</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 <span class="token comment">// Marks as successful.</span>
-session2<span class="token punctuation">.</span><span class="token function">markGood</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+session2<span class="token punctuation">.</span><span class="token function">markGood</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 <span class="token comment">// Retires session -> session is removed from the pool</span>
-session3<span class="token punctuation">.</span><span class="token function">retire</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+session3<span class="token punctuation">.</span><span class="token function">retire</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
 </code></pre>
 <ul>
 <li><a href="sessionpool">SessionPool</a>
 <ul>
-<li><a href="#new_SessionPool_new"><code>new exports.SessionPool(options)</code></a></li>
+<li><a href="#new_SessionPool_new"><code>new exports.SessionPool([options])</code></a></li>
 <li><a href="#SessionPool+usableSessionsCount"><code>.usableSessionsCount</code></a> ⇒ <code>number</code></li>
 <li><a href="#SessionPool+retiredSessionsCount"><code>.retiredSessionsCount</code></a> ⇒ <code>number</code></li>
 <li><a href="#SessionPool+initialize"><code>.initialize()</code></a> ⇒ <code>Promise&lt;void&gt;</code></li>
 <li><a href="#SessionPool+getSession"><code>.getSession()</code></a> ⇒ <a href="session"><code>Promise&lt;Session&gt;</code></a></li>
 <li><a href="#SessionPool+getState"><code>.getState()</code></a> ⇒ <code>Object</code></li>
 <li><a href="#SessionPool+persistState"><code>.persistState()</code></a> ⇒ <code>Promise</code></li>
+<li><a href="#SessionPool+teardown"><code>.teardown()</code></a></li>
 </ul></li>
 </ul>
 <p><a name="new_SessionPool_new"></a></p>
-<h2><a class="anchor" aria-hidden="true" id="new-exportssessionpooloptions"></a><a href="#new-exportssessionpooloptions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>new exports.SessionPool(options)</code></h2>
+<h2><a class="anchor" aria-hidden="true" id="new-exportssessionpool-options"></a><a href="#new-exportssessionpool-options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>new exports.SessionPool([options])</code></h2>
 <p>Session pool configuration.</p>
 <table>
 <thead>
 <tr>
-<th>Param</th><th>Type</th>
+<th>Param</th><th>Type</th><th>Default</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>options</code></td><td></td>
+<td><code>[options]</code></td><td></td><td></td>
 </tr>
 <tr>
 <td colspan="3"></td></tr><tr>
-<td><code>options.maxPoolSize</code></td><td><code>Number</code></td>
+<td><code>[options.maxPoolSize]</code></td><td><code>Number</code></td><td><code>1000</code></td>
 </tr>
 <tr>
 <td colspan="3"><p>Maximum size of the pool.
 Indicates how many sessions are rotated.</p>
 </td></tr><tr>
-<td><code>options.maxSessionAgeSecs</code></td><td><code>Number</code></td>
+<td><code>[options.sessionOptions]</code></td><td><code>Object</code></td><td></td>
 </tr>
 <tr>
-<td colspan="3"><p>Number of seconds after which the session is considered as expired.</p>
+<td colspan="3"><p>The <a href="session#new_SessionPool_new"><code>new Session</code></a> options</p>
 </td></tr><tr>
-<td><code>options.maxSessionUsageCount</code></td><td><code>Number</code></td>
-</tr>
-<tr>
-<td colspan="3"><p>Maximum number of uses per session.
-It useful, when you know the site rate-limits, so you can retire the session before it gets blocked and let it cool down.</p>
-</td></tr><tr>
-<td><code>options.persistStateKeyValueStoreId</code></td><td><code>String</code></td>
+<td><code>[options.persistStateKeyValueStoreId]</code></td><td><code>String</code></td><td></td>
 </tr>
 <tr>
 <td colspan="3"><p>Name or Id of <code>KeyValueStore</code> where is the <code>SessionPool</code> state stored.</p>
 </td></tr><tr>
-<td><code>options.persistStateKey</code></td><td><code>String</code></td>
+<td><code>[options.persistStateKey]</code></td><td><code>String</code></td><td><code>&quot;SESSION_POOL_STATE&quot;</code></td>
 </tr>
 <tr>
 <td colspan="3"><p>Session pool persists it&#39;s state under this key in Key value store.</p>
 </td></tr><tr>
-<td><code>options.createSessionFunction</code></td><td><code>function</code></td>
+<td><code>[options.createSessionFunction]</code></td><td><code>function</code></td><td></td>
 </tr>
 <tr>
 <td colspan="3"><p>Custom function that should return <code>Session</code> instance.
@@ -173,7 +170,10 @@ the picked session is usable it is returned, otherwise it creates and returns a 
 <h2><a class="anchor" aria-hidden="true" id="sessionpoolpersiststate-promise"></a><a href="#sessionpoolpersiststate-promise" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>sessionPool.persistState()</code> ⇒ <code>Promise</code></h2>
 <p>Persists the current state of the <code>SessionPool</code> into the default <a href="keyvaluestore"><code>KeyValueStore</code></a>. The state is persisted automatically in regular
 intervals.</p>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/api/requestqueue"><span class="arrow-prev">← </span><span class="function-name-prevnext">RequestQueue</span></a><a class="docs-next button" href="/docs/api/session"><span>Session</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#new-exportssessionpooloptions"><code>new exports.SessionPool(options)</code></a></li><li><a href="#sessionpoolusablesessionscount-number"><code>sessionPool.usableSessionsCount</code> ⇒ <code>number</code></a></li><li><a href="#sessionpoolretiredsessionscount-number"><code>sessionPool.retiredSessionsCount</code> ⇒ <code>number</code></a></li><li><a href="#sessionpoolinitialize-promise"><code>sessionPool.initialize()</code> ⇒ <code>Promise</code></a></li><li><a href="#sessionpoolgetsession-promise"><code>sessionPool.getSession()</code> ⇒ <a href="session"><code>Promise</code></a></a></li><li><a href="#sessionpoolgetstate-object"><code>sessionPool.getState()</code> ⇒ <code>Object</code></a></li><li><a href="#sessionpoolpersiststate-promise"><code>sessionPool.persistState()</code> ⇒ <code>Promise</code></a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/apify_logo.svg" alt="Apify SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/guides/motivation">Guide</a><a href="/docs/examples/basiccrawler">Examples</a><a href="/docs/api/apify">Reference</a></div><div><h5>Community</h5><a href="https://stackoverflow.com/questions/tagged/apify" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://twitter.com/apify" target="_blank" rel="noreferrer noopener">Twitter</a><a href="https://www.facebook.com/apifytech" target="_blank" rel="noreferrer noopener">Facebook</a></div><div><h5>More</h5><a href="https://apify.com" target="_blank">Apify Cloud</a><a href="https://docusaurus.io" target="_blank">Docusaurus</a><a href="https://github.com/apifytech/apify-js" target="_blank">GitHub</a></div></section><section class="copyright">Copyright © 2019 Apify Technologies s.r.o.</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+<p><a name="SessionPool+teardown"></a></p>
+<h2><a class="anchor" aria-hidden="true" id="sessionpoolteardown"></a><a href="#sessionpoolteardown" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>sessionPool.teardown()</code></h2>
+<p>Removes listener from <code>persistState</code> event. This function should be called after you are done with using the <code>SessionPool</code> instance.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/api/requestqueue"><span class="arrow-prev">← </span><span class="function-name-prevnext">RequestQueue</span></a><a class="docs-next button" href="/docs/api/session"><span>Session</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#new-exportssessionpool-options"><code>new exports.SessionPool([options])</code></a></li><li><a href="#sessionpoolusablesessionscount-number"><code>sessionPool.usableSessionsCount</code> ⇒ <code>number</code></a></li><li><a href="#sessionpoolretiredsessionscount-number"><code>sessionPool.retiredSessionsCount</code> ⇒ <code>number</code></a></li><li><a href="#sessionpoolinitialize-promise"><code>sessionPool.initialize()</code> ⇒ <code>Promise</code></a></li><li><a href="#sessionpoolgetsession-promise"><code>sessionPool.getSession()</code> ⇒ <a href="session"><code>Promise</code></a></a></li><li><a href="#sessionpoolgetstate-object"><code>sessionPool.getState()</code> ⇒ <code>Object</code></a></li><li><a href="#sessionpoolpersiststate-promise"><code>sessionPool.persistState()</code> ⇒ <code>Promise</code></a></li><li><a href="#sessionpoolteardown"><code>sessionPool.teardown()</code></a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/apify_logo.svg" alt="Apify SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/guides/motivation">Guide</a><a href="/docs/examples/basiccrawler">Examples</a><a href="/docs/api/apify">Reference</a></div><div><h5>Community</h5><a href="https://stackoverflow.com/questions/tagged/apify" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://twitter.com/apify" target="_blank" rel="noreferrer noopener">Twitter</a><a href="https://www.facebook.com/apifytech" target="_blank" rel="noreferrer noopener">Facebook</a></div><div><h5>More</h5><a href="https://apify.com" target="_blank">Apify Cloud</a><a href="https://docusaurus.io" target="_blank">Docusaurus</a><a href="https://github.com/apifytech/apify-js" target="_blank">GitHub</a></div></section><section class="copyright">Copyright © 2019 Apify Technologies s.r.o.</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;

@@ -130,7 +130,7 @@ effect.</p>
 <td colspan="3"><p>Idempotency key enables you to ensure that a webhook will not be added multiple times in case of
   an actor restart or other situation that would cause the <code>addWebhook()</code> function to be called again.
   We suggest using the actor run ID as the idempotency key. You can get the run ID by calling
-  [`Apify.getEnv()](apify#module_Apify.getEnv) function.</p>
+  <a href="apify#module_Apify.getEnv"><code>Apify.getEnv()</code></a> function.</p>
 </td></tr></tbody>
 </table>
 <a name="module_Apify.call"></a>
@@ -441,6 +441,18 @@ applications.</p>
   All HTTP requests going through the proxy with the same session identifier
   will use the same target proxy server (i.e. the same IP address), unless using Residential proxies.
   The identifier can only contain the following characters: <code>0-9</code>, <code>a-z</code>, <code>A-Z</code>, <code>&quot;.&quot;</code>, <code>&quot;_&quot;</code> and <code>&quot;~&quot;</code>.</p>
+</td></tr><tr>
+<td><code>[options.country]</code></td><td><code>String</code></td>
+</tr>
+<tr>
+<td colspan="3"><p>If specified, all proxied requests will use IP addresses that geolocated to the specified country.
+For example country-GB for IP&#39;s from Great Britain.
+This parameter is optional, by default, each proxied request is assigned an IP address from a random country.
+The country code needs to be a two letter ISO country code
+- see the <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements" target="_blank">
+full list of available country codes
+</a></p>
+<p>This parameter is optional, by default, the proxy uses all available proxy servers from all countries.</p>
 </td></tr></tbody>
 </table>
 <a name="module_Apify.getEnv"></a>
@@ -513,11 +525,11 @@ second.</p>
 <h2><a class="anchor" aria-hidden="true" id="apifygetvaluekey-promise-object"></a><a href="#apifygetvaluekey-promise-object" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>Apify.getValue(key)</code> ⇒ <code>Promise&lt;Object&gt;</code></h2>
 <p>Gets a value from the default <a href="keyvaluestore"><code>KeyValueStore</code></a> associated with the current actor run.</p>
 <p>This is just a convenient shortcut for <a href="keyvaluestore#KeyValueStore+getValue"><code>keyValueStore.getValue()</code></a>. For example, calling the following code:</p>
-<pre><code class="hljs css language-javascript"><span class="token keyword">const</span> input <span class="token operator">=</span> <span class="token keyword">await</span> Apify<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token string">'my-key'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="hljs css language-javascript"><span class="token keyword">const</span> value <span class="token operator">=</span> <span class="token keyword">await</span> Apify<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token string">'my-key'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>is equivalent to:</p>
 <pre><code class="hljs css language-javascript"><span class="token keyword">const</span> store <span class="token operator">=</span> <span class="token keyword">await</span> Apify<span class="token punctuation">.</span><span class="token function">openKeyValueStore</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">await</span> store<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token string">'my-key'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> value <span class="token operator">=</span> <span class="token keyword">await</span> store<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token string">'my-key'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>To store the value to the default-key value store, you can use the <a href="#module_Apify.setValue"><code>Apify.setValue()</code></a> function.</p>
 <p>For more information, see <a href="#module_Apify.openKeyValueStore"><code>Apify.openKeyValueStore()</code></a> and
